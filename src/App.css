@@ -1,19 +1,172 @@
-.App {
-  text-align: center;
+@import "Font.css";
+
+html,
+body {
+	height: 150%;
+	font-family: "Cairo", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+a:hover,
+a:focus {
+	text-decoration: none;
+	outline: none;
+	color: #ffffff;
 }
 
-.App-link {
-  color: #61dafb;
+header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
 }
 
+
+header .container{
+  position: relative;
+}
+
+.header__top{
+  background: #8fd625;
+}
+
+
+
+.header__top__left {
+  padding: 10px 0 13px;
+}
+
+.header__top__right {
+  text-align: right;
+  padding: 10px 0 13px;
+}
+
+.header__menu {
+	padding: 34px 0;
+}
+
+
+
+.header__menu ul li {
+	list-style: none;
+	display: inline-block;
+	margin-right: 40px;
+	position: relative;
+}
+
+.header__menu ul li.active a {
+	color: #7fad39;
+}
+
+.header__menu ul li:hover>a {
+	color: #7fad39;
+}
+
+.header__menu ul li:last-child {
+	margin-right: 0;
+}
+
+.header__menu ul li a {
+	font-size: 14px;
+	color: #252525;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 2px;
+	-webkit-transition: all, 0.3s;
+	-moz-transition: all, 0.3s;
+	-ms-transition: all, 0.3s;
+	-o-transition: all, 0.3s;
+	transition: all, 0.3s;
+	padding: 5px 0;
+	display: block;
+}
+
+.header__top__left{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header__top__right {
+	text-align: right;
+	padding: 10px 0 13px;
+}
+
+.header__top__right__auth {
+	display: inline-block;
+  padding: 5px 15px;
+}
+
+
+
+.header__left,  .header__right {
+	padding: 34px 0;
+	height: 115px;
+  }
+
+.header__left a {
+	display: inline-block;
+}
+.header__left img {
+	max-width: 100%;
+	max-height: 100%;
+	display: block;
+}
+
+
+.btn{
+  margin-left: 5px
+}
+
+
+/*-------------------------HAMBURGER MENU SETION------------------------*/
+
+.hamburger__menu{
+	display: none;
+}
+
+
+
+/*--------------------------------- Responsive Media Quaries -----------------------------*/
+
+@media only screen and (min-width: 1200px) {
+	.container {
+		max-width: 1170px;
+	}
+}
+
+@media only screen and (max-width: 992px){
+
+	.header__right{
+		text-align: center;
+	}
+
+	.header__top {
+		display: none;
+	}
+	.header__menu {
+		display: none;
+	}
+
+	.hamburger__menu {
+		display: block;
+		font-size: 22px;
+		color: #1c1c1c;
+		height: 35px;
+		width: 35px;
+		line-height: 33px;
+		text-align: center;
+		border: 1px solid #1c1c1c;
+		cursor: pointer;
+		position: absolute;
+		right: 15px;
+		top: 22px;
+	}
+
+	#extras{
+		width:auto;
+	}
+
+}
