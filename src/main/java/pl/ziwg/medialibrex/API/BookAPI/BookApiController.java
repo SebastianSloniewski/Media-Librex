@@ -1,5 +1,7 @@
 package pl.ziwg.medialibrex.API.BookAPI;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,15 +17,19 @@ public class BookApiController {
     }
 
     @GetMapping("/books/search")
-    public String searchBooks(@RequestParam String title) {
+    public String searchBooks(@RequestParam String title) throws JsonProcessingException {
         BookApiService bookApiService = new BookApiService(new RestTemplate());
-        return bookApiService.searchByTitle(title);
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(bookApiService.searchByTitle(title));
+        return json;
     }
 
     @GetMapping("/books/{isbn}")
-    public String getBook(@PathVariable String isbn) {
+    public String getBook(@PathVariable String isbn) throws JsonProcessingException {
         BookApiService bookApiService = new BookApiService(new RestTemplate());
-        return bookApiService.getBookDetailsByIsbn(isbn);
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(bookApiService.getBookDetailsByIsbn(isbn));
+        return json;
     }
 
     @GetMapping("/books/cover")
@@ -34,23 +40,21 @@ public class BookApiController {
         return bookApiService.getCoverImageUrlByIsbn(id,size,typeId);
     }
 
-    @GetMapping("/books/search/authors")
-    public String searchAuthors(@RequestParam String author) {
-        BookApiService bookApiService = new BookApiService(new RestTemplate());
-        return bookApiService.searchAuthorsByName(author);
-    }
-
     @GetMapping("/author/{authorKey}/books")
     public String getAuthorBooks(@PathVariable String authorKey,
-                                 @RequestParam String limit){
+                                 @RequestParam String limit) throws JsonProcessingException {
         BookApiService bookApiService = new BookApiService(new RestTemplate());
-        return bookApiService.getBookByAuthorKey(authorKey, limit);
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(bookApiService.getBookByAuthorKey(authorKey, limit));
+        return json;
     }
 
     @GetMapping("/books/subject/{subject}")
     public String getSubjectBooks(@PathVariable String subject,
-                                 @RequestParam String limit){
+                                 @RequestParam String limit) throws JsonProcessingException {
         BookApiService bookApiService = new BookApiService(new RestTemplate());
-        return bookApiService.getBooksBySubject(subject, limit);
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(bookApiService.getBooksBySubject(subject, limit));
+        return json;
     }
 }

@@ -1,5 +1,7 @@
 package pl.ziwg.medialibrex.API.MusicAPI;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,14 +17,20 @@ public class MusicApiController {
     }
 
     @GetMapping("/music/search")
-    public String searchAlbum(@RequestParam String title){
+    public String searchAlbum(@RequestParam String title) throws JsonProcessingException {
         MusicApiService musicApiService = new MusicApiService(new RestTemplate());
-        return musicApiService.search(title);
+
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(musicApiService.search(title));
+        return json;
     }
 
     @GetMapping("/music/{mbid}")
-    public String getAlbum(@PathVariable String mbid){
+    public String getAlbum(@PathVariable String mbid) throws JsonProcessingException {
         MusicApiService musicApiService = new MusicApiService(new RestTemplate());
-        return musicApiService.getAlbumByMbid(mbid);
+
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(musicApiService.getAlbumByMbid(mbid));
+        return json;
     }
 }
