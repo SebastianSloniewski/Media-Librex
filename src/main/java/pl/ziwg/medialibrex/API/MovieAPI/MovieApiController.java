@@ -20,16 +20,14 @@ public class MovieApiController {
     public String searchMovies(@RequestParam String title) throws JsonProcessingException {
         MovieApiService movieApiService = new MovieApiService(new RestTemplate());
         ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(movieApiService.search(title));
-        return json;
+        return mapper.writeValueAsString(movieApiService.search(title));
     }
 
     @GetMapping("/movies/{id}")
     public String getMovie(@PathVariable String id) throws JsonProcessingException {
         MovieApiService movieApiService = new MovieApiService(new RestTemplate());
         ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(movieApiService.getMovieByIMDb(id));
-        return json;
+        return mapper.writeValueAsString(movieApiService.getMovieByIMDb(id));
     }
 
 }

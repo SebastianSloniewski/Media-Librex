@@ -21,8 +21,7 @@ public class MusicApiController {
         MusicApiService musicApiService = new MusicApiService(new RestTemplate());
 
         ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(musicApiService.search(title));
-        return json;
+        return mapper.writeValueAsString(musicApiService.search(title));
     }
 
     @GetMapping("/music/{mbid}")
@@ -30,7 +29,6 @@ public class MusicApiController {
         MusicApiService musicApiService = new MusicApiService(new RestTemplate());
 
         ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(musicApiService.getAlbumByMbid(mbid));
-        return json;
+        return mapper.writeValueAsString(musicApiService.getAlbumByMbid(mbid));
     }
 }

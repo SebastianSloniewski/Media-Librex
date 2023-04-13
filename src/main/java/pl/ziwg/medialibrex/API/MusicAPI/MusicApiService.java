@@ -9,12 +9,13 @@ import org.springframework.web.client.RestTemplate;
 import pl.ziwg.medialibrex.API.MediaItem;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
 public class MusicApiService {
     private final RestTemplate restTemplate;
-    private final String apiKey = "b627771ebee652bad46a2e36b5ebc6ef";
+    private final String API_KEY = "b627771ebee652bad46a2e36b5ebc6ef";
 
     @Autowired
     public MusicApiService(RestTemplate restTemplate) {
@@ -22,24 +23,39 @@ public class MusicApiService {
     }
 
     public List<MediaItem> search(String title) throws JsonProcessingException {
-        String url = String.format("https://ws.audioscrobbler.com/2.0/?method=album.search&album=%s&api_key=%s&format=json", title, apiKey);
+        String url = String.format("https://ws.audioscrobbler.com/2.0/?method=album.search&album=%s&api_key=%s&format=json", title, API_KEY);
         String response = restTemplate.getForObject(url, String.class);
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode jsonNode = mapper.readTree(response);
-        int items = jsonNode.get("results").get("opensearch:itemsPerPage").asInt();
+        JsonNode searchResults = mapper.readTree(response).get("results");
+        int items = searchResults.get("opensearch:itemsPerPage").asInt();
         List<MediaItem> listAlbums = new ArrayList<MediaItem>();
         for (int i = 0; i < items; i++){
-            JsonNode itemJson = jsonNode.get("results").get("albummatches").get("album").get(i);
+            JsonNode itemJson = searchResults.get("albummatches").get("album").get(i);
             String mbid = itemJson.get("mbid").asText();
-            String artist = itemJson.get("artist").asText();
+            String artists = itemJson.get("artist").asText();
+            String[] artistsArray = artists.split(", ");
+
             String titleAlbum = itemJson.get("name").asText();
-            String cover = itemJson.get("image").get(0).get("#text").asText(); // TODO
+
+            JsonNode covers = itemJson.get("image") != null ? itemJson.get("image") : null;
+            List<String> coversList = new ArrayList<>();
+            if (covers != null) {
+                Iterator<JsonNode> coversIterator = covers.elements();
+                while (coversIterator.hasNext()) {
+                    JsonNode coversNode = coversIterator.next();
+                    coversList.add(coversNode.get("#text").asText());
+                }
+            }
 
             MediaItem album = new MediaItem();
             album.setId(mbid);
             album.setTitle(titleAlbum);
-            album.setAuthor(artist);
-            album.setCover(cover);
+            for (String artist : artistsArray) {
+                album.addPerson(artist, "artist");
+            }
+            for (String cover : coversList) {
+                album.addCover(cover, null);
+            }
             album.setMediaType("music");
             listAlbums.add(album);
         }
@@ -48,23 +64,42 @@ public class MusicApiService {
     }
 
     public MediaItem getAlbumByMbid(String mbid) throws JsonProcessingException {
-        String url = String.format("https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=%s&mbid=%s&format=json", apiKey, mbid);
+        String url = String.format("https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=%s&mbid=%s&format=json", API_KEY, mbid);
         String response = restTemplate.getForObject(url, String.class);
         ObjectMapper mapper = new ObjectMapper();
         JsonNode jsonNode = mapper.readTree(response);
 
         String artist = jsonNode.get("album").get("artist").asText();
         String title = jsonNode.get("album").get("name").asText();
-        String cover = jsonNode.get("album").get("image").get(0).get("#text").asText(); // TODO
-        String genre = jsonNode.get("album").get("tags").get("tag").get(0).get("name").asText(); // TODO
-
+        JsonNode covers = jsonNode.get("album").get("image") != null ? jsonNode.get("album").get("image") : null;
+        List<String> coversList = new ArrayList<>();
+        if (covers != null) {
+            Iterator<JsonNode> coversIterator = covers.elements();
+            while (coversIterator.hasNext()) {
+                JsonNode coversNode = coversIterator.next();
+                coversList.add(coversNode.get("#text").asText());
+            }
+        }
+        JsonNode genres = jsonNode.get("album").get("tags") != null ? jsonNode.get("album").get("tags") : null;
+        List<String> genresList = new ArrayList<>();
+        if (genres != null) {
+            Iterator<JsonNode> genresIterator = genres.elements();
+            while (genresIterator.hasNext()) {
+                JsonNode genresNode = genresIterator.next();
+                genresList.add(genresNode.get("name") != null ? genresNode.get("name").asText() : null);
+            }
+        }
         MediaItem album = new MediaItem();
         album.setId(mbid);
         album.setTitle(title);
-        album.setAuthor(artist);
-        album.setCover(cover);
+        album.addPerson(artist, "artist");
+        for (String cover : coversList) {
+            album.addCover(cover, null);
+        }
         album.setMediaType("music");
-        album.setGenre(genre);
+        for (String genre : genresList) {
+            album.addSubject(genre);
+        }
         return album;
     }
 }

@@ -20,16 +20,14 @@ public class BookApiController {
     public String searchBooks(@RequestParam String title) throws JsonProcessingException {
         BookApiService bookApiService = new BookApiService(new RestTemplate());
         ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(bookApiService.searchByTitle(title));
-        return json;
+        return mapper.writeValueAsString(bookApiService.searchByTitle(title));
     }
 
     @GetMapping("/books/{isbn}")
     public String getBook(@PathVariable String isbn) throws JsonProcessingException {
         BookApiService bookApiService = new BookApiService(new RestTemplate());
         ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(bookApiService.getBookDetailsByIsbn(isbn));
-        return json;
+        return mapper.writeValueAsString(bookApiService.getBookDetailsByIsbn(isbn));
     }
 
     @GetMapping("/books/cover")
@@ -45,8 +43,7 @@ public class BookApiController {
                                  @RequestParam String limit) throws JsonProcessingException {
         BookApiService bookApiService = new BookApiService(new RestTemplate());
         ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(bookApiService.getBookByAuthorKey(authorKey, limit));
-        return json;
+        return mapper.writeValueAsString(bookApiService.getBookByAuthorKey(authorKey, limit));
     }
 
     @GetMapping("/books/subject/{subject}")
@@ -54,7 +51,6 @@ public class BookApiController {
                                  @RequestParam String limit) throws JsonProcessingException {
         BookApiService bookApiService = new BookApiService(new RestTemplate());
         ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(bookApiService.getBooksBySubject(subject, limit));
-        return json;
+        return mapper.writeValueAsString(bookApiService.getBooksBySubject(subject, limit));
     }
 }
