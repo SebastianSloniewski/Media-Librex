@@ -20,11 +20,16 @@ public class BookApiService {
         this.restTemplate = restTemplate;
     }
 
-    public List<MediaItem> searchByTitle(String title) throws JsonProcessingException {
+    public List<MediaItem> searchByTitle(String title) {
         String url = String.format("https://openlibrary.org/search.json?title=%s", title);
         String response = restTemplate.getForObject(url, String.class);
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode jsonNode = mapper.readTree(response);
+        JsonNode jsonNode;
+        try {
+            jsonNode = mapper.readTree(response);
+        } catch (JsonProcessingException e){
+            throw new RuntimeException("Error parsing JSON response from API", e);
+        }
         int items = jsonNode.get("numFound").asInt();
         List<MediaItem> listBooks = new ArrayList<MediaItem>();
         for (int i = 0; i < items; i++){
@@ -63,7 +68,6 @@ public class BookApiService {
             for (String author : authorNamesList){
                 book.addPerson(author, "author");
             }
-            // Cover
             book.setMediaType("book");
             for (String subject : subjectsList){
                 book.addSubject(subject);
@@ -75,12 +79,16 @@ public class BookApiService {
         return listBooks;
     }
 
-    public MediaItem getBookDetailsByIsbn(String isbn) throws JsonProcessingException {
+    public MediaItem getBookDetailsByIsbn(String isbn) {
         String url = String.format("https://openlibrary.org/isbn/%s.json", isbn);
         String response = restTemplate.getForObject(url, String.class);
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode jsonNode = mapper.readTree(response);
-
+        JsonNode jsonNode;
+        try {
+            jsonNode = mapper.readTree(response);
+        } catch (JsonProcessingException e){
+            throw new RuntimeException("Error parsing JSON response from API", e);
+        }
         String title = jsonNode.get("title").asText();
         JsonNode covers = jsonNode.get("covers") != null ? jsonNode.get("covers") : null;
         List<String> coversList = new ArrayList<>();
@@ -126,11 +134,16 @@ public class BookApiService {
     }
 
     public List<MediaItem> getBookByAuthorKey(String authorKey,
-                                              String limit) throws JsonProcessingException {
+                                              String limit) {
         String url = String.format("https://openlibrary.org/authors/%s/works.json?limit=%s", authorKey, limit);
         String response = restTemplate.getForObject(url, String.class);
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode jsonNode = mapper.readTree(response);
+        JsonNode jsonNode;
+        try {
+            jsonNode = mapper.readTree(response);
+        } catch (JsonProcessingException e){
+            throw new RuntimeException("Error parsing JSON response from API", e);
+        }
         int items = jsonNode.get("size").asInt();
         List<MediaItem> listBooks = new ArrayList<MediaItem>();
         for (int i = 0; i < items; i++){
@@ -166,11 +179,16 @@ public class BookApiService {
     }
 
     public List<MediaItem> getBooksBySubject(String subject,
-                                             String limit) throws JsonProcessingException {
+                                             String limit) {
         String url = String.format("http://openlibrary.org/subjects/%s.json?details=True&limit=%s", subject, limit);
         String response = restTemplate.getForObject(url, String.class);
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode jsonNode = mapper.readTree(response);
+        JsonNode jsonNode;
+        try {
+            jsonNode = mapper.readTree(response);
+        } catch (JsonProcessingException e){
+            throw new RuntimeException("Error parsing JSON response from API", e);
+        }
         int items = Integer.parseInt(limit);
         List<MediaItem> listBooks = new ArrayList<MediaItem>();
         for (int i = 0; i < items; i++){

@@ -22,11 +22,17 @@ public class MusicApiService {
         this.restTemplate = restTemplate;
     }
 
-    public List<MediaItem> search(String title) throws JsonProcessingException {
+    public List<MediaItem> search(String title) {
         String url = String.format("https://ws.audioscrobbler.com/2.0/?method=album.search&album=%s&api_key=%s&format=json", title, API_KEY);
         String response = restTemplate.getForObject(url, String.class);
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode searchResults = mapper.readTree(response).get("results");
+        JsonNode searchResults;
+        try {
+            searchResults = mapper.readTree(response).get("results");
+        } catch (JsonProcessingException e){
+            throw new RuntimeException("Error parsing JSON response from API", e);
+        }
+
         int items = searchResults.get("opensearch:itemsPerPage").asInt();
         List<MediaItem> listAlbums = new ArrayList<MediaItem>();
         for (int i = 0; i < items; i++){
@@ -63,11 +69,16 @@ public class MusicApiService {
         return listAlbums;
     }
 
-    public MediaItem getAlbumByMbid(String mbid) throws JsonProcessingException {
+    public MediaItem getAlbumByMbid(String mbid) {
         String url = String.format("https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=%s&mbid=%s&format=json", API_KEY, mbid);
         String response = restTemplate.getForObject(url, String.class);
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode jsonNode = mapper.readTree(response);
+        JsonNode jsonNode;
+        try {
+            jsonNode = mapper.readTree(response);
+        } catch (JsonProcessingException e){
+            throw new RuntimeException("Error parsing JSON response from API", e);
+        }
 
         String artist = jsonNode.get("album").get("artist").asText();
         String title = jsonNode.get("album").get("name").asText();
