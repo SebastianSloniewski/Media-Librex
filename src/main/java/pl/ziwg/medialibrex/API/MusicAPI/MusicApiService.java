@@ -113,4 +113,47 @@ public class MusicApiService {
         }
         return album;
     }
+    public List<MediaItem> searchByGenre(String genre) {
+        String url = String.format("https://ws.audioscrobbler.com/2.0/?method=tag.getTopAlbums&tag=%s&api_key=%s&format=json", genre, API_KEY);
+        String response = restTemplate.getForObject(url, String.class);
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode searchResults;
+        try {
+            searchResults = mapper.readTree(response).get("albums");
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Error parsing JSON response from API", e);
+        }
+
+        int items = searchResults.get("album").size();
+        List<MediaItem> listAlbums = new ArrayList<>();
+        for (int i = 0; i < items; i++) {
+            JsonNode itemJson = searchResults.get("album").get(i);
+            String mbid = itemJson.get("mbid").asText();
+            String artist = itemJson.get("artist").get("name").asText();
+            String titleAlbum = itemJson.get("name").asText();
+
+            JsonNode covers = itemJson.get("image") != null ? itemJson.get("image") : null;
+            List<String> coversList = new ArrayList<>();
+            if (covers != null) {
+                Iterator<JsonNode> coversIterator = covers.elements();
+                while (coversIterator.hasNext()) {
+                    JsonNode coversNode = coversIterator.next();
+                    coversList.add(coversNode.get("#text").asText());
+                }
+            }
+
+            MediaItem album = new MediaItem();
+            album.setId(mbid);
+            album.setTitle(titleAlbum);
+            album.addPerson(artist, "artist");
+            for (String cover : coversList) {
+                album.addCover(cover, null);
+            }
+            album.setMediaType("music");
+            album.addSubject(genre);
+            listAlbums.add(album);
+        }
+
+        return listAlbums;
+    }
 }

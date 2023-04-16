@@ -31,4 +31,12 @@ public class MusicApiController {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(musicApiService.getAlbumByMbid(mbid));
     }
+
+    @GetMapping("/music/genre/{genre}")
+    public String searchAlbumByGenre(@PathVariable String genre) throws JsonProcessingException {
+        MusicApiService musicApiService = new MusicApiService(new RestTemplate());
+
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(musicApiService.searchByGenre(genre));
+    }
 }
