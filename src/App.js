@@ -13,11 +13,11 @@ const testPlaylistsList2 = [
 
 function App(){
   return (
-    <div style={{display:"flex"}}>
+    <div>
       <Header/>
-      <div style={{width:"15%"}}>
-        <LeftPanel userPlaylists={testPlaylistsList2}/>
-      </div>
+      <LeftPanel userPlaylists={testPlaylistsList2}/>
+      <section className='col-lg-10 contents'>
+      </section>
     </div>
   );
 }

@@ -22,11 +22,12 @@ const LeftPanel = (props) => {
     console.log("Rendered left panel with props: ", props);
 
     return (
-        <div>
-            <Table>
-                {playlists.map((value, id) => <PlayListRow title={value.title} size={value.size} key={id}/>)}
-            </Table>
-            
+        <div className="sideBar col-lg-2 container">
+            <div>
+                <Table>
+                    {playlists.map((value, id) => <PlayListRow title={value.title} size={value.size} key={id}/>)}
+                </Table>
+            </div>
         </div>
     )
 

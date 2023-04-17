@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 
 const styledRow = styled.tr`
+    position: fixed;
     border: none;
     border-top: none;
 `;
