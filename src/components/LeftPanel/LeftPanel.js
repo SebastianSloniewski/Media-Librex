@@ -27,7 +27,6 @@ const LeftPanel = (props) => {
     console.log("Rendered left panel with props: ", props);
 
     const handleSelectPlaylist = (id) => {
-        console.log("Selected " + id + " row");
         props.handlePlaylistSelection(id);
     }
 
