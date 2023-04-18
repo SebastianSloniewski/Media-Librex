@@ -15,6 +15,9 @@ const SubCategoryPanel = (props) => {
     return (
         <_subCategorypanel>
             <h1>{props.category.title}</h1>
+            {/* TODO strzaleczki do przelaczania lewo/prawo, 
+            wyswietlanie X elementow listy w poziomie */}
+            <span>tu bedzie lista</span>
         </_subCategorypanel>
     );
 }
