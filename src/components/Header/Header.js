@@ -1,10 +1,18 @@
 import logo from '../../imgs/logo.png'; 
+import { MainDisplayType } from '../../utils/dataTypes';
 
-export function Header(){
+export function Header(props){
+
+    const handleCategoryChange = (type) => {
+        props.handleChange(type);
+    }
+
     return (
         <header>
             <HeaderTop></HeaderTop>
-            <NavBar></NavBar>
+            <NavBar
+                setCategory={handleCategoryChange}
+            />
         </header>
     );
 }
@@ -43,7 +51,14 @@ function LoginButton(){
     );
 }
 
-function NavBar(){
+function NavBar(props){
+
+    const handleCatSelect = (type) => {
+        console.log("On click NAVBAR " + type)
+        props.setCategory(type);
+    }
+
+
     return (
         <div className='header__nav'>
             <div className="container-fluid">
@@ -56,11 +71,11 @@ function NavBar(){
                     <div className="col-lg-6 col-md-3" style={{textAlign: "center"}}>
                         <nav className="header__menu">
                             <ul>
-                                <li><a className="nav-link active" href="#">MOVIES</a></li>
-                                <li><a className="nav-link" href="#">TV SERIES</a></li>
-                                <li><a className="nav-link" href="#">ANIME</a></li>
-                                <li><a className="nav-link" href="#">MUSIC</a></li>
-                                <li><a className="nav-link" href="#">BOOKS</a></li>
+                                <li onClick={() => handleCatSelect(MainDisplayType.Movies)}><a className="nav-link active" href="#">MOVIES</a></li>
+                                <li onClick={() => handleCatSelect(MainDisplayType.TvSeries)}><a className="nav-link" href="#">TV SERIES</a></li>
+                                <li onClick={() => handleCatSelect(MainDisplayType.Anime)}><a className="nav-link" href="#">ANIME</a></li>
+                                <li onClick={() => handleCatSelect(MainDisplayType.Music)}><a className="nav-link" href="#">MUSIC</a></li>
+                                <li onClick={() => handleCatSelect(MainDisplayType.Books)}><a className="nav-link" href="#">BOOKS</a></li>
                             </ul>
                         </nav>
                     </div>

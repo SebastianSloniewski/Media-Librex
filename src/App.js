@@ -5,6 +5,7 @@ import Content from './components/content/content';
 import LibraryPanel from './components/LibraryPanel/LibraryPanel';
 import MainDisplayPanel from './components/MainDisplayPanel/MainDisplayPanel'
 import {React, useState} from "react";
+import { MainDisplayType } from './utils/dataTypes';
 
 
 const testPlaylistsList2 = [
@@ -19,20 +20,30 @@ function App(){
   const [isPlaylistSelected, setIsPlaylistSelected] = useState(false);
   const [currentPlaylist, setCurrentPlaylist] = useState([]);
 
+  const [currentMainType, setCurrentMainType] = useState(MainDisplayType.Movies)
+
 
   const handlePlaylistSelection = (id) => {
-    console.log("selected display playlist " + id);
+    //console.log("selected display playlist " + id);
     setIsPlaylistSelected(true);
   }
 
   const SwitchToMainDisplay = () => {
-    console.log('to main display')
+    //console.log('to main display')
     setIsPlaylistSelected(false);
+  }
+
+  const HandleMainCategoryChange = (type) => {
+    //console.log("SWITCHING CATEGORY TO " +type+ "APP");
+    setCurrentMainType(type);
+    SwitchToMainDisplay();
   }
 
   return (
     <div>
-      <Header onClick={SwitchToMainDisplay}/>
+      <Header 
+        handleChange={HandleMainCategoryChange}
+      />
       <LeftPanel userPlaylists={testPlaylistsList2} handlePlaylistSelection={handlePlaylistSelection}/>
       <section className='col-lg-10 contents'>
         {isPlaylistSelected ? 
@@ -40,7 +51,8 @@ function App(){
             currentPlaylist={currentPlaylist}
           /> : 
           <MainDisplayPanel
-            
+            type={currentMainType}
+            handleChange={HandleMainCategoryChange}
           />}
 
       </section>
