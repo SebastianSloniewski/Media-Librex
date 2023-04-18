@@ -10,7 +10,9 @@ const _StyledRow = styled.tr`
     border-top-style: solid;
     border-top-color: grey;
     border-bottom-width: 2px;
-    
+    &:hover {
+        background-color: grey;
+    }
     
 `;
 

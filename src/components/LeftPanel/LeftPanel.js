@@ -28,11 +28,12 @@ const LeftPanel = (props) => {
 
     const handleSelectPlaylist = (id) => {
         console.log("Selected " + id + " row");
+        props.handlePlaylistSelection(id);
     }
 
 
     return (
-        <_MainPanelContainer className="sideBar col-lg-2 container">
+        <_MainPanelContainer className="col-lg-2 container">
             <_Title>
                 <h1>Kolekcje</h1>
             </_Title>
