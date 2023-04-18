@@ -27,9 +27,10 @@ header .row{
 
 .contents{
 	position: fixed;
+	width: 30%;
 	height: 100%;
 	margin-left: 18%;
-	margin-top: 11.5%;
+	margin-top: 155px;
 }
 
 
@@ -189,6 +190,13 @@ header .row{
 
 	.sideBar{
 		display: none;
+	}
+
+	@media only screen and (max-width: 770px){
+		#extras{
+			display: none;
+		}
+	
 	}
 
 }
