@@ -2,24 +2,35 @@ import {React, useState} from "react";
 import styled from "styled-components";
 
 
-const styledRow = styled.tr`
-    position: fixed;
-    border: none;
-    border-top: none;
+const _StyledRow = styled.tr`
+    width: 100%;
+    padding-bottom: 100%;
+    border-bottom-style: solid;
+    border-bottom-color: grey;
+    border-top-style: solid;
+    border-top-color: grey;
+    border-bottom-width: 2px;
+    
+    
 `;
 
 const PlayListRow = (props) => {
 
+    const handleClick = () => {
+        console.log("Clicked row ", props.id)
+        props.onPlaylistSelect(props.id);
+    }
+
 
     return (
-        <tr key={props.key}>
+        <_StyledRow key={props.id} onClick={handleClick}>
             <td>
-                {props.title}
+                <h6>{props.title}</h6>
             </td>
             <td>
                 {props.size}
             </td>
-        </tr>
+        </_StyledRow>
     )
 
 }

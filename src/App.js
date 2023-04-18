@@ -1,6 +1,7 @@
 import './App.css';
 import {Header} from './components/Header/Header.js';
 import LeftPanel from './components/LeftPanel/LeftPanel';
+import LibraryPanel from './components/LibraryPanel/LibraryPanel'
 
 
 const testPlaylistsList2 = [
@@ -17,6 +18,7 @@ function App(){
       <Header/>
       <LeftPanel userPlaylists={testPlaylistsList2}/>
       <section className='col-lg-10 contents'>
+        <LibraryPanel/>
       </section>
     </div>
   );
