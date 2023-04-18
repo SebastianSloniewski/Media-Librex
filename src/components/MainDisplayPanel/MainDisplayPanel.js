@@ -4,7 +4,7 @@ import SubCategoryPanel from './SubCategoryPanel/SubCategoryPanel';
 
 const _MainDisplayContainer = styled.div`
     width: 100%;
-    height: 100%;
+    height: calc(100% - 30px);
     background-color: red;
     padding-top: 50px;    
 `;
@@ -18,7 +18,7 @@ const MainDisplayPanel = (props) => {
     console.log("rendered main display panel of " + props.type);
 
     return (
-        <_MainDisplayContainer>
+        <_MainDisplayContainer className="MainDisplayPanel">
             <h1>Tu beda kategorie</h1>
             {subCategories.map((value) => {
                 console.log("rendering subcategory in map")

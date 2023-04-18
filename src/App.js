@@ -1,7 +1,7 @@
 import './App.css';
 import {Header} from './components/Header/Header.js';
+import SearchBar from './components/content/searchbar';
 import LeftPanel from './components/LeftPanel/LeftPanel';
-import Content from './components/content/content';
 import LibraryPanel from './components/LibraryPanel/LibraryPanel';
 import MainDisplayPanel from './components/MainDisplayPanel/MainDisplayPanel'
 import {React, useState} from "react";
@@ -59,6 +59,7 @@ function App(){
       />
       <LeftPanel userPlaylists={plList} handlePlaylistSelection={handlePlaylistSelection}/>
       <section className='col-lg-10 contents'>
+        <SearchBar/>
         {isPlaylistSelected ? 
           <LibraryPanel 
             currentPlaylist={currentPlaylist}
@@ -70,7 +71,6 @@ function App(){
           />}
 
       </section>
-      <Content/>
     </div>
   );
 }

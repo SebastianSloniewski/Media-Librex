@@ -33,10 +33,6 @@ header .row{
 	margin-right: 5%;
 	margin-top: 180px;
 }
-
-.contents .container-fluid{
-	padding-right: 2.5%;
-}
 /*------------------------HEADER SECTION------------------------------*/
 
 
@@ -126,26 +122,19 @@ header .row{
   margin-left: 5px
 }
 
-/*----------------------------SIDEBAR SECTION-----------------------------*/
-
-.sideBar{
-	position: fixed;
-	height:100%;
-	width: 280px;
-	margin-top: 180px;
-	background-color: #7fad39;
-	
-}
-
-
-
-
 /*-------------------------HAMBURGER MENU SETION------------------------*/
 
 .hamburger__menu{
 	display: none;
 }
 
+/*----------------------Searchbar-------------------------------------*/
+
+.search__bar{
+	width: calc(100vw - 330px);
+    margin: 10px;
+    padding: 10px;
+}
 
 
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
@@ -190,6 +179,10 @@ header .row{
 
 	.sideBar{
 		display: none;
+	}
+
+	.search__bar{
+		width: auto;			
 	}
 
 	.contents{

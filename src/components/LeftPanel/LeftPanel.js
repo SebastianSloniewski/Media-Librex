@@ -5,9 +5,10 @@ import Table from "react-bootstrap/Table"
 
 
 const _MainPanelContainer = styled.div`
-    position: fixed;
+   	position: fixed;
 	height:100%;
-	margin-top: 11.5%;
+	width: 280px;
+	margin-top: 180px;
 	background-color: white;
     border-right-style: outset;
     padding-top: 10px;
@@ -32,7 +33,7 @@ const LeftPanel = (props) => {
 
 
     return (
-        <_MainPanelContainer className="col-lg-2 container">
+        <_MainPanelContainer className="col-lg-2 container sideBar">
             <_Title>
                 <h1>Kolekcje</h1>
             </_Title>

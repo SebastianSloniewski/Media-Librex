@@ -1,8 +1,11 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import styled from "styled-components";
+
+
 
 export default function SearchBar() {
   return (
-    <Container fluid className="lg-12" style={{margin: "3px"}}>
+    <div className="lg-12 search__bar" >
       <Row>
         <Col lg={12}>
           <Form className="d-flex">
@@ -18,6 +21,6 @@ export default function SearchBar() {
           </Form>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 }
