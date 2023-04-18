@@ -24,7 +24,7 @@ const LeftPanel = (props) => {
     const [playlists, setPlayLists] = useState(props.userPlaylists);
 
 
-    console.log("Rendered left panel with props: ", props);
+    //console.log("Rendered left panel with props: ", props);
 
     const handleSelectPlaylist = (id) => {
         props.handlePlaylistSelection(id);
@@ -39,11 +39,11 @@ const LeftPanel = (props) => {
             <div>
                 <Table bordered={false}>
                     <tbody>
-                        {playlists.map((value, id) => <PlayListRow 
+                        {playlists.map((value) => <PlayListRow 
                             title={value.title} 
                             size={value.size} 
-                            id={id} 
-                            key={id} 
+                            id={value.plID} 
+                            key={value.plID} 
                             onPlaylistSelect={handleSelectPlaylist}/>)}
                     </tbody>
                     

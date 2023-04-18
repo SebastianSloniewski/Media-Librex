@@ -9,14 +9,21 @@ import { MainDisplayType } from './utils/dataTypes';
 
 
 const testPlaylistsList2 = [
-  {title: "obejrzane", size: 8},
-  {title: "do obejrzenia", size: 39},
-  {title: "coś", size: 50},
-  {title: "horrory", size: 37}
+  {title: "obejrzane", size: 8, plID: 123, elems: []},
+  {title: "do obejrzenia", size: 39, plID: 1,elems: []},
+  {title: "coś", size: 50, plID: 2, elems: []},
+  {title: "horrory", size: 37, plID: 50, elems: []}
+]
+
+const testCategories = [
+  {title: "horror", elements: [], size: 2},
+  {title: "akcja", elements: [], size: 15},
+
 ]
 
 
 function App(){
+  const [plList, setplList] = useState(testPlaylistsList2);
   const [isPlaylistSelected, setIsPlaylistSelected] = useState(false);
   const [currentPlaylist, setCurrentPlaylist] = useState([]);
 
@@ -26,6 +33,12 @@ function App(){
   const handlePlaylistSelection = (id) => {
     //console.log("selected display playlist " + id);
     setIsPlaylistSelected(true);
+    //TODO WZIECIE Danych playlist o danym id
+    //Albo
+    const newPL = plList.filter(pl => pl.plID === id);
+
+    
+    setCurrentPlaylist(newPL[0]);
   }
 
   const SwitchToMainDisplay = () => {
@@ -44,7 +57,7 @@ function App(){
       <Header 
         handleChange={HandleMainCategoryChange}
       />
-      <LeftPanel userPlaylists={testPlaylistsList2} handlePlaylistSelection={handlePlaylistSelection}/>
+      <LeftPanel userPlaylists={plList} handlePlaylistSelection={handlePlaylistSelection}/>
       <section className='col-lg-10 contents'>
         {isPlaylistSelected ? 
           <LibraryPanel 
@@ -52,6 +65,7 @@ function App(){
           /> : 
           <MainDisplayPanel
             type={currentMainType}
+            subCategories={testCategories}
             handleChange={HandleMainCategoryChange}
           />}
 

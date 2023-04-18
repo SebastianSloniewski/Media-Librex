@@ -11,15 +11,17 @@ const _StyledRow = styled.tr`
     border-top-color: grey;
     border-bottom-width: 2px;
     &:hover {
-        background-color: grey;
+        color: green;
     }
     
 `;
 
 const PlayListRow = (props) => {
 
+    //console.log("ROW PROPS: ", props)
+
     const handleClick = () => {
-        console.log("Clicked row ", props.id)
+        //console.log("Clicked row ", props.id)
         props.onPlaylistSelect(props.id);
     }
 
