@@ -27,13 +27,15 @@ header .row{
 
 .contents{
 	position: fixed;
-	width: 30%;
 	height: 100%;
+	margin-right: auto;
 	margin-left: 18%;
-	margin-top: 155px;
+	margin-top: 180px;
 }
 
-
+.contents .container-fluid{
+	padding-right: 2.5%;
+}
 /*------------------------HEADER SECTION------------------------------*/
 
 
@@ -43,16 +45,12 @@ header .row{
 
 
 .header__top__left {
-  padding: 10px 0 13px;
+  padding: 17px 0 13px;
 }
 
 .header__top__right {
   text-align: right;
   padding: 10px 0 13px;
-}
-
-.header__nav{
-	height: 90px;
 }
 
 .header__menu {
@@ -109,7 +107,7 @@ header .row{
 
 
 .header__left,  .header__right {
-	padding: 34px 0;
+	padding: 34px 2%;
 	height: 115px;
   }
 
@@ -132,7 +130,7 @@ header .row{
 .sideBar{
 	position: fixed;
 	height:100%;
-	margin-top: 155px;
+	margin-top: 180px;
 	background-color: #7fad39;
 	
 }
@@ -180,7 +178,7 @@ header .row{
 		border: 1px solid #1c1c1c;
 		cursor: pointer;
 		position: absolute;
-		right: 15px;
+		right: 5%;
 		top: 22px;
 	}
 

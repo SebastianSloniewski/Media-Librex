@@ -12,7 +12,7 @@ export default function SearchBar() {
               className="me-2 rounded-pill"
               aria-label="Search"
             />
-            <Button className="rounded-pill" variant="outline-primary">
+            <Button className="rounded-pill" variant="outline-primary" >
               Search
             </Button>
           </Form>
