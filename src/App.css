@@ -192,11 +192,17 @@ header .row{
 		display: none;
 	}
 
-	@media only screen and (max-width: 770px){
-		#extras{
-			display: none;
-		}
-	
+	.contents{
+		width: 100%;
+		margin-left:0;
+		margin-right: 0;
+	}
+}
+
+
+@media only screen and (max-width: 770px){
+	#extras{
+		display: none;
 	}
 
 }
