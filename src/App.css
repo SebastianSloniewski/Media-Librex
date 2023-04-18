@@ -28,8 +28,9 @@ header .row{
 .contents{
 	position: fixed;
 	height: 100%;
-	margin-right: auto;
-	margin-left: 18%;
+	width: calc(100vw - 280px);
+	margin-left: 280px;
+	margin-right: 5%;
 	margin-top: 180px;
 }
 
@@ -130,6 +131,7 @@ header .row{
 .sideBar{
 	position: fixed;
 	height:100%;
+	width: 280px;
 	margin-top: 180px;
 	background-color: #7fad39;
 	
