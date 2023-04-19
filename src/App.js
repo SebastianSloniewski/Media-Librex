@@ -18,6 +18,10 @@ const testPlaylistsList2 = [
 const testCategories = [
   {title: "horror", elements: [], size: 2},
   {title: "akcja", elements: [], size: 15},
+  {title: "dramat", elements: [], size: 15},
+  {title: "komedia", elements: [], size: 15},
+  {title: "komedia romantyczba", elements: [], size: 15},
+  
 
 ]
 

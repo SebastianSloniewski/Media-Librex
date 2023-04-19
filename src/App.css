@@ -17,6 +17,7 @@ a:focus {
 
 header{
 	position: fixed;
+	z-index: 1;
 	width: 100%;
 }
 
@@ -26,12 +27,11 @@ header .row{
 }
 
 .contents{
-	position: fixed;
 	height: 100%;
-	width: calc(100vw - 280px);
-	margin-left: 280px;
-	margin-right: 5%;
-	margin-top: 180px;
+	margin-top: 178px;
+	right: 35px;
+	position: absolute;
+
 }
 /*------------------------HEADER SECTION------------------------------*/
 
@@ -40,6 +40,9 @@ header .row{
   background: #8fd625;
 }
 
+.header__nav{
+	background-color: #ffffff;
+}
 
 .header__top__left {
   padding: 17px 0 13px;
@@ -131,9 +134,10 @@ header .row{
 /*----------------------Searchbar-------------------------------------*/
 
 .search__bar{
-	width: calc(100vw - 330px);
-    margin: 10px;
-    padding: 10px;
+	position: fixed;
+	width: 100%;
+	padding: 30px;
+	background-color: #fff;
 }
 
 

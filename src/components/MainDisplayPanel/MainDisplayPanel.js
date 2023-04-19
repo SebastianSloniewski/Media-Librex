@@ -3,10 +3,12 @@ import {React, useState} from "react";
 import SubCategoryPanel from './SubCategoryPanel/SubCategoryPanel';
 
 const _MainDisplayContainer = styled.div`
+    possition: fixed;
     width: 100%;
     height: calc(100% - 30px);
     background-color: red;
-    padding-top: 50px;    
+    margin-top: 80px;
+    padding-top: 50px; 
 `;
 
 
