@@ -17,6 +17,7 @@ const _StyledRow = styled.tr`
 `;
 
 const PlayListRow = (props) => {
+    
 
     //console.log("ROW PROPS: ", props)
 

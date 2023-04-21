@@ -2,6 +2,8 @@ import {React, useState} from "react";
 import styled from "styled-components";
 import PlayListRow from "./PlaylistRow/PlayListRow";
 import Table from "react-bootstrap/Table"
+import AddPlaylistPanel from "./AddPlaylistPanel/AddPlaylistPanel";
+import AddPlaylistModal from "./AddPlaylistModal/AddPlaylistModal";
 
 
 const _MainPanelContainer = styled.div`
@@ -23,7 +25,17 @@ const _Title = styled.div`
 
 const LeftPanel = (props) => {
     const [playlists, setPlayLists] = useState(props.userPlaylists);
+    const [isAddPanelOpen, setIsPanelOpen] = useState(false);
+    
 
+    const openAddPanel = () => {
+        setIsPanelOpen(true);
+        console.log("OPEN panel in LP");
+    }
+
+    const closeAddPanel = () => {
+        setIsPanelOpen(false);
+    }
 
     //console.log("Rendered left panel with props: ", props);
 
@@ -46,7 +58,10 @@ const LeftPanel = (props) => {
                             id={value.plID} 
                             key={value.plID} 
                             onPlaylistSelect={handleSelectPlaylist}/>)}
+
+                        <AddPlaylistPanel addPlaylist={openAddPanel}/>
                     </tbody>
+                    <AddPlaylistModal show={isAddPanelOpen} closeHandler={closeAddPanel}/>
                     
                 </Table>
             </div>
