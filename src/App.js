@@ -60,6 +60,7 @@ function App(){
     <div>
       <Header 
         handleChange={HandleMainCategoryChange}
+        currentType={currentMainType}
       />
       <LeftPanel userPlaylists={plList} handlePlaylistSelection={handlePlaylistSelection}/>
       <section className='col-lg-10 contents'>

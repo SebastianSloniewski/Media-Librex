@@ -7,13 +7,13 @@ const MLAxios = axios.create({
 });
 
 //funckje z zapytaniem tworzymy w postaci:
-const getAllBooks = async () => {
+export const getAllBooks = async () => {
     const result =  await MLAxios.get("books/");
 
     return result.data;
 }
 
-const getBookInfo = async (bookId) => {
+export const getBookInfo = async (bookId) => {
     const result = await MLAxios.get(`books/${bookId}`);
 
     return result.data;

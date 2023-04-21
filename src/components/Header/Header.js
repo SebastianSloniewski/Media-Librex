@@ -12,6 +12,7 @@ export function Header(props){
             <HeaderTop></HeaderTop>
             <NavBar
                 setCategory={handleCategoryChange}
+                currentType={props.currentType}
             />
         </header>
     );
@@ -71,11 +72,11 @@ function NavBar(props){
                     <div className="col-lg-6 col-md-3" style={{textAlign: "center"}}>
                         <nav className="header__menu">
                             <ul>
-                                <li onClick={() => handleCatSelect(MainDisplayType.Movies)}><a className="nav-link active" href="#">MOVIES</a></li>
-                                <li onClick={() => handleCatSelect(MainDisplayType.TvSeries)}><a className="nav-link" href="#">TV SERIES</a></li>
-                                <li onClick={() => handleCatSelect(MainDisplayType.Anime)}><a className="nav-link" href="#">ANIME</a></li>
-                                <li onClick={() => handleCatSelect(MainDisplayType.Music)}><a className="nav-link" href="#">MUSIC</a></li>
-                                <li onClick={() => handleCatSelect(MainDisplayType.Books)}><a className="nav-link" href="#">BOOKS</a></li>
+                                <li onClick={() => handleCatSelect(MainDisplayType.Movies)}><a className={(props.currentType == MainDisplayType.Movies) ? "nav-link active" : "nav-link"} href="#">MOVIES</a></li>
+                                <li onClick={() => handleCatSelect(MainDisplayType.TvSeries)}><a className={(props.currentType == MainDisplayType.TvSeries) ? "nav-link active" : "nav-link"} href="#">TV SERIES</a></li>
+                                <li onClick={() => handleCatSelect(MainDisplayType.Anime)}><a className={(props.currentType == MainDisplayType.Anime) ? "nav-link active" : "nav-link"} href="#">ANIME</a></li>
+                                <li onClick={() => handleCatSelect(MainDisplayType.Music)}><a className={(props.currentType == MainDisplayType.Music) ? "nav-link active" : "nav-link"} href="#">MUSIC</a></li>
+                                <li onClick={() => handleCatSelect(MainDisplayType.Books)}><a className={(props.currentType == MainDisplayType.Books) ? "nav-link active" : "nav-link"} href="#">BOOKS</a></li>
                             </ul>
                         </nav>
                     </div>
