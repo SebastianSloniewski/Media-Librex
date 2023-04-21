@@ -30,7 +30,6 @@ const LeftPanel = (props) => {
 
     const openAddPanel = () => {
         setIsPanelOpen(true);
-        console.log("OPEN panel in LP");
     }
 
     const closeAddPanel = () => {
@@ -41,6 +40,12 @@ const LeftPanel = (props) => {
 
     const handleSelectPlaylist = (id) => {
         props.handlePlaylistSelection(id);
+    }
+
+    const AddNewPlaylist = (playlist) => {
+        const newList = [...playlists, playlist]
+        props.handleListChange(newList);
+        setPlayLists(newList);
     }
 
 
@@ -61,7 +66,7 @@ const LeftPanel = (props) => {
 
                         <AddPlaylistPanel addPlaylist={openAddPanel}/>
                     </tbody>
-                    <AddPlaylistModal show={isAddPanelOpen} closeHandler={closeAddPanel}/>
+                    <AddPlaylistModal show={isAddPanelOpen} closeHandler={closeAddPanel} addPlaylist={AddNewPlaylist}/>
                     
                 </Table>
             </div>

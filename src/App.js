@@ -56,13 +56,21 @@ function App(){
     SwitchToMainDisplay();
   }
 
+  const handlePLchange = (newList) => {
+    setplList(newList);
+  }
+
+
   return (
     <div>
       <Header 
         handleChange={HandleMainCategoryChange}
         currentType={currentMainType}
       />
-      <LeftPanel userPlaylists={plList} handlePlaylistSelection={handlePlaylistSelection}/>
+      <LeftPanel userPlaylists={plList} 
+        handlePlaylistSelection={handlePlaylistSelection}
+        handleListChange={handlePLchange}
+        />
       <section className='col-lg-10 contents'>
         <SearchBar/>
         {isPlaylistSelected ? 
