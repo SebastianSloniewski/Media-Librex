@@ -3,7 +3,6 @@ import {React, useState} from "react";
 import SubCategoryPanel from './SubCategoryPanel/SubCategoryPanel';
 
 const _MainDisplayContainer = styled.div`
-    possition: fixed;
     width: 100%;
     height: calc(100% - 30px);
     background-color: red;
@@ -22,9 +21,9 @@ const MainDisplayPanel = (props) => {
     return (
         <_MainDisplayContainer className="MainDisplayPanel">
             <h1>Tu beda kategorie</h1>
-            {subCategories.map((value) => {
+            {subCategories.map((value, id) => {
                 console.log("rendering subcategory in map")
-                return (<SubCategoryPanel category={value}/>)
+                return (<SubCategoryPanel category={value} key={id}/>)
             })}
 
         </_MainDisplayContainer>

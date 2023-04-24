@@ -6,7 +6,7 @@ const _MainContainer = styled.div`
     background-color: purple;
     width: 100%;
     height: 100%;
-    text-align: center;
+    text-align: top;
     justify-content: center;
 `;
 

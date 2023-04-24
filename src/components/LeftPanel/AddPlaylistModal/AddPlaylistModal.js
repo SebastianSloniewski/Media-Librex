@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Button, Modal } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
+import { getAllBooks } from "../../../Axios/MLAxios";
 
 
 
@@ -17,6 +18,11 @@ const AddPlaylistModal = (props) => {
             elems: []
         }
         setCurrName("")
+
+        console.log("testing connection");
+        const testresult = getAllBooks();
+        console.log(testresult)
+
         props.addPlaylist(newPlaylist);
         props.closeHandler();
     }

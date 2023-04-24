@@ -2,13 +2,16 @@ import axios from "axios"
 
 
 const MLAxios = axios.create({
-    baseURL : 'https://some-domain.com/api/',
-    timeout: 1000
+    baseURL : 'http://localhost:8080/',
+    timeout: 5000,
+    headers: {"Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods" : "GET, PUT, POST, DELETE, PATCH, OPTIONS"
+}
 });
 
 //funckje z zapytaniem tworzymy w postaci:
 export const getAllBooks = async () => {
-    const result =  await MLAxios.get("books/");
+    const result =  await MLAxios.get("books/search?title=Avatar");
 
     return result.data;
 }
