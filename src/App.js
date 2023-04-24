@@ -15,13 +15,16 @@ const testPlaylistsList2 = [
   {title: "horrory", size: 37, plID: 50, elems: []}
 ]
 
+const ItemSubDisplayList = [
+  {title: "IndykMorderca", rating: 4.5},
+  {title: "IndykMordera 2 Zaginiona Płyta", rating: 10},
+  {title: "cos z indykiem", rating: 2.5}
+]
+
 const testCategories = [
-  {title: "horror", elements: [
-    {title: "IndykMorderca", rating: 4.5},
-    {}
-  ], size: 2},
-  {title: "akcja", elements: [], size: 15},
-  {title: "dramat", elements: [], size: 15},
+  {title: "horror", elements: ItemSubDisplayList, size: 2},
+  {title: "akcja", elements: ItemSubDisplayList, size: 15},
+  {title: "dramat", elements: [{title: "indyk", rating : 6}], size: 15},
   {title: "komedia", elements: [], size: 15},
   {title: "komedia romantycza", elements: [], size: 15},
   
