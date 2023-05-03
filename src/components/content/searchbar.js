@@ -3,6 +3,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import styled from "styled-components";
 import { MainDisplayType } from "../../utils/dataTypes";
 import { getBooksByName } from "../../Axios/MLAxiosBooks";
+import { getMusicByName } from "../../Axios/MLAxiosMusic";
 
 
 
@@ -18,9 +19,9 @@ const SearchBar = (props) => {
       case MainDisplayType.Books : 
         console.log("ksiazki");
 
-        const searchResult = getBooksByName(currQuery);
+        const searchResultBooks = getBooksByName(currQuery);
 
-        console.log(searchResult)
+        console.log(searchResultBooks)
 
         break;
       case MainDisplayType.Movies :
@@ -30,6 +31,9 @@ const SearchBar = (props) => {
 
         break;
       case MainDisplayType.Music : 
+        console.log("muzyka")
+        const searchResultMusic = getMusicByName(currQuery);
+        console.log(searchResultMusic)
 
         break;
       case MainDisplayType.TvSeries :
@@ -38,7 +42,7 @@ const SearchBar = (props) => {
       default :
         console.log("BŁAD")
     }
-    
+
     //setCurrQuery("");
   }
 
