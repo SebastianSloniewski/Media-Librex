@@ -16,13 +16,13 @@ const MainDisplayPanel = (props) => {
     const [subCategories, setSubCategories] = useState(props.subCategories);
     //const [subCategories, setSubCategories] = useState([]);
 
-    console.log("rendered main display panel of " + props.type);
+    //console.log("rendered main display panel of " + props.type);
 
     return (
         <_MainDisplayContainer className="MainDisplayPanel">
             {/* <h1>Tu beda kategorie</h1> */}
             {subCategories.map((value, id) => {
-                console.log("rendering subcategory in map")
+                //console.log("rendering subcategory in map")
                 return (<SubCategoryPanel category={value} key={id}/>)
             })}
 

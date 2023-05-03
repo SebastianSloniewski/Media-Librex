@@ -24,7 +24,7 @@ const SubCategoryPanel = (props) => {
                 {/* TODO strzaleczki do przelaczania lewo/prawo, 
                 wyswietlanie X elementow listy w poziomie */}
                 {displayedItems.map((value, id) => {
-                    console.log(value.title)
+                    //console.log(value.title)
                     return <ItemSubDisplay key={id} elem={displayedItems[id]}/>
                 })}
             </_subCategorypanel>

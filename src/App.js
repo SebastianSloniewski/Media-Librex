@@ -78,7 +78,7 @@ function App(){
         handleListChange={handlePLchange}
         />
       <section className='col-lg-10 contents'>
-        <SearchBar/>
+        <SearchBar searchType={currentMainType}/>
         {isPlaylistSelected ? 
           <LibraryPanel 
             currentPlaylist={currentPlaylist}

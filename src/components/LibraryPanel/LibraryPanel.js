@@ -12,9 +12,9 @@ const _MainContainer = styled.div`
 
 const LibraryPanel = (props) => {
 
-    console.log("Rendering LibPanel");
-    console.log(props.currentPlaylist)
-    console.log(props.currentPlaylist.title)
+    // console.log("Rendering LibPanel");
+    // console.log(props.currentPlaylist)
+    // console.log(props.currentPlaylist.title)
 
     return (
         <_MainContainer>

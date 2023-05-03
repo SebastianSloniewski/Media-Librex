@@ -55,7 +55,7 @@ function LoginButton(){
 function NavBar(props){
 
     const handleCatSelect = (type) => {
-        console.log("On click NAVBAR " + type)
+        //console.log("On click NAVBAR " + type)
         props.setCategory(type);
     }
 

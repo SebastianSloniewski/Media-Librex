@@ -19,7 +19,7 @@ const ImgContainer = styled.img`
 `;
 
 const ItemSubDisplay = (props) => {
-    console.log("rendered item")
+    //console.log("rendered item")
     const elem = props.elem;
 
 

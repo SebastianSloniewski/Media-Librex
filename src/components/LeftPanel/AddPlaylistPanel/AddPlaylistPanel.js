@@ -15,10 +15,10 @@ const _IconContainer = styled.div`
 
 
 const AddPlaylistPanel = (props) => {
-    console.log("rendered APLP")
+    //console.log("rendered APLP")
 
     const openPanel = () => {
-        console.log("open panel APLP");
+        //console.log("open panel APLP");
         props.addPlaylist();
     }
 

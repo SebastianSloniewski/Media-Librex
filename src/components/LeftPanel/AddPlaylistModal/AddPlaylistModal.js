@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Button, Modal } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import { getAllBooks } from "../../../Axios/MLAxios";
+import { getBooksByName } from "../../../Axios/MLAxiosBooks";
 
 
 
@@ -19,9 +20,10 @@ const AddPlaylistModal = (props) => {
         }
         setCurrName("")
 
-        console.log("testing connection");
-        const testresult = getAllBooks();
-        console.log(testresult)
+        // console.log("################################################################################################################")
+        // console.log("testing connection");
+        // const testresult = getBooksByName("Beer");
+        // console.log(testresult)
 
         props.addPlaylist(newPlaylist);
         props.closeHandler();
@@ -44,7 +46,6 @@ const AddPlaylistModal = (props) => {
                     placeholder="Nazwa kolekcji" 
                     style={{width: "80%"}}
                     value={currName}
-                    inputRef={""}
                     onChange={handleChange}
                     />
             </Modal.Body>
