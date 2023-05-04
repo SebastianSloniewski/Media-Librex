@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { MainDisplayType } from "../../utils/dataTypes";
 import { getBooksByName } from "../../Axios/MLAxiosBooks";
 import { getMusicByName } from "../../Axios/MLAxiosMusic";
+import { getMoviesByName } from "../../Axios/MLAxiosFilms";
 
 
 
@@ -25,6 +26,9 @@ const SearchBar = (props) => {
 
         break;
       case MainDisplayType.Movies :
+        const searchResultsMovies = getMoviesByName(currQuery);
+
+        console.log("FILMY: ", searchResultsMovies);
 
         break;
       case MainDisplayType.Anime :
