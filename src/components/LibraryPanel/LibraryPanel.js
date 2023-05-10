@@ -11,6 +11,7 @@ const _MainContainer = styled.div`
 `;
 
 const LibraryPanel = (props) => {
+    
 
     // console.log("Rendering LibPanel");
     // console.log(props.currentPlaylist)

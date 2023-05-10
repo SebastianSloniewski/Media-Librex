@@ -6,6 +6,7 @@ import LibraryPanel from './components/LibraryPanel/LibraryPanel';
 import MainDisplayPanel from './components/MainDisplayPanel/MainDisplayPanel'
 import {React, useState} from "react";
 import { MainDisplayType } from './utils/dataTypes';
+import SearchResultsPanel from './components/SearchResultsPanel.js/SearchResultsPanel';
 
 
 const testPlaylistsList2 = [
@@ -35,6 +36,11 @@ const testCategories = [
 function App(){
   const [plList, setplList] = useState(testPlaylistsList2);
   const [isPlaylistSelected, setIsPlaylistSelected] = useState(false);
+  const [isSearchResultActive, setIsSearchResultAvtive] = useState(false);
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
   const [currentPlaylist, setCurrentPlaylist] = useState([]);
 
   const [currentMainType, setCurrentMainType] = useState(MainDisplayType.Movies)
@@ -51,9 +57,19 @@ function App(){
     setCurrentPlaylist(newPL[0]);
   }
 
+  const SwitchToSearchResults = (query, items) => {
+    setIsPlaylistSelected(false);
+    setIsSearchResultAvtive(true);
+
+    setSearchQuery(query);
+    setSearchResults(items);
+    console.log("Switching to search results")
+  }
+
   const SwitchToMainDisplay = () => {
     //console.log('to main display')
     setIsPlaylistSelected(false);
+    setIsSearchResultAvtive(false);
   }
 
   const HandleMainCategoryChange = (type) => {
@@ -78,11 +94,16 @@ function App(){
         handleListChange={handlePLchange}
         />
       <section className='col-lg-10 contents'>
-        <SearchBar searchType={currentMainType}/>
+        <SearchBar searchType={currentMainType} handleSearch={SwitchToSearchResults}/>
         {isPlaylistSelected ? 
           <LibraryPanel 
             currentPlaylist={currentPlaylist}
           /> : 
+          isSearchResultActive ? 
+          <SearchResultsPanel 
+            items={searchResults}
+            query={searchQuery}
+          /> :
           <MainDisplayPanel
             type={currentMainType}
             subCategories={testCategories}

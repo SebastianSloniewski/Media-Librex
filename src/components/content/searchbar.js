@@ -5,6 +5,7 @@ import { MainDisplayType } from "../../utils/dataTypes";
 import { getBooksByName } from "../../Axios/MLAxiosBooks";
 import { getMusicByName } from "../../Axios/MLAxiosMusic";
 import { getMoviesByName } from "../../Axios/MLAxiosFilms";
+import { MovieToSubItem } from "../../utils/ApiToElemConverter";
 
 
 
@@ -27,8 +28,25 @@ const SearchBar = (props) => {
         break;
       case MainDisplayType.Movies :
         const searchResultsMovies = getMoviesByName(currQuery);
+        //###############################################
+        //TODO filtracja na tylko filmy oraz obsluga bledow
 
-        console.log("FILMY: ", searchResultsMovies);
+        searchResultsMovies.then((response) => {
+          console.log("FILMY: ", response);
+
+          const convertedMovies = [];
+
+          console.log("looooooop")
+          let i = 0;
+          while(i < response.length){
+            convertedMovies.push(MovieToSubItem(response[i]));
+            i++;
+          }
+          props.handleSearch(currQuery, convertedMovies);
+
+        })
+
+        
 
         break;
       case MainDisplayType.Anime :
@@ -41,6 +59,7 @@ const SearchBar = (props) => {
 
         break;
       case MainDisplayType.TvSeries :
+        //TODO tak samo jak filmy tylko z filtracja na seriale
 
         break;
       default :
