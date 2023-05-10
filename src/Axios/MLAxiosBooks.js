@@ -36,3 +36,9 @@ export const getBooksBySubject = async (subject, limit) => {
 }
 
 //TODO getCOVER
+
+export const getBookCover = async (typeId, size, id) => {
+    const result = await MLAxiosBooks.get("books/cover?typeId="+typeId+"&size="+size+"&id="+id)
+
+    return result.data;
+}

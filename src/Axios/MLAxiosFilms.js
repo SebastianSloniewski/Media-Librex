@@ -1,4 +1,5 @@
 import axios from "axios"
+import { MovieToSubItem } from "../utils/ApiToElemConverter";
 
 
 const MLAxiosFilms = axios.create({
@@ -12,10 +13,15 @@ const MLAxiosFilms = axios.create({
 export const getMoviesByName = async (name) => {
     const result = await MLAxiosFilms.get("search?title="+ name);
 
+    const test = result.data[0]
+    const subData = MovieToSubItem(test);
+    
+
     return result.data;
 }
 
 export const getMovieById = async (id) => {
     const result = await MLAxiosFilms.get(""+ id)
 
+    return result.data;
 };

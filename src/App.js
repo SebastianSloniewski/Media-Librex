@@ -16,15 +16,15 @@ const testPlaylistsList2 = [
 ]
 
 const ItemSubDisplayList = [
-  {title: "IndykMorderca", rating: 4.5},
-  {title: "IndykMordera 2 Zaginiona Płyta", rating: 10},
-  {title: "cos z indykiem", rating: 2.5}
+  {title: "IndykMorderca", rating: 4.5, url: "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg"},
+  {title: "IndykMordera 2 Zaginiona Płyta", rating: 10, url: "https://m.media-amazon.com/images/M/MV5BMTYwNDMzODI0Ml5BMl5BanBnXkFtZTgwNzMzODQyOTE@._V1_SX300.jpg"},
+  {title: "cos z indykiem", rating: 2.5, url: "https://m.media-amazon.com/images/M/MV5BMTYwNDMzODI0Ml5BMl5BanBnXkFtZTgwNzMzODQyOTE@._V1_SX300.jpg"}
 ]
 
 const testCategories = [
   {title: "horror", elements: ItemSubDisplayList, size: 2},
   {title: "akcja", elements: ItemSubDisplayList, size: 15},
-  {title: "dramat", elements: [{title: "indyk", rating : 6}], size: 15},
+  {title: "dramat", elements: [{title: "indyk", rating : 6, url: "https://m.media-amazon.com/images/M/MV5BMTYwNDMzODI0Ml5BMl5BanBnXkFtZTgwNzMzODQyOTE@._V1_SX300.jpg"}], size: 15},
   {title: "komedia", elements: [], size: 15},
   {title: "komedia romantycza", elements: [], size: 15},
   
