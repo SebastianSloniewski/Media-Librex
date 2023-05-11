@@ -12,6 +12,19 @@ export const MovieToSubItem = (elem) => {
     return movieSubData;
 }
 
+export const MusicToSubItem = (elem) => {
+    //TODO filtracja po ID (zeby bylo)
+    const musicSubData = {};
+    musicSubData.id = elem.id;
+    musicSubData.title = elem.title;
+    musicSubData.rating = 6;
+    musicSubData.url = elem.covers[3].url;
+
+    return musicSubData;
+
+}
+
+
 //do popracowania jak url zdobyc
 export const BookToSubItem = (elem) => {
     const bookSubData = {};

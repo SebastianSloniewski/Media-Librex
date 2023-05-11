@@ -5,7 +5,7 @@ import { MainDisplayType } from "../../utils/dataTypes";
 import { getBooksByName } from "../../Axios/MLAxiosBooks";
 import { getMusicByName } from "../../Axios/MLAxiosMusic";
 import { getMoviesByName } from "../../Axios/MLAxiosFilms";
-import { MovieToSubItem } from "../../utils/ApiToElemConverter";
+import { MovieToSubItem, MusicToSubItem } from "../../utils/ApiToElemConverter";
 
 
 
@@ -36,7 +36,6 @@ const SearchBar = (props) => {
 
           const convertedMovies = [];
 
-          console.log("looooooop")
           let i = 0;
           while(i < response.length){
             convertedMovies.push(MovieToSubItem(response[i]));
@@ -53,9 +52,22 @@ const SearchBar = (props) => {
 
         break;
       case MainDisplayType.Music : 
-        console.log("muzyka")
         const searchResultMusic = getMusicByName(currQuery);
-        console.log(searchResultMusic)
+
+        searchResultMusic.then((response) => {
+          console.log("muzyka")
+          console.log(searchResultMusic)
+
+          const convertedMusic = [];
+
+          let i = 0;
+          while(i< response.length){
+            convertedMusic.push(MusicToSubItem(response[i]));
+            i++;
+          }
+          props.handleSearch(currQuery, convertedMusic);
+        })
+
 
         break;
       case MainDisplayType.TvSeries :

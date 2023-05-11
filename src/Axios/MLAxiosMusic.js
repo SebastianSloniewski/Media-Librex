@@ -1,8 +1,9 @@
 import axios from "axios"
+import { config } from "../utils/config";
 
 
 const MLAxiosMusic = axios.create({
-    baseURL : 'http://localhost:8080/music/',
+    baseURL : config.backendURL + 'music/',
     timeout: 5000,
     headers: {"Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods" : "GET, PUT, POST, DELETE, PATCH, OPTIONS"

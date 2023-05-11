@@ -1,4 +1,5 @@
 import logo from '../../imgs/logo.png'; 
+import { config } from '../../utils/config';
 import { MainDisplayType } from '../../utils/dataTypes';
 
 export function Header(props){
@@ -43,10 +44,16 @@ function LoginButton(){
     return(
         <>
             <div className="btn btn-light btn-sm">
-                <div className="header__top__right__auth">Login</div>
+                <div className="header__top__right__auth">
+                    <a href={config.backendURL+"login"}>Login</a>
+                </div>
             </div>
             <div className="btn btn-light btn-sm">
-                <div className="header__top__right__auth">Sign in</div>
+                <div className="header__top__right__auth">
+                    <a href={config.backendURL+"register"}>
+                        Sign in
+                    </a>
+                </div>
             </div>
         </>
     );
