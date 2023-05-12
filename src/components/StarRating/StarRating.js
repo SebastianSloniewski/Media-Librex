@@ -7,26 +7,19 @@ const RatingPanel = styled.div`
 `;
 //TODO NAPRAWA MATMY
 const StarRating = (props) => {
-    const rating = props.rating;
+    let rating = props.rating;
+
+    if(props.rating === undefined)
+        rating = 0;
 
     const fullStars = Math.floor(rating/2);
     const hashalfstar = (Math.floor(rating/2) < rating/2 && (Math.floor(rating/2) + 1) > rating/2)
-    // console.log("rating floor full", Math.floor(rating))
-    // console.log("math floor rounded/2: ", Math.round(Math.round(rating) / 2))
-    //console.log("Ratign: ", rating)
-    //console.log("Full Stars: ", fullStars);
-    // console.log("Has half star: ", hashalfstar)
-    // console.log("Empty Stars: ", hashalfstar ? 5 - 1 - fullStars : 5 - fullStars)
+   
 
-    // console.log("empty stars: 5-1-full: ", 5 - 1 - fullStars)
-    // console.log("empty stars: 5 -full: ", 5  - fullStars)
-
-    //console.log("Matma mówi: ", hashalfstar ? 5 - 1 - fullStars : (5 - fullStars < 0) ? null : 5 - fullStars)
-    //console.log("MAJMA")
-    //console.log("HasHalf: ", hashalfstar)
-    //console.log("TRUE:",   Array(5 - 1 - fullStars).length)
-    //console.log("FALSE: ", Array(5 - fullStars).length)
-
+    // console.log("PROPS: ", props)
+    // console.log("FULL: ", fullStars);
+    // console.log(hashalfstar)
+    // console.log("OBLICZENIA: 5 - 1 - fullStars:", 5 - 1 - fullStars , "   5 - fullStars: ", 5 - fullStars)
 
     return (
         <RatingPanel>

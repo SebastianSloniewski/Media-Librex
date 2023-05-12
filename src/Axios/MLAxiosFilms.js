@@ -14,10 +14,6 @@ const MLAxiosFilms = axios.create({
 export const getMoviesByName = async (name) => {
     const result = await MLAxiosFilms.get("search?title="+ name);
 
-    const test = result.data[0]
-    const subData = MovieToSubItem(test);
-    
-
     return result.data;
 }
 

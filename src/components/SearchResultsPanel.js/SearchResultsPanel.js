@@ -15,7 +15,11 @@ const SearchResultsPanel = (props) => {
 
     return (
         <_SearchPanel>
-            <h1>Search results for "{props.query}"</h1>
+            {props.items.length === undefined || props.items.length === 0 ? 
+                <h2>No Results for "{props.query}"</h2> 
+                :
+                <h2>Search results for "{props.query}"</h2>
+            }
             <GridItemsPanel items={props.items}/>
 
         </_SearchPanel>
