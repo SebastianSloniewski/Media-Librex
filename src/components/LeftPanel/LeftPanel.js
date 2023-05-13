@@ -14,6 +14,7 @@ const _MainPanelContainer = styled.div`
 	background-color: white;
     border-right-style: outset;
     padding-top: 10px;
+    z-index: 1000;
 
 `;
 
