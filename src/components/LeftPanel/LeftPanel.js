@@ -14,12 +14,7 @@ const _MainPanelContainer = styled.div`
 	background-color: white;
     border-right-style: outset;
     padding-top: 10px;
-<<<<<<< HEAD
-    z-index: 2;
-=======
     z-index: 1000;
->>>>>>> media-librex/frontend
-
 `;
 
 const _Title = styled.div`
