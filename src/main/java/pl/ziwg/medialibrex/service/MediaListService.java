@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface MediaListService {
 
-    void createMediaList(MediaListDTO mediaListDTO);
+    void createMediaList(MediaListDTO mediaListDTO, Long userId);
 
     void updateMediaList(MediaListDTO mediaListDTO);
 

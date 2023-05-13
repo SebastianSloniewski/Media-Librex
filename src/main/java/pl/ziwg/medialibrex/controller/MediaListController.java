@@ -15,8 +15,8 @@ public class MediaListController {
     private MediaListService mediaListService;
 
     @PostMapping("/{userID}/collections/create")
-    public void createCollection(@RequestBody MediaListDTO mediaListDTO) throws JsonProcessingException {
-        mediaListService.createMediaList(mediaListDTO);
+    public void createCollection(@RequestBody MediaListDTO mediaListDTO, @PathVariable Long userID) throws JsonProcessingException {
+        mediaListService.createMediaList(mediaListDTO, userID);
     }
 
     @PostMapping("/collections/{ID}/update")
