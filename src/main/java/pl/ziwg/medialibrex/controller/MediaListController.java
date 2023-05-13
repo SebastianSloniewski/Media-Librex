@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.ziwg.medialibrex.dto.MediaListDTO;
 import pl.ziwg.medialibrex.service.MediaListService;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @AllArgsConstructor
 public class MediaListController {

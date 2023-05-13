@@ -2,7 +2,6 @@ package pl.ziwg.medialibrex.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import pl.ziwg.medialibrex.dto.MediaListDTO;
 import pl.ziwg.medialibrex.entity.MediaList;
 import pl.ziwg.medialibrex.mapper.MediaListMapper;
@@ -15,7 +14,6 @@ import java.util.Optional;
 
 
 @AllArgsConstructor
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Service
 public class MediaListServiceImpl implements MediaListService {
 
