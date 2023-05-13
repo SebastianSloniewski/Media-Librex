@@ -24,7 +24,7 @@ public class MediaListItem {
     private Long listPositionIndex;
 
     @CreationTimestamp
-    @Column(nullable=false)
+    @Column(nullable=false, updatable = false)
     private Date dateAdded;
 
     @Column(nullable=false)

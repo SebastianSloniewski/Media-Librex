@@ -24,7 +24,7 @@ public class MediaList {
     private String name;
 
     @CreationTimestamp
-    @Column(nullable=false)
+    @Column(nullable=false, updatable = false)
     private Date creationDate;
 
     @UpdateTimestamp
