@@ -5,6 +5,7 @@ import ItemSubDisplay from "../MainDisplayPanel/SubCategoryPanel/ItemSubDisplay/
 const _itemGrid = styled.div`
     display: flex;
     width: 100%;
+    flex-wrap: wrap;
 `;
 
 
@@ -13,7 +14,7 @@ const GridItemsPanel = (props) => {
 
 
     return (
-        <_itemGrid>
+        <_itemGrid className="itemGrid">
             {props.items.map((value) => {
                 return <ItemSubDisplay key={value.id} elem={value}/>
             })}

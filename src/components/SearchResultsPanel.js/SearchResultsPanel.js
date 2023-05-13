@@ -3,26 +3,47 @@ import {React, useState} from "react";
 import GridItemsPanel from "../GridItemsPanel/GridItemsPanel";
 
 const _SearchPanel = styled.div`
+    position: absolute;
+    max-width: vw;
     width: 100%;
     background-color: yellow;
-    margin-top: 90px;
     text-align: center;
 `;
+
+const searchHeaderStyle = {
+    position: "sticky",
+    top: "277px",
+    width: "calc(100vw - 320px)",
+    background: "yellow",
+    zIndex: "1"
+
+
+};
+
+const gridPanelStyle={
+    position: "relative",
+    top: "120px",
+};
 
 
 const SearchResultsPanel = (props) => {
     console.log("SearchResPanel PROPS: ", props)
 
     return (
-        <_SearchPanel>
-            {props.items.length === undefined || props.items.length === 0 ? 
-                <h2>No Results for "{props.query}"</h2> 
-                :
-                <h2>Search results for "{props.query}"</h2>
-            }
-            <GridItemsPanel items={props.items}/>
+            <_SearchPanel className="__search_panel">
 
-        </_SearchPanel>
+            <div style={searchHeaderStyle} className="search_header">
+                {props.items.length === undefined || props.items.length === 0 ? 
+                    <h2>No Results for "{props.query}"</h2> 
+                    :
+                    <h2>Search results for "{props.query}"</h2>
+                }
+            </div>
+            <div style={gridPanelStyle}>
+                <GridItemsPanel items={props.items}/>
+            </div>
+
+            </_SearchPanel>
     )
 
 }

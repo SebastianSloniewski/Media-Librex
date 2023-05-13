@@ -83,6 +83,10 @@ function App(){
   }
 
 
+  const mainStyle ={
+    overflowY: "srcroll"
+  };
+
   return (
     <div>
       <Header 
@@ -93,22 +97,25 @@ function App(){
         handlePlaylistSelection={handlePlaylistSelection}
         handleListChange={handlePLchange}
         />
+      <SearchBar searchType={currentMainType} handleSearch={SwitchToSearchResults}/>
       <section className='col-lg-10 contents'>
-        <SearchBar searchType={currentMainType} handleSearch={SwitchToSearchResults}/>
-        {isPlaylistSelected ? 
-          <LibraryPanel 
-            currentPlaylist={currentPlaylist}
-          /> : 
-          isSearchResultActive ? 
-          <SearchResultsPanel 
-            items={searchResults}
-            query={searchQuery}
-          /> :
-          <MainDisplayPanel
-            type={currentMainType}
-            subCategories={testCategories}
-            handleChange={HandleMainCategoryChange}
-          />}
+        
+          {isPlaylistSelected ? 
+            <LibraryPanel 
+              currentPlaylist={currentPlaylist}
+            /> : 
+            isSearchResultActive ? 
+            
+            <SearchResultsPanel 
+              items={searchResults}
+              query={searchQuery}
+            /> :
+            <MainDisplayPanel
+              type={currentMainType}
+              subCategories={testCategories}
+              handleChange={HandleMainCategoryChange}
+            />}
+        
 
       </section>
     </div>

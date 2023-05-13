@@ -2,7 +2,6 @@
 
 html,
 body {
-	height: 150%;
 	font-family: "Cairo", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
@@ -27,10 +26,14 @@ header .row{
 }
 
 .contents{
-	height: 100%;
-	margin-top: 178px;
+	height: calc(100% - 277px);
+	max-width: calc(100vw - 320px);
+	margin-left: 15px;
+	top: 179px;
 	left: 280px;
+	right:5px; 
 	position: absolute;
+
 
 }
 /*------------------------HEADER SECTION------------------------------*/
@@ -138,7 +141,11 @@ header .row{
 	position: fixed;
 	width: calc(100vw - 280px);
 	padding: 30px;
+	top: 179px;
+	left: 280px;
+	right: 10px;
 	background-color: #fff;
+	z-index: 1;
 }
 
 
