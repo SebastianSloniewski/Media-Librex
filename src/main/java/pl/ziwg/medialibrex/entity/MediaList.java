@@ -2,6 +2,8 @@ package pl.ziwg.medialibrex.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -21,9 +23,11 @@ public class MediaList {
     @Column(nullable=false)
     private String name;
 
+    @CreationTimestamp
     @Column(nullable=false)
     private Date creationDate;
 
+    @UpdateTimestamp
     @Column(nullable=false)
     private Date lastUpdateDate;
 

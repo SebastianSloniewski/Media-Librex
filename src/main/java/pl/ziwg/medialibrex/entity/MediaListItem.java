@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import pl.ziwg.medialibrex.API.MediaItem;
 
 import java.sql.Date;
@@ -22,6 +23,7 @@ public class MediaListItem {
     @Column(nullable=false)
     private Long listPositionIndex;
 
+    @CreationTimestamp
     @Column(nullable=false)
     private Date dateAdded;
 

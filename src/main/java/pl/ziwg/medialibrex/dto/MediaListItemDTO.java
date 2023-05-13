@@ -22,7 +22,6 @@ public class MediaListItemDTO {
     @NotEmpty
     private Long listPositionIndex;
 
-    @NotEmpty
     private Date dateAdded;
 
     @NotEmpty

@@ -17,10 +17,8 @@ public class MediaListDTO {
     @NotEmpty
     private String name;
 
-    @NotEmpty
     private Date creationDate;
 
-    @NotEmpty
     private Date lastUpdateDate;
 
     @NotEmpty
