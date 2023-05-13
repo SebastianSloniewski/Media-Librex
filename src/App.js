@@ -83,9 +83,6 @@ function App(){
   }
 
 
-  const mainStyle ={
-    overflowY: "srcroll"
-  };
 
   return (
     <div>

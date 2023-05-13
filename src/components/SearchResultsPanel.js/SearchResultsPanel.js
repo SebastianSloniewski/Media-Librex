@@ -22,7 +22,7 @@ const searchHeaderStyle = {
 
 const gridPanelStyle={
     position: "relative",
-    top: "120px",
+    top: "20px"
 };
 
 
