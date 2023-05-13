@@ -1,10 +1,20 @@
 package pl.ziwg.medialibrex.service;
 
-import org.springframework.stereotype.Service;
-import pl.ziwg.medialibrex.entity.MediaList;
+import pl.ziwg.medialibrex.dto.MediaListDTO;
 
 import java.util.List;
 
 public interface MediaListService {
-    List<MediaList> getListsByUser(String userID);
+
+    void createMediaList(MediaListDTO mediaListDTO);
+
+    void updateMediaList(MediaListDTO mediaListDTO);
+
+    void deleteMediaList(Long listID);
+
+    List<MediaListDTO> getAllMediaLists();
+
+    List<MediaListDTO> getListsByUser(String userID);
+
+    MediaListDTO getListById(Long listID);
 }

@@ -3,23 +3,45 @@ package pl.ziwg.medialibrex.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-import pl.ziwg.medialibrex.API.BookAPI.BookApiService;
+import org.springframework.web.bind.annotation.*;
+import pl.ziwg.medialibrex.dto.MediaListDTO;
 import pl.ziwg.medialibrex.service.MediaListService;
-import pl.ziwg.medialibrex.service.impl.MediaListServiceImpl;
 
 @RestController
 @AllArgsConstructor
 public class MediaListController {
 
-    private final MediaListService mediaListService;
+    private MediaListService mediaListService;
+
+    @PostMapping("/{userID}/collections/create")
+    public void createCollection(@RequestBody MediaListDTO mediaListDTO) throws JsonProcessingException {
+        mediaListService.createMediaList(mediaListDTO);
+    }
+
+    @PostMapping("/collections/{ID}/update")
+    public void updateCollection(@RequestBody MediaListDTO mediaListDTO) throws JsonProcessingException {
+        mediaListService.updateMediaList(mediaListDTO);
+    }
+
+    @DeleteMapping("/collections/{ID}/delete")
+    public void deleteCollection(@PathVariable Long ID) throws JsonProcessingException {
+        mediaListService.deleteMediaList(ID);
+    }
+
+    @GetMapping("/collections")
+    public String gelAllCollections() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(mediaListService.getAllMediaLists());
+    }
+
+    @GetMapping("/collections/{ID}")
+    public String getCollectionByID(@PathVariable Long ID) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(mediaListService.getListById(ID));
+    }
 
     @GetMapping("/{userID}/collections")
     public String getUserCollections(@PathVariable String userID) throws JsonProcessingException {
-        MediaListService mediaListService = new MediaListServiceImpl();
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(mediaListService.getListsByUser(userID));
     }
