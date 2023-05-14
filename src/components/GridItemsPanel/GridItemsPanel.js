@@ -16,7 +16,11 @@ const GridItemsPanel = (props) => {
     return (
         <_itemGrid className="itemGrid">
             {props.items.map((value) => {
-                return <ItemSubDisplay key={value.id} elem={value}/>
+                return <ItemSubDisplay 
+                            key={value.id}
+                            elem={value}
+                            itemSwitch={props.itemSwitch}/>
+
             })}
 
         </_itemGrid>

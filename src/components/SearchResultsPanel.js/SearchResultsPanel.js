@@ -40,7 +40,7 @@ const SearchResultsPanel = (props) => {
                 }
             </div>
             <div style={gridPanelStyle}>
-                <GridItemsPanel items={props.items}/>
+                <GridItemsPanel items={props.items} itemSwitch={props.itemSwitch}/>
             </div>
 
             </_SearchPanel>

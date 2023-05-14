@@ -116,6 +116,7 @@ function App(){
             <SearchResultsPanel 
               items={searchResults}
               query={searchQuery}
+              itemSwitch={switchToItemView}
             /> :
             isItemSelected ?
 
