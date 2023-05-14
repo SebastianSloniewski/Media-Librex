@@ -1,5 +1,7 @@
 import {React, useState} from "react";
 import styled from "styled-components";
+import LibPanelControl from "./LibPanelControl/LibPanelControl";
+import { deleteCollection } from "../../Axios/MLAxiosPlaylists";
 
 
 const _MainContainer = styled.div`
@@ -12,14 +14,21 @@ const _MainContainer = styled.div`
 
 const LibraryPanel = (props) => {
     
+    const handleDelete = () => {
+        console.log("Deleting collection: ", props.currentPlaylist.id)
 
-    // console.log("Rendering LibPanel");
-    // console.log(props.currentPlaylist)
-    // console.log(props.currentPlaylist.title)
-    //console.log("LIB", props)
+        deleteCollection(props.currentPlaylist.id)
+
+        props.switchToMainDisplay();
+    }
+    
 
     return (
         <_MainContainer className="MainContainer">
+            <LibPanelControl 
+                name={props.currentPlaylist.name}
+                handleDelete={handleDelete}
+            />
             <h1>LibPanel</h1>
             <h3>{props.currentPlaylist.name} : {props.currentPlaylist.id}</h3>
 

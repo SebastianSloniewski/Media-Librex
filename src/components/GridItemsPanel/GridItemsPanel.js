@@ -19,7 +19,7 @@ const GridItemsPanel = (props) => {
                 return <ItemSubDisplay 
                             key={value.id}
                             elem={value}
-                            itemSwitch={props.itemSwitch}/>
+                            itemSwitch={(elem) => props.itemSwitch(elem)}/>
 
             })}
 

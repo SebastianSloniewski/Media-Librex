@@ -46,6 +46,7 @@ function App(){
   const [isSearchResultActive, setIsSearchResultAvtive] = useState(false);
   const [isItemSelected, setIsItemSelected] = useState(false) //dla testów
 
+  const [selectedItem, setSelectedItem] = useState(null)
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -66,7 +67,7 @@ function App(){
     })
 
     
-  }, []);
+  }, [currentUser]);
 
   const handlePlaylistSelection = (id) => {
     //console.log("selected display playlist " + id);
@@ -107,7 +108,8 @@ function App(){
     setplList(newList);
   }
 
-  const switchToItemView = () => {
+  const switchToItemView = (elem) => {
+    setSelectedItem(elem);
 
     setIsPlaylistSelected(false);
     setIsSearchResultAvtive(false);
@@ -133,6 +135,7 @@ function App(){
           {isPlaylistSelected ? 
             <LibraryPanel 
               currentPlaylist={currentPlaylist}
+              switchToMainDisplay={SwitchToMainDisplay}
             /> : 
             isSearchResultActive ? 
             
@@ -144,7 +147,7 @@ function App(){
             isItemSelected ?
 
             <ItemView
-
+              basicElem={selectedItem}
             />
             :
             <MainDisplayPanel

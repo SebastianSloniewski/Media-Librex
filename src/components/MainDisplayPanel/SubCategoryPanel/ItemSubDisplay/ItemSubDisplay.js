@@ -21,7 +21,7 @@ const TitleContainer = styled.div`
 const ItemSubDisplay = (props) => {
     //console.log("rendered item")
     const elem = props.elem;
-    const onClickFunction = props.itemSwitch;
+    const onClickFunction = () => props.itemSwitch(elem);
 
     return (
         <ItemContainer onClick={onClickFunction}>
