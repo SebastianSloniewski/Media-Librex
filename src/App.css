@@ -195,13 +195,16 @@ header .row{
 
 	.search__bar{
 		top: 0;
+		left: 0;
 		width: 100%;
 		margin-top: 115px;			
 	}
 
 	.contents{
-		width: 100%;
+		max-width: 100%;
+		width: auto;
 		left: 0;
+		margin-right: 15px;
 	}
 }
 

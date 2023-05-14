@@ -6,7 +6,10 @@ import ItemSubDisplay from "../MainDisplayPanel/SubCategoryPanel/ItemSubDisplay/
 import ItemNameField from "./ItemNameField";
 
 const pr = [
-    { url: "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg", title: "Indyk Morderca" }
+    {
+        url: "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg", 
+        title: "Avatar" 
+    }
 ]
 
 const _ItemView = styled.div`
@@ -58,7 +61,7 @@ const ItemView = (props) => {
     return(
         <>
             <_ItemView className="ItemView">
-                <ItemNameField name="TYTUŁ"/>
+                <ItemNameField name="Avatar"/>
             
                 <_DetailsContainer className="DetailsContainer">
                     
