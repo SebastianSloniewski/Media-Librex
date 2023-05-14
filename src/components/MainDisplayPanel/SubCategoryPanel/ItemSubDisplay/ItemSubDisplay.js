@@ -8,14 +8,16 @@ import { getReviewScoreAvg } from "../../../../Axios/MLAxiosReview";
 
 const ItemContainer = styled.div`
     //background-color: blue;
-    margin-left: 20px;
-    width: auto;
+    width: 160px;
     align-items: center;
     justify-content: center;
     text-align: center;
+    margin: 0 10px 0 10px;
 `;
 const TitleContainer = styled.div`
+    display: flex;
     margin-top: 20px;
+    text-align: center;
 `;
 
 const DeletionContainer = styled.div`
@@ -62,6 +64,7 @@ const ItemSubDisplay = (props) => {
             <img src={elem.url} alt="indyk" style={{height: "150px"}} onClick={onClickFunction}/>
             <TitleContainer onClick={onClickFunction}>
                 <h6>{elem.title}</h6>
+
             </TitleContainer>
             {/* POTRZEBA OBSLUGI PO STRONIE BACKENDU */}
             <StarRating rating={rating}/>

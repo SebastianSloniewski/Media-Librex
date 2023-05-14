@@ -33,6 +33,7 @@ const _DetailsContainer = styled.div`
 
 const _wraper = styled.div`
     position: absolute;
+    justify-content: center;
     transform: scale(1.5);
     top: 60px;
     left: 30px;
