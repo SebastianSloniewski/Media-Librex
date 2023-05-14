@@ -36,13 +36,14 @@
         <div class="card-body">
           <form
                   method="post"
-                  th:action="@{http://localhost:3000/}"
+                  th:action="@{http://localhost:3000/{pathParam}(pathParam=${email})}"
                   class="form-horizontal"
                   role="form"
           >
             <div class="mb-3">
               <label for="username" class="control-label">Email *</label>
               <input type="text"
+                     th:field="*{email}"
                      id="username"
                      name="username"
                      class="form-control"
