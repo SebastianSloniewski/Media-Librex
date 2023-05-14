@@ -35,7 +35,7 @@ public class AuthController {
         return "login";
     }
 
-    @GetMapping("/logged")
+    @PostMapping("/logged")
     public ModelAndView loggedInfo(Principal principal) {
 
         User user = userService.findByEmail(principal.getName());
