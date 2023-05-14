@@ -2,9 +2,7 @@ package pl.ziwg.medialibrex.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.ziwg.medialibrex.dto.MediaListDTO;
 import pl.ziwg.medialibrex.dto.ReviewDTO;
-import pl.ziwg.medialibrex.entity.MediaList;
 import pl.ziwg.medialibrex.entity.Review;
 import pl.ziwg.medialibrex.entity.User;
 import pl.ziwg.medialibrex.mapper.ReviewMapper;
@@ -65,6 +63,11 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public List<ReviewDTO> getReviewsByMediaItem(String mediaItemID) {
         return reviewMapper.toReviewDTOList(reviewRepository.findByMediaItemId(mediaItemID));
+    }
+
+    @Override
+    public Double getAvgScoreById(String mediaItemId) {
+        return reviewRepository.getAvgScoreById(mediaItemId);
     }
 
 }

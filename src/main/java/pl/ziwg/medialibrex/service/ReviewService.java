@@ -18,4 +18,6 @@ public interface ReviewService {
     List<ReviewDTO> getReviewsByUser(String userID);
 
     List<ReviewDTO> getReviewsByMediaItem(String mediaItemID);
+
+    Double getAvgScoreById(String mediaItemId);
 }

@@ -4,9 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import pl.ziwg.medialibrex.dto.MediaListDTO;
 import pl.ziwg.medialibrex.dto.ReviewDTO;
-import pl.ziwg.medialibrex.service.MediaListService;
 import pl.ziwg.medialibrex.service.ReviewService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -53,6 +51,11 @@ public class ReviewController {
     public String getMediaItemReviews(@PathVariable String mediaItemID) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(reviewService.getReviewsByMediaItem(mediaItemID));
+    }
+
+    @GetMapping("/{ID}/rating")
+    public Double getReviewScoreAvg(@PathVariable String ID) throws JsonProcessingException {
+        return reviewService.getAvgScoreById(ID);
     }
 
 
