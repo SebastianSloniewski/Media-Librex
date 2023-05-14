@@ -21,7 +21,7 @@ const MainDisplayPanel = (props) => {
             {/* <h1>Tu beda kategorie</h1> */}
             {subCategories.map((value, id) => {
                 //console.log("rendering subcategory in map")
-                return (<SubCategoryPanel category={value} key={id}/>)
+                return (<SubCategoryPanel category={value} key={id} itemSwitch={props.itemSwitch}/>)
             })}
 
         </_MainDisplayContainer>

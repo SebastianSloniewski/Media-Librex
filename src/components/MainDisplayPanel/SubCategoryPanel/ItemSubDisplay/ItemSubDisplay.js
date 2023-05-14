@@ -21,10 +21,10 @@ const TitleContainer = styled.div`
 const ItemSubDisplay = (props) => {
     //console.log("rendered item")
     const elem = props.elem;
-
+    const onClickFunction = props.itemSwitch;
 
     return (
-        <ItemContainer>
+        <ItemContainer onClick={onClickFunction}>
             {/* <img src={thankskilling} alt="indyk" style={{height: "150px"}}/> */}
             {/* <UrlImage src={"https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg"} alt="itemImage" style={{height: "150px"}}/> */}
             <img src={elem.url} alt="indyk" style={{height: "150px"}}/>

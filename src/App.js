@@ -60,6 +60,7 @@ function App(){
 
   const SwitchToSearchResults = (query, items) => {
     setIsPlaylistSelected(false);
+    setIsItemSelected(false);
     setIsSearchResultAvtive(true);
 
     setSearchQuery(query);
@@ -70,6 +71,7 @@ function App(){
   const SwitchToMainDisplay = () => {
     //console.log('to main display')
     setIsPlaylistSelected(false);
+    setIsItemSelected(false);
     setIsSearchResultAvtive(false);
   }
 
@@ -81,6 +83,13 @@ function App(){
 
   const handlePLchange = (newList) => {
     setplList(newList);
+  }
+
+  const switchToItemView = () => {
+
+    setIsPlaylistSelected(false);
+    setIsSearchResultAvtive(false);
+    setIsItemSelected(true);
   }
 
 
@@ -118,6 +127,7 @@ function App(){
               type={currentMainType}
               subCategories={testCategories}
               handleChange={HandleMainCategoryChange}
+              itemSwitch={switchToItemView}
             />}
         
 

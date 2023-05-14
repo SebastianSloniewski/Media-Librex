@@ -25,7 +25,7 @@ const SubCategoryPanel = (props) => {
                 wyswietlanie X elementow listy w poziomie */}
                 {displayedItems.map((value, id) => {
                     //console.log(value.title)
-                    return <ItemSubDisplay key={id} elem={displayedItems[id]}/>
+                    return <ItemSubDisplay key={id} elem={displayedItems[id]} itemSwitch={props.itemSwitch}/>
                 })}
             </_subCategorypanel>
        </div> 
