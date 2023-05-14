@@ -7,7 +7,7 @@ import MainDisplayPanel from './components/MainDisplayPanel/MainDisplayPanel'
 import {React, useState} from "react";
 import { MainDisplayType } from './utils/dataTypes';
 import SearchResultsPanel from './components/SearchResultsPanel.js/SearchResultsPanel';
-
+import ItemView from './components/ItemView/ItemView';
 
 const testPlaylistsList2 = [
   {title: "obejrzane", size: 8, plID: 123, elems: []},
@@ -37,6 +37,7 @@ function App(){
   const [plList, setplList] = useState(testPlaylistsList2);
   const [isPlaylistSelected, setIsPlaylistSelected] = useState(false);
   const [isSearchResultActive, setIsSearchResultAvtive] = useState(false);
+  const [isItemSelected, setIsItemSelected] = useState(false) //dla testów
 
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -107,6 +108,12 @@ function App(){
               items={searchResults}
               query={searchQuery}
             /> :
+            isItemSelected ?
+
+            <ItemView
+
+            />
+            :
             <MainDisplayPanel
               type={currentMainType}
               subCategories={testCategories}
