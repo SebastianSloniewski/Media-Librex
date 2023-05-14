@@ -16,11 +16,12 @@ const LibraryPanel = (props) => {
     // console.log("Rendering LibPanel");
     // console.log(props.currentPlaylist)
     // console.log(props.currentPlaylist.title)
+    //console.log("LIB", props)
 
     return (
         <_MainContainer>
             <h1>LibPanel</h1>
-            <h3>{props.currentPlaylist.title} : {props.currentPlaylist.plID}</h3>
+            <h3>{props.currentPlaylist.name} : {props.currentPlaylist.id}</h3>
 
         </_MainContainer>
     );

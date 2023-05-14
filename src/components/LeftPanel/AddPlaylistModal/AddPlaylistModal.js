@@ -4,6 +4,7 @@ import { Button, Modal } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import { getAllBooks } from "../../../Axios/MLAxios";
 import { getBooksByName } from "../../../Axios/MLAxiosBooks";
+import { testUser } from "../../../App";
 
 
 
@@ -13,17 +14,14 @@ const AddPlaylistModal = (props) => {
 
     const addNewPlaylist = () => {
         const newPlaylist = {
-            title: currName,
-            size: 0,
-            plId: 10,
-            elems: []
+            id: null,
+            name: currName,
+            creationDate: null,
+            lastUpdateDate: null,
+            users: [props.currentUser],
+            mediaListItems: []
         }
         setCurrName("")
-
-        // console.log("################################################################################################################")
-        // console.log("testing connection");
-        // const testresult = getBooksByName("Beer");
-        // console.log(testresult)
 
         props.addPlaylist(newPlaylist);
         props.closeHandler();
@@ -40,7 +38,6 @@ const AddPlaylistModal = (props) => {
                 <Modal.Title>Dodaj Nową Kolekcje</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {/* TODO zrobić srodek z polem do wpisywania nazwy */}
                 <p>Jak chcesz nazwać swoją nową kolekcję?</p>
                 <Form.Control type="text" 
                     placeholder="Nazwa kolekcji" 

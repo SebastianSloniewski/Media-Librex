@@ -43,30 +43,7 @@ export const BookToSubItem = async (elem) => {
     bookSubData.url = coverData;
     bookSubData.mediaType = elem.mediaType;
 
-    // coverData.then((response) => {
-
-    //     console.log("SUCC Resolve")
-    //     console.log(response)
-
-    //     bookSubData.id = elem.id;
-    //     bookSubData.title = elem.title;
-    //     bookSubData.rating = 4;
-    //     bookSubData.url = response;
-    //     bookSubData.mediaType = elem.mediaType;
-    // }, () => {
-    //     console.log("FAIL Resolve")
-
-    //     bookSubData.id = elem.id;
-    //     bookSubData.title = elem.title;
-    //     bookSubData.rating = 6;
-    //     //TODO placeholder
-    //     bookSubData.url = "";
-    //     bookSubData.mediaType = elem.mediaType;
-    // })
-
-    // bookSubData.id = elem.id;
-    // bookSubData.title = elem.title;
-    // bookSubData.rating = 6;
+    
     // //TODO placeholder
     // bookSubData.url = "";
     // bookSubData.mediaType = elem.mediaType;

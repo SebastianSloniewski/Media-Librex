@@ -1,9 +1,10 @@
-import {React, useState} from "react";
+import {React, useEffect, useState} from "react";
 import styled from "styled-components";
 import PlayListRow from "./PlaylistRow/PlayListRow";
 import Table from "react-bootstrap/Table"
 import AddPlaylistPanel from "./AddPlaylistPanel/AddPlaylistPanel";
 import AddPlaylistModal from "./AddPlaylistModal/AddPlaylistModal";
+import { createCollection } from "../../Axios/MLAxiosPlaylists";
 
 
 const _MainPanelContainer = styled.div`
@@ -14,11 +15,7 @@ const _MainPanelContainer = styled.div`
 	background-color: white;
     border-right-style: outset;
     padding-top: 10px;
-<<<<<<< HEAD
-    z-index: 2;
-=======
     z-index: 1000;
->>>>>>> media-librex/frontend
 
 `;
 
@@ -32,6 +29,14 @@ const LeftPanel = (props) => {
     const [playlists, setPlayLists] = useState(props.userPlaylists);
     const [isAddPanelOpen, setIsPanelOpen] = useState(false);
     
+    console.log("Playlists: ", playlists)
+
+    useEffect(() => {
+        console.log("effects playlists")
+        setPlayLists(props.userPlaylists);
+        console.log(playlists)
+
+    }, [props.userPlaylists])
 
     const openAddPanel = () => {
         setIsPanelOpen(true);
@@ -49,8 +54,12 @@ const LeftPanel = (props) => {
 
     const AddNewPlaylist = (playlist) => {
         const newList = [...playlists, playlist]
+
+        createCollection(props.currentUser.id, playlist)
         props.handleListChange(newList);
         setPlayLists(newList);
+
+        console.log("Adding new playlist")
     }
 
 
@@ -63,15 +72,20 @@ const LeftPanel = (props) => {
                 <Table bordered={false}>
                     <tbody>
                         {playlists.map((value) => <PlayListRow 
-                            title={value.title} 
-                            size={value.size} 
-                            id={value.plID} 
-                            key={value.plID} 
+                            title={value.name} 
+                            size={value.mediaListItems.length === undefined ? 0 : value.mediaListItems.length} 
+                            id={value.id} 
+                            key={value.id} 
                             onPlaylistSelect={handleSelectPlaylist}/>)}
 
                         <AddPlaylistPanel addPlaylist={openAddPanel}/>
                     </tbody>
-                    <AddPlaylistModal show={isAddPanelOpen} closeHandler={closeAddPanel} addPlaylist={AddNewPlaylist}/>
+                    <AddPlaylistModal 
+                        show={isAddPanelOpen} 
+                        closeHandler={closeAddPanel} 
+                        addPlaylist={AddNewPlaylist}
+                        currentUser={props.currentUser}
+                        />
                     
                 </Table>
             </div>

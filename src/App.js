@@ -4,9 +4,10 @@ import SearchBar from './components/content/searchbar';
 import LeftPanel from './components/LeftPanel/LeftPanel';
 import LibraryPanel from './components/LibraryPanel/LibraryPanel';
 import MainDisplayPanel from './components/MainDisplayPanel/MainDisplayPanel'
-import {React, useState} from "react";
+import {React, useEffect, useState} from "react";
 import { MainDisplayType } from './utils/dataTypes';
 import SearchResultsPanel from './components/SearchResultsPanel.js/SearchResultsPanel';
+import { getUserCollections } from './Axios/MLAxiosPlaylists';
 
 
 const testPlaylistsList2 = [
@@ -32,9 +33,15 @@ const testCategories = [
 
 ]
 
+export const testUser = {
+  id: 1,
+  login: "Userus Testerus",
+  email: "grzetra@op.pl"
+}
+
 
 function App(){
-  const [plList, setplList] = useState(testPlaylistsList2);
+  const [plList, setplList] = useState([]);
   const [isPlaylistSelected, setIsPlaylistSelected] = useState(false);
   const [isSearchResultActive, setIsSearchResultAvtive] = useState(false);
 
@@ -45,13 +52,28 @@ function App(){
 
   const [currentMainType, setCurrentMainType] = useState(MainDisplayType.Movies)
 
+  const [currentUser, setCurrentUser] = useState(testUser);
+
+  //fetching playlists data
+  useEffect(() => {
+    const userPlaylists = getUserCollections(currentUser.id);
+    console.log("GOT playlists: ", userPlaylists)
+    userPlaylists.then((resolve) => {
+      setplList(resolve);
+    }, () => {
+      console.log("failed to get playlists")
+    })
+
+    
+  }, []);
 
   const handlePlaylistSelection = (id) => {
     //console.log("selected display playlist " + id);
+    setIsSearchResultAvtive(false);
     setIsPlaylistSelected(true);
     //TODO WZIECIE Danych playlist o danym id
     //Albo
-    const newPL = plList.filter(pl => pl.plID === id);
+    const newPL = plList.filter(pl => pl.id === id);
 
     
     setCurrentPlaylist(newPL[0]);
@@ -96,6 +118,7 @@ function App(){
       <LeftPanel userPlaylists={plList} 
         handlePlaylistSelection={handlePlaylistSelection}
         handleListChange={handlePLchange}
+        currentUser={currentUser}
         />
       <SearchBar searchType={currentMainType} handleSearch={SwitchToSearchResults}/>
       <section className='col-lg-10 contents'>

@@ -40,8 +40,16 @@ export const updateCollection = async (id) => {
     return result.data;
 }
 
-export const createCollection = async (userId, playlist) => {
-    const result = await MLAxiosCollections.post("/" + userId + "/collections/create?mediaListDTO="+ playlist);
+export const createCollection = async (userId, mediaListDTO) => {
+    console.log("Creating Playlist, ", mediaListDTO)
+    const result = await MLAxiosCollections.post("/" + userId + "/collections/create", mediaListDTO)
+    .then((response) => {
+        console.log(response)
+    }).catch((response) => {
+        console.log(response);
+    })
+
+    console.log(result)
 
     return result.data;
 }
