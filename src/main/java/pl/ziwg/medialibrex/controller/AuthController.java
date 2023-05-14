@@ -35,12 +35,12 @@ public class AuthController {
         return "login";
     }
 
-    @PostMapping("/logged")
+    @GetMapping("/logged")
     public ModelAndView loggedInfo(Principal principal) {
 
         User user = userService.findByEmail(principal.getName());
         UserGetDTO userGetDTO = reviewMapper.toUserGetDTO(user);
-        return new ModelAndView("redirect:/localhost:3000/","UserDao", userGetDTO);
+        return new ModelAndView("redirect:http://localhost:3000/","UserDao", userGetDTO);
     }
 
     @GetMapping("register")
