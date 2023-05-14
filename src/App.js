@@ -8,7 +8,7 @@ import {React, useEffect, useState} from "react";
 import { MainDisplayType } from './utils/dataTypes';
 import SearchResultsPanel from './components/SearchResultsPanel.js/SearchResultsPanel';
 import { getUserCollections } from './Axios/MLAxiosPlaylists';
-
+import ItemView from './components/ItemView/ItemView';
 
 const testPlaylistsList2 = [
   {title: "obejrzane", size: 8, plID: 123, elems: []},
@@ -44,6 +44,7 @@ function App(){
   const [plList, setplList] = useState([]);
   const [isPlaylistSelected, setIsPlaylistSelected] = useState(false);
   const [isSearchResultActive, setIsSearchResultAvtive] = useState(false);
+  const [isItemSelected, setIsItemSelected] = useState(false) //dla testów
 
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -81,6 +82,7 @@ function App(){
 
   const SwitchToSearchResults = (query, items) => {
     setIsPlaylistSelected(false);
+    setIsItemSelected(false);
     setIsSearchResultAvtive(true);
 
     setSearchQuery(query);
@@ -91,6 +93,7 @@ function App(){
   const SwitchToMainDisplay = () => {
     //console.log('to main display')
     setIsPlaylistSelected(false);
+    setIsItemSelected(false);
     setIsSearchResultAvtive(false);
   }
 
@@ -104,10 +107,14 @@ function App(){
     setplList(newList);
   }
 
+  const switchToItemView = () => {
 
-  const mainStyle ={
-    overflowY: "srcroll"
-  };
+    setIsPlaylistSelected(false);
+    setIsSearchResultAvtive(false);
+    setIsItemSelected(true);
+  }
+
+
 
   return (
     <div>
@@ -132,11 +139,19 @@ function App(){
             <SearchResultsPanel 
               items={searchResults}
               query={searchQuery}
+              itemSwitch={switchToItemView}
             /> :
+            isItemSelected ?
+
+            <ItemView
+
+            />
+            :
             <MainDisplayPanel
               type={currentMainType}
               subCategories={testCategories}
               handleChange={HandleMainCategoryChange}
+              itemSwitch={switchToItemView}
             />}
         
 

@@ -19,7 +19,7 @@ const LibraryPanel = (props) => {
     //console.log("LIB", props)
 
     return (
-        <_MainContainer>
+        <_MainContainer className="MainContainer">
             <h1>LibPanel</h1>
             <h3>{props.currentPlaylist.name} : {props.currentPlaylist.id}</h3>
 
