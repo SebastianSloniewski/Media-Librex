@@ -41,6 +41,7 @@ public class BookApiService {
             String key = key_raw.substring(key_raw.lastIndexOf("/")+1);
             String titleAlbum = itemJson.get("title").asText();
             String year = itemJson.get("first_publish_year") != null ? itemJson.get("first_publish_year").asText() : null;
+            String cover_id = itemJson.get("cover_edition_key") != null ? itemJson.get("cover_edition_key").asText() : null;
 
             JsonNode authors = itemJson.get("author_name") != null ? itemJson.get("author_name") : null;
             List<String> authorNamesList = new ArrayList<>();
@@ -73,6 +74,9 @@ public class BookApiService {
                 book.addSubject(subject);
             }
             book.setYear(year);
+            book.addCover(getCoverImageUrlByIsbn(cover_id, "S", "OLID"), "S");
+            book.addCover(getCoverImageUrlByIsbn(cover_id, "M", "OLID"), "M");
+            book.addCover(getCoverImageUrlByIsbn(cover_id, "L", "OLID"), "L");
             listBooks.add(book);
         }
 
@@ -116,7 +120,7 @@ public class BookApiService {
         MediaItem book = new MediaItem();
         book.setId(isbn);
         book.setTitle(title);
-        // People
+
         for (String cover : coversList) {
             book.addCover(cover, null);
         }
