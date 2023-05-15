@@ -10,7 +10,7 @@ const _itemGrid = styled.div`
 
 
 const GridItemsPanel = (props) => {
-    console.log("GRID PANEL PROPS: ", props);
+    //console.log("GRID PANEL PROPS: ", props);
 
 
     return (

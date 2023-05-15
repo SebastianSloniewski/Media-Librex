@@ -1,5 +1,6 @@
 import {React, useState} from "react";
 import styled from "styled-components";
+import {BsXLg} from "react-icons/bs"
 
 
 const _StyledRow = styled.tr`
@@ -16,6 +17,14 @@ const _StyledRow = styled.tr`
     
 `;
 
+const _Xcontainer = styled.div`
+    color: black;
+
+    &:hover{
+        color: red;
+    }
+`;
+
 const PlayListRow = (props) => {
     
 
@@ -28,12 +37,18 @@ const PlayListRow = (props) => {
 
 
     return (
-        <_StyledRow key={props.id} onClick={handleClick}>
-            <td>
+        <_StyledRow key={props.id}>
+            <td onClick={handleClick}>
                 <h6>{props.title}</h6>
             </td>
-            <td>
+            <td onClick={handleClick}>
                 {props.size}
+            </td>
+            <td>
+                <_Xcontainer onClick={() => props.onPlaylistDelete(props.id)}>
+                    <BsXLg size={15}/>
+                </_Xcontainer>
+                
             </td>
         </_StyledRow>
     )

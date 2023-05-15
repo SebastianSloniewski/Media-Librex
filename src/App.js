@@ -59,7 +59,6 @@ function App(){
   //fetching playlists data
   useEffect(() => {
     const userPlaylists = getUserCollections(currentUser.id);
-    console.log("GOT playlists: ", userPlaylists)
     userPlaylists.then((resolve) => {
       setplList(resolve);
     }, () => {
@@ -81,6 +80,11 @@ function App(){
     setCurrentPlaylist(newPL[0]);
   }
 
+  const handleDeletePlaylist = (id) => {
+
+  }
+
+
   const SwitchToSearchResults = (query, items) => {
     setIsPlaylistSelected(false);
     setIsItemSelected(false);
@@ -88,7 +92,6 @@ function App(){
 
     setSearchQuery(query);
     setSearchResults(items);
-    console.log("Switching to search results")
   }
 
   const SwitchToMainDisplay = () => {
@@ -137,6 +140,7 @@ function App(){
             <LibraryPanel 
               currentPlaylist={currentPlaylist}
               switchToMainDisplay={SwitchToMainDisplay}
+              itemSwitch={switchToItemView}
             /> : 
             isSearchResultActive ? 
             
@@ -149,6 +153,7 @@ function App(){
 
             <ItemView
               basicElem={selectedItem}
+              playlists={plList}
             />
             :
             <MainDisplayPanel

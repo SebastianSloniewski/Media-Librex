@@ -12,7 +12,6 @@ const MLAxiosBooks = axios.create({
 
 //Działa
 export const getBooksByName = async (name) => {
-    console.log("Searching with URL: ", "books/search?title=" + name);
     const result = await MLAxiosBooks.get("books/search?title=" + name);
 
     return result.data;

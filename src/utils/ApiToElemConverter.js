@@ -51,3 +51,15 @@ export const BookToSubItem = async (elem) => {
 
     return bookSubData;
 }
+
+export const MediaItemToSubItem = (mediaItem) => {
+    const subData = {}
+
+    subData.id = mediaItem.id;
+    subData.title = mediaItem.title;
+    subData.rating = 6;
+    subData.url = mediaItem.covers[0].url;
+    subData.mediaType = mediaItem.mediaType;
+
+    return subData;
+}

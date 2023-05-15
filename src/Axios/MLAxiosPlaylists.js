@@ -29,27 +29,27 @@ export const getAllCollections = async () => {
 }
 
 export const deleteCollection = async (id) => {
-    const result = await MLAxiosCollections.delete("/collections/"+ id + "/delete");
+    const result = await MLAxiosCollections.delete("collections/"+ id + "/delete");
 
     return result.data;
 }
 
-export const updateCollection = async (id) => {
-    const result = await MLAxiosCollections.post("/collections/"+ id + "/update");
+export const updateCollection = async (id, collection) => {
+    const result = await MLAxiosCollections.post("/collections/"+ id + "/update", collection);
+    
 
     return result.data;
 }
 
 export const createCollection = async (userId, mediaListDTO) => {
-    console.log("Creating Playlist, ", mediaListDTO)
     const result = await MLAxiosCollections.post("/" + userId + "/collections/create", mediaListDTO)
     .then((response) => {
-        console.log(response)
+        //console.log(response)
     }).catch((response) => {
-        console.log(response);
+        //console.log(response);
     })
 
-    console.log(result)
+    //console.log(result)
 
     return result.data;
 }

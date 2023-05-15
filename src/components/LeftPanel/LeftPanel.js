@@ -4,7 +4,7 @@ import PlayListRow from "./PlaylistRow/PlayListRow";
 import Table from "react-bootstrap/Table"
 import AddPlaylistPanel from "./AddPlaylistPanel/AddPlaylistPanel";
 import AddPlaylistModal from "./AddPlaylistModal/AddPlaylistModal";
-import { createCollection } from "../../Axios/MLAxiosPlaylists";
+import { createCollection, deleteCollection } from "../../Axios/MLAxiosPlaylists";
 
 
 const _MainPanelContainer = styled.div`
@@ -62,6 +62,15 @@ const LeftPanel = (props) => {
         //console.log("Adding new playlist")
     }
 
+    const handleDeletePlaylist = (id) => {
+        const newList = playlists.filter(pl => pl.id !== id);
+        setPlayLists(newList);
+        deleteCollection(id);
+        //console.log("DELETION")
+
+        //props.handleDeletePlaylist(id);
+    }
+
 
     return (
         <_MainPanelContainer className="col-lg-2 container sideBar">
@@ -76,7 +85,9 @@ const LeftPanel = (props) => {
                             size={value.mediaListItems.length === undefined ? 0 : value.mediaListItems.length} 
                             id={value.id} 
                             key={value.id} 
-                            onPlaylistSelect={handleSelectPlaylist}/>)}
+                            onPlaylistSelect={handleSelectPlaylist}
+                            onPlaylistDelete={handleDeletePlaylist}
+                            />)}
 
                         <AddPlaylistPanel addPlaylist={openAddPanel}/>
                     </tbody>

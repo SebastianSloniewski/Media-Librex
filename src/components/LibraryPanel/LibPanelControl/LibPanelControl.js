@@ -7,7 +7,7 @@ const LPCpanel = styled.div`
     background-color: white;
     width: 100%;
     height: 10%;
-    display: block;
+    display: flex;
 `;
 
 const LibPanelControl = (props) => {
