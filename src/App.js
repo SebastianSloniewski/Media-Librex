@@ -123,6 +123,7 @@ function App(){
       <Header 
         handleChange={HandleMainCategoryChange}
         currentType={currentMainType}
+        currentUser={currentUser}
       />
       <LeftPanel userPlaylists={plList} 
         handlePlaylistSelection={handlePlaylistSelection}

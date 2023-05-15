@@ -1,6 +1,7 @@
 import logo from '../../imgs/logo.png'; 
 import { config } from '../../utils/config';
 import { MainDisplayType } from '../../utils/dataTypes';
+import {HiOutlineUserCircle} from "react-icons/hi"
 
 export function Header(props){
 
@@ -10,7 +11,9 @@ export function Header(props){
 
     return (
         <header>
-            <HeaderTop></HeaderTop>
+            <HeaderTop
+                currentUser={props.currentUser}
+            />
             <NavBar
                 setCategory={handleCategoryChange}
                 currentType={props.currentType}
@@ -19,7 +22,7 @@ export function Header(props){
     );
 }
 
-function HeaderTop(){
+function HeaderTop(props){
     return (
     <div className="header__top">
         <div className="container-fluid">
@@ -31,7 +34,7 @@ function HeaderTop(){
                 </div>
                 <div className="col-lg-6 col-md-6">
                     <div className="header__top__right">
-                        <LoginButton></LoginButton>
+                        {props.currentUser !== undefined ? <SignedPanel userName={props.currentUser.login}/> : <LoginButton />}
                     </div>
                 </div>
             </div>
@@ -57,6 +60,17 @@ function LoginButton(){
             </div>
         </>
     );
+}
+
+const SignedPanel = (props) => {
+    
+    return (
+        <div style={{display: 'flex', justifyContent: "right"}}>
+            <p>Zalogowano jako {props.userName}</p>
+            <HiOutlineUserCircle size={30} style={{marginLeft: "20px"}}/>
+        </div>
+    )
+
 }
 
 function NavBar(props){
