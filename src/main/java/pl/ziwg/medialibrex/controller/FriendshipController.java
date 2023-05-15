@@ -41,8 +41,8 @@ public class FriendshipController {
             @PathVariable("userId") Long userId,
             @RequestBody Long friendId
     ) {
-        User user1 = userService.findById(userId);
-        User user2 = userService.findById(friendId);
+        User user1 = userService.findById(friendId);
+        User user2 = userService.findById(userId);
         if (user1 == null || user2 == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User or friend not found");
         }

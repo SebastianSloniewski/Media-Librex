@@ -51,6 +51,10 @@ public class FriendshipService {
         if (friendship != null) {
             friendshipRepository.delete(friendship);
         }
+        Friendship friendship1 = friendshipRepository.findByUser1AndUser2(friend, user);
+        if (friendship1 != null) {
+            friendshipRepository.delete(friendship1);
+        }
     }
 
     public List<User> getUserFriends(User user) {
