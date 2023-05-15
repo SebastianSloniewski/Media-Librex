@@ -1,26 +1,29 @@
 package pl.ziwg.medialibrex.controller;
 
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 import pl.ziwg.medialibrex.dto.UserDTO;
+import pl.ziwg.medialibrex.dto.UserGetDTO;
 import pl.ziwg.medialibrex.entity.User;
+import pl.ziwg.medialibrex.mapper.ReviewMapper;
 import pl.ziwg.medialibrex.service.UserService;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
+@AllArgsConstructor
 public class AuthController {
 
     private UserService userService;
-
-    public AuthController(UserService userService) {
-        this.userService = userService;
-    }
+    private ReviewMapper reviewMapper;
 
     @GetMapping("index")
     public String home(){
@@ -30,6 +33,14 @@ public class AuthController {
     @GetMapping("/login")
     public String loginForm() {
         return "login";
+    }
+
+    @GetMapping("/logged")
+    public ModelAndView loggedInfo(Principal principal) {
+
+        User user = userService.findByEmail(principal.getName());
+        UserGetDTO userGetDTO = reviewMapper.toUserGetDTO(user);
+        return new ModelAndView("redirect:http://localhost:3000/","UserDao", userGetDTO);
     }
 
     @GetMapping("register")

@@ -29,6 +29,9 @@
       <div th:if="${param.logout}">
         <div class="alert alert-success">You have been logged out.</div>
       </div>
+      <div th:if="${param.success}">
+        <meta http-equiv="Refresh" content="0; url='http://localhost:8080/logged'" />
+      </div>
       <div class="card">
         <div class="card-header">
           <h3 class="text-center">Login Form</h3>
