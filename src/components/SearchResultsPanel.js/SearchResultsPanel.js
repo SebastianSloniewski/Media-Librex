@@ -6,7 +6,7 @@ const _SearchPanel = styled.div`
     position: absolute;
     max-width: vw;
     width: 100%;
-    background-color: yellow;
+    background-color: white;
     text-align: center;
 `;
 
@@ -14,7 +14,7 @@ const searchHeaderStyle = {
     position: "sticky",
     top: "277px",
     width: "calc(100vw - 320px)",
-    background: "yellow",
+    background: "white",
     zIndex: "1"
 
 

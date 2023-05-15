@@ -12,17 +12,12 @@ import { getBookByID } from "../../Axios/MLAxiosBooks";
 import AddToPlaylistModal from "./AddToPlaylistModal/AddToPlaylistModal";
 import { updateCollection } from "../../Axios/MLAxiosPlaylists";
 
-const pr = [
-    {
-        url: "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg", 
-        title: "Avatar" 
-    }
-]
 
 const _ItemView = styled.div`
     height: 100%;
     width: 100%;
-    background: #8fd625;
+    //background: #8fd625;
+    background-color: white;
 `;
 
 const _ButtonsContainer = styled.div`
@@ -160,6 +155,7 @@ const ItemView = (props) => {
 
 
     const handleAddToPlaylist = (id) => {
+        closeATPPanel()
         console.log("ADD to playlist IV, ", id)
 
         const mediaItem = {
