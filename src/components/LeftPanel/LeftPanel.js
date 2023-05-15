@@ -29,10 +29,10 @@ const LeftPanel = (props) => {
     const [playlists, setPlayLists] = useState(props.userPlaylists);
     const [isAddPanelOpen, setIsPanelOpen] = useState(false);
     
-    console.log("Playlists: ", playlists)
+    
 
     useEffect(() => {
-        console.log("effects playlists")
+        //console.log("effects playlists")
         setPlayLists(props.userPlaylists);
         console.log(playlists)
 
@@ -59,7 +59,7 @@ const LeftPanel = (props) => {
         props.handleListChange(newList);
         setPlayLists(newList);
 
-        console.log("Adding new playlist")
+        //console.log("Adding new playlist")
     }
 
 

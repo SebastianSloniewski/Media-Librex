@@ -34,8 +34,8 @@ export const BookToSubItem = async (elem) => {
 
     const coverData = await getBookCoverMedium(elem.id);
 
-    console.log("CONVERTING BOOK");
-    console.log(coverData)
+    // console.log("CONVERTING BOOK");
+    // console.log(coverData)
 
     bookSubData.id = elem.id;
     bookSubData.title = elem.title;
@@ -47,7 +47,7 @@ export const BookToSubItem = async (elem) => {
     // //TODO placeholder
     // bookSubData.url = "";
     // bookSubData.mediaType = elem.mediaType;
-    console.log("Converted Book: ", bookSubData)
+    // console.log("Converted Book: ", bookSubData)
 
     return bookSubData;
 }

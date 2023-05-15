@@ -37,7 +37,7 @@ const SearchBar = (props) => {
 
             i++;
           }
-          console.log("BOOKS CONV", convertedBooks);
+          //console.log("BOOKS CONV", convertedBooks);
 
           props.handleSearch(currQuery, convertedBooks);
         }, () => {

@@ -8,3 +8,10 @@ export const MainDisplayType = {
     Books: 'books'
 
 }
+
+export const ElemType = {
+    Movie: "movie",
+    Tv: "series",
+    Music: "music",
+    Book: "book"
+}

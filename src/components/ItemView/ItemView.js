@@ -4,6 +4,11 @@ import styled from "styled-components";
 
 import ItemSubDisplay from "../MainDisplayPanel/SubCategoryPanel/ItemSubDisplay/ItemSubDisplay";
 import ItemNameField from "./ItemNameField";
+import { useEffect, useState } from "react";
+import { ElemType, MainDisplayType } from "../../utils/dataTypes";
+import { getMovieById } from "../../Axios/MLAxiosFilms";
+import { getMusicByID } from "../../Axios/MLAxiosMusic";
+import { getBookByID } from "../../Axios/MLAxiosBooks";
 
 const pr = [
     {
@@ -54,19 +59,106 @@ const _test = styled.div`
 
 
 const ItemView = (props) => {
+    const [elemData, setElemData] = useState(props.basicElem);
+    const [hasFullData, setHasFullData] = useState(false);
 
-    console.log("Item props: ", props)    
+    //console.log("Item props: ", props)
+    console.log("ELEM DATA ", elemData)
+    
+    //wywolywany przy 1 renderze do zebrania danych pelnych
+    useEffect(() => {
+        if(!hasFullData){
+            console.log("CALL FOR FULL DATA")
+            getFullData(elemData.mediaType, elemData.id);
+        }
+        
+    }, [elemData, hasFullData])
+
+    const getFullData = async (type, id) => {
+        let result = {}
+        console.log("Fetching for: ", type)
+
+        switch(type){
+            case ElemType.Movie:
+                const filmPromise = await getMovieById(id);
+
+                result = filmPromise;
+
+                // filmPromise.then((resolve) => {
+                //     console.log("SUCC FILM", resolve)
+
+                //     result = resolve;
+                // }, () => {
+                //     console.log("Error fetching for film");
+                // })
+
+                break;
+            case ElemType.Tv:
+                const seriesPromise = await getMovieById(id);
+
+                result = seriesPromise;
+
+                // seriesPromise.then((resolve) => {
+                //     console.log("SUCC TV", resolve)
+
+                //     result=resolve;
+                // }, () => {
+                //     console.log("Error fetching for series");
+                // })
+                break;
+            case ElemType.Music:
+                const musicPromise = await getMusicByID(id);
+
+                result = musicPromise;
+
+                // musicPromise.then((resolve) => {
+                //     console.log("SUCC Music", resolve)
+
+                //     result = resolve;
+                // }, () => {
+                //     console.log("Error fetching for music");
+                // })
+                break;
+            case ElemType.Book:
+                const bookPromise = await getBookByID(id);
+                //TODO okladka
+
+                result = bookPromise;
+
+                // bookPromise.then((resolve) => {
+                //     console.log("SUCC Book", resolve)
+
+                //     result = resolve;
+                // }, () => {
+                //     console.log("Error fetching for book");
+                // })
+
+                break;
+
+            default:
+                console.log("Error with data fetching")
+
+        }
+
+        console.log("RESULT: ", result);
+
+        setHasFullData(true);
+        setElemData(result);
+    }
 
 
     return(
         <>
             <_ItemView className="ItemView">
-                <ItemNameField name="Avatar"/>
+                <ItemNameField name={elemData.title}/>
             
                 <_DetailsContainer className="DetailsContainer">
                     
                     <_wraper className="ItemWraper">
-                        <ItemSubDisplay key={1} elem={pr[0]}></ItemSubDisplay>
+                        <ItemSubDisplay key={1}
+                        elem={pr[0]}
+                        itemSwitch={() => {}}
+                        />
                     </_wraper>
                     
                     <_DescryptionStyle className="Descryption">
