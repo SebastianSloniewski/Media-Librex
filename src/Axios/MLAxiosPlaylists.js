@@ -1,5 +1,4 @@
 import axios from "axios"
-import { MovieToSubItem } from "../utils/ApiToElemConverter";
 import { config } from "../utils/config";
 
 const MLAxiosCollections = axios.create({

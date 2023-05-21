@@ -19,7 +19,10 @@ const GridItemsPanel = (props) => {
                 return <ItemSubDisplay 
                             key={value.id}
                             elem={value}
-                            itemSwitch={(elem) => props.itemSwitch(elem)}/>
+                            itemSwitch={(elem) => props.itemSwitch(elem)}
+                            isDeletable={props.isDeletable}
+                            handleDelete={props.handleDelete}
+                            />
 
             })}
 

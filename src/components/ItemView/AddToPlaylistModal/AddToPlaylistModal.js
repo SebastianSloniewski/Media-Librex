@@ -29,6 +29,7 @@ const AddToPlaylistModal = (props) => {
                             id={value.id}
                             key={value.id}
                             onPlaylistSelect={handleSelectPlaylist}
+                            isDeletable={false}
                         />)}
                     </tbody>
                 </Table>

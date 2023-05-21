@@ -56,6 +56,19 @@ const LibraryPanel = (props) => {
         return newList;
 
     }
+
+    const handleItemDelete = (id) => {
+        // console.log("DELETING ITEM WITH ID: ", id);
+        // console.log("In collection: ", props.currentPlaylist)
+
+        // const newCollectionList = props.currentPlaylist.mediaListItems.filter(elem => elem.mediaItem.id !== id)
+
+        // console.log("LIST after: ", newCollectionList)
+
+        // let newCollect = props.currentPlaylist;
+        
+
+    }
     
 
     return (
@@ -67,6 +80,8 @@ const LibraryPanel = (props) => {
             <GridItemsPanel 
                 items={props.currentPlaylist.mediaListItems.map(item => MediaItemToSubItem(item.mediaItem))}
                 itemSwitch={(elem) => props.itemSwitch(elem)}
+                isDeletable={true}
+                handleDelete={handleItemDelete}
             />
 
         </_MainContainer>

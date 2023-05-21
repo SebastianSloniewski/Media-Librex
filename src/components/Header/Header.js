@@ -95,7 +95,7 @@ function NavBar(props){
                             <ul>
                                 <li onClick={() => handleCatSelect(MainDisplayType.Movies)}><a className={(props.currentType == MainDisplayType.Movies) ? "nav-link active" : "nav-link"} href="#">MOVIES</a></li>
                                 <li onClick={() => handleCatSelect(MainDisplayType.TvSeries)}><a className={(props.currentType == MainDisplayType.TvSeries) ? "nav-link active" : "nav-link"} href="#">TV SERIES</a></li>
-                                <li onClick={() => handleCatSelect(MainDisplayType.Anime)}><a className={(props.currentType == MainDisplayType.Anime) ? "nav-link active" : "nav-link"} href="#">ANIME</a></li>
+                                {/* <li onClick={() => handleCatSelect(MainDisplayType.Anime)}><a className={(props.currentType == MainDisplayType.Anime) ? "nav-link active" : "nav-link"} href="#">ANIME</a></li> */}
                                 <li onClick={() => handleCatSelect(MainDisplayType.Music)}><a className={(props.currentType == MainDisplayType.Music) ? "nav-link active" : "nav-link"} href="#">MUSIC</a></li>
                                 <li onClick={() => handleCatSelect(MainDisplayType.Books)}><a className={(props.currentType == MainDisplayType.Books) ? "nav-link active" : "nav-link"} href="#">BOOKS</a></li>
                             </ul>

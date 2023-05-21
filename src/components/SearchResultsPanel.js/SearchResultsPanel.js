@@ -40,7 +40,11 @@ const SearchResultsPanel = (props) => {
                 }
             </div>
             <div style={gridPanelStyle}>
-                <GridItemsPanel items={props.items} itemSwitch={(elem) => props.itemSwitch(elem)}/>
+                <GridItemsPanel items={props.items}
+                    itemSwitch={(elem) => props.itemSwitch(elem)}
+                    isDeletable={false}
+                    handleDelete={() => {}}
+                    />
             </div>
 
             </_SearchPanel>

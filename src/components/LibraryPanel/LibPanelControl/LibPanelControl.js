@@ -10,6 +10,11 @@ const LPCpanel = styled.div`
     display: flex;
 `;
 
+const DeleteButton = styled.div`
+    height: 60%;
+    margin-left: 80px;
+`;
+
 const LibPanelControl = (props) => {
 
 
@@ -17,7 +22,14 @@ const LibPanelControl = (props) => {
         <LPCpanel>
             {/* <h1>REEEEEEEEEEEEEEEEE</h1> */}
             <h2>{props.name}</h2>
-            <Button variant="danger" onClick={() => props.handleDelete()}>Usun Kolekcje </Button>
+            <DeleteButton >
+                <Button variant="danger" 
+                    onClick={() => props.handleDelete()}
+                >
+                    Usun Kolekcje 
+                </Button>
+            </DeleteButton>
+            
 
         </LPCpanel>
     )

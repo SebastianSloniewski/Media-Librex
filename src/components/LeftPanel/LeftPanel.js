@@ -87,6 +87,7 @@ const LeftPanel = (props) => {
                             key={value.id} 
                             onPlaylistSelect={handleSelectPlaylist}
                             onPlaylistDelete={handleDeletePlaylist}
+                            isDeletable={true}
                             />)}
 
                         <AddPlaylistPanel addPlaylist={openAddPanel}/>

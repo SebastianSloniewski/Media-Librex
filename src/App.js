@@ -17,20 +17,32 @@ const testPlaylistsList2 = [
   {title: "horrory", size: 37, plID: 50, elems: []}
 ]
 
-const ItemSubDisplayList = [
-  {title: "IndykMorderca", rating: 4.5, url: "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg"},
-  {title: "IndykMordera 2 Zaginiona Płyta", rating: 10, url: "https://m.media-amazon.com/images/M/MV5BMTYwNDMzODI0Ml5BMl5BanBnXkFtZTgwNzMzODQyOTE@._V1_SX300.jpg"},
-  {title: "cos z indykiem", rating: 2.5, url: "https://m.media-amazon.com/images/M/MV5BMTYwNDMzODI0Ml5BMl5BanBnXkFtZTgwNzMzODQyOTE@._V1_SX300.jpg"}
+const ListHorror = [
+  {id: "tt1129441", title: "ThanksKilling", rating: 4.5, url: "https://m.media-amazon.com/images/M/MV5BMTYwNDMzODI0Ml5BMl5BanBnXkFtZTgwNzMzODQyOTE@._V1_SX300.jpg"},
+  {id: "tt2106675", title: "ThanksKilling 3", rating: 10, url: "https://m.media-amazon.com/images/M/MV5BMTU0NjEwNDQ5NF5BMl5BanBnXkFtZTgwMDYyODQyOTE@._V1_SX300.jpg"},
+  {id: "tt0103874", title: "Dracula", rating: 2.5, url: "https://m.media-amazon.com/images/M/MV5BNjcyMDZlMTktYTIxOC00ZWFhLWJkYzgtNWNiYjAwYTFkNjIyXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SX300.jpg"},
+  {id: "tt0884328", title: "The Mist", rating: 2.5, url: "https://m.media-amazon.com/images/M/MV5BMTU2NjQyNDY1Ml5BMl5BanBnXkFtZTcwMTk1MDU1MQ@@._V1_SX300.jpg"}
+]
+
+const ListComedy = [
+  {id: "tt0175142", title: "Scary Movie", rating:6, url: "https://m.media-amazon.com/images/M/MV5BMGEzZjdjMGQtZmYzZC00N2I4LThiY2QtNWY5ZmQ3M2ExZmM4XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"},
+  {id: "tt0257106", title: "Scary Movie 2", rating: 6, url: "https://m.media-amazon.com/images/M/MV5BMzQxYjU1OTUtYjRiOC00NDg2LWI4MWUtZGU5YzdkYTcwNTBlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"},
+  {id: "tt0163651", title: "American Pie", rating: 6, url: "https://m.media-amazon.com/images/M/MV5BMTg3ODY5ODI1NF5BMl5BanBnXkFtZTgwMTkxNTYxMTE@._V1_SX300.jpg"}
+]
+
+const ListAction = [
+  {id: "tt0499549", title: "Avatar", rating: 6, url: "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg"},
+  {id: "tt1630029", title: "Avatar 2: TWoW", rating: 6, url: "https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg"},
+  {id: "tt0088247", title: "The Terminator", rating: 6, url: "https://m.media-amazon.com/images/M/MV5BYTViNzMxZjEtZGEwNy00MDNiLWIzNGQtZDY2MjQ1OWViZjFmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"},
+  {id: "tt0103064", title: "Terminator 2: Judgment Day", rating: 6, url: "https://m.media-amazon.com/images/M/MV5BMGU2NzRmZjUtOGUxYS00ZjdjLWEwZWItY2NlM2JhNjkxNTFmXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"}
+
 ]
 
 const testCategories = [
-  {title: "horror", elements: ItemSubDisplayList, size: 2},
-  {title: "akcja", elements: ItemSubDisplayList, size: 15},
-  {title: "dramat", elements: [{title: "indyk", rating : 6, url: "https://m.media-amazon.com/images/M/MV5BMTYwNDMzODI0Ml5BMl5BanBnXkFtZTgwNzMzODQyOTE@._V1_SX300.jpg"}], size: 15},
-  {title: "komedia", elements: [], size: 15},
-  {title: "komedia romantycza", elements: [], size: 15},
+  {title: "Horror", elements: ListHorror, size: 2},
+  {title: "Akcja", elements: ListAction, size: 15},
+  {title: "Komedia", elements: ListComedy, size: 15},
   
-
 ]
 
 export const testUser = {
@@ -54,7 +66,7 @@ function App(){
 
   const [currentMainType, setCurrentMainType] = useState(MainDisplayType.Movies)
 
-  const [currentUser, setCurrentUser] = useState(testUser);
+  const [currentUser, setCurrentUser] = useState();
 
   //fetching playlists data
   useEffect(() => {

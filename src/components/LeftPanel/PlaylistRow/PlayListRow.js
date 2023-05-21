@@ -44,12 +44,19 @@ const PlayListRow = (props) => {
             <td onClick={handleClick}>
                 {props.size}
             </td>
+            {
+                props.isDeletable ? 
             <td>
                 <_Xcontainer onClick={() => props.onPlaylistDelete(props.id)}>
                     <BsXLg size={15}/>
                 </_Xcontainer>
-                
             </td>
+            :
+            <td>
+
+            </td>
+            }
+            
         </_StyledRow>
     )
 
