@@ -15,3 +15,12 @@ export const ElemType = {
     Music: "music",
     Book: "book"
 }
+
+export const ViewType = {
+    MainDisplay: "main",
+    Collection: "collection",
+    Search: "search",
+    User: "user",
+    Item: "item"
+
+}

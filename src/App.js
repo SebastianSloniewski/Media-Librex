@@ -5,7 +5,7 @@ import LeftPanel from './components/LeftPanel/LeftPanel';
 import LibraryPanel from './components/LibraryPanel/LibraryPanel';
 import MainDisplayPanel from './components/MainDisplayPanel/MainDisplayPanel'
 import {React, useEffect, useState} from "react";
-import { MainDisplayType } from './utils/dataTypes';
+import { MainDisplayType, ViewType } from './utils/dataTypes';
 import SearchResultsPanel from './components/SearchResultsPanel.js/SearchResultsPanel';
 import { getUserCollections } from './Axios/MLAxiosPlaylists';
 import ItemView from './components/ItemView/ItemView';
@@ -54,10 +54,7 @@ export const testUser = {
 
 function App(){
   const [plList, setplList] = useState([]);
-  const [isPlaylistSelected, setIsPlaylistSelected] = useState(false);
-  const [isSearchResultActive, setIsSearchResultAvtive] = useState(false);
-  const [isItemSelected, setIsItemSelected] = useState(false) //dla testów
-
+  
   const [selectedItem, setSelectedItem] = useState(null)
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -66,7 +63,8 @@ function App(){
 
   const [currentMainType, setCurrentMainType] = useState(MainDisplayType.Movies)
 
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState(testUser);
+  const [currentView, setCurrentView] = useState(ViewType.MainDisplay)
 
   //fetching playlists data
   useEffect(() => {
@@ -81,15 +79,13 @@ function App(){
   }, [currentUser]);
 
   const handlePlaylistSelection = (id) => {
-    //console.log("selected display playlist " + id);
-    setIsSearchResultAvtive(false);
-    setIsPlaylistSelected(true);
-    //TODO WZIECIE Danych playlist o danym id
+    
     //Albo
     const newPL = plList.filter(pl => pl.id === id);
 
     
     setCurrentPlaylist(newPL[0]);
+    setCurrentView(ViewType.Collection)
   }
 
   const handleDeletePlaylist = (id) => {
@@ -98,19 +94,15 @@ function App(){
 
 
   const SwitchToSearchResults = (query, items) => {
-    setIsPlaylistSelected(false);
-    setIsItemSelected(false);
-    setIsSearchResultAvtive(true);
-
     setSearchQuery(query);
     setSearchResults(items);
+
+    setCurrentView(ViewType.Search)
   }
 
   const SwitchToMainDisplay = () => {
     //console.log('to main display')
-    setIsPlaylistSelected(false);
-    setIsItemSelected(false);
-    setIsSearchResultAvtive(false);
+    setCurrentView(ViewType.MainDisplay)
   }
 
   const HandleMainCategoryChange = (type) => {
@@ -126,9 +118,7 @@ function App(){
   const switchToItemView = (elem) => {
     setSelectedItem(elem);
 
-    setIsPlaylistSelected(false);
-    setIsSearchResultAvtive(false);
-    setIsItemSelected(true);
+    setCurrentView(ViewType.Item)
   }
 
 
@@ -147,34 +137,35 @@ function App(){
         />
       <SearchBar searchType={currentMainType} handleSearch={SwitchToSearchResults}/>
       <section className='col-lg-10 contents'>
-        
-          {isPlaylistSelected ? 
-            <LibraryPanel 
-              currentPlaylist={currentPlaylist}
-              switchToMainDisplay={SwitchToMainDisplay}
-              itemSwitch={switchToItemView}
-            /> : 
-            isSearchResultActive ? 
-            
-            <SearchResultsPanel 
-              items={searchResults}
-              query={searchQuery}
-              itemSwitch={switchToItemView}
-            /> :
-            isItemSelected ?
-
-            <ItemView
-              basicElem={selectedItem}
-              playlists={plList}
-            />
-            :
-            <MainDisplayPanel
-              type={currentMainType}
-              subCategories={testCategories}
-              handleChange={HandleMainCategoryChange}
-              itemSwitch={switchToItemView}
-            />}
-        
+        {currentView === ViewType.MainDisplay ? 
+          <MainDisplayPanel
+            type={currentMainType}
+            subCategories={testCategories}
+            handleChange={HandleMainCategoryChange}
+            itemSwitch={switchToItemView}
+        /> :
+        currentView === ViewType.Collection ? 
+          <LibraryPanel 
+            currentPlaylist={currentPlaylist}
+            switchToMainDisplay={SwitchToMainDisplay}
+            itemSwitch={switchToItemView}
+        /> : 
+        currentView === ViewType.Search ? 
+          <SearchResultsPanel 
+            items={searchResults}
+            query={searchQuery}
+            itemSwitch={switchToItemView}
+        /> :
+        currentView === ViewType.Item ? 
+          <ItemView
+            basicElem={selectedItem}
+            playlists={plList}
+        /> :
+        currentView === ViewType.User ? 
+        // widok usera
+        <></> :
+        <></>
+        }
 
       </section>
     </div>
