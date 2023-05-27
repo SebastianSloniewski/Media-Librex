@@ -13,6 +13,7 @@ export function Header(props){
         <header>
             <HeaderTop
                 currentUser={props.currentUser}
+                handleSwitchToUser={props.handleSwitchToUser}
             />
             <NavBar
                 setCategory={handleCategoryChange}
@@ -34,7 +35,13 @@ function HeaderTop(props){
                 </div>
                 <div className="col-lg-6 col-md-6">
                     <div className="header__top__right">
-                        {props.currentUser !== undefined ? <SignedPanel userName={props.currentUser.login}/> : <LoginButton />}
+                        {props.currentUser !== undefined ? 
+                        <SignedPanel 
+                            userName={props.currentUser.login}
+                            handleSwitchToUser={props.handleSwitchToUser}
+                        /> 
+                        : 
+                        <LoginButton />}
                     </div>
                 </div>
             </div>
@@ -67,7 +74,9 @@ const SignedPanel = (props) => {
     return (
         <div style={{display: 'flex', justifyContent: "right"}}>
             <p>Zalogowano jako {props.userName}</p>
-            <HiOutlineUserCircle size={30} style={{marginLeft: "20px"}}/>
+            <HiOutlineUserCircle size={30} style={{marginLeft: "20px"}}
+                onClick={props.handleSwitchToUser}
+            />
         </div>
     )
 

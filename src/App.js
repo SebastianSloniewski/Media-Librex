@@ -9,6 +9,7 @@ import { MainDisplayType, ViewType } from './utils/dataTypes';
 import SearchResultsPanel from './components/SearchResultsPanel.js/SearchResultsPanel';
 import { getUserCollections } from './Axios/MLAxiosPlaylists';
 import ItemView from './components/ItemView/ItemView';
+import UserProfile from './components/UserProfile/UserProfile';
 
 const testPlaylistsList2 = [
   {title: "obejrzane", size: 8, plID: 123, elems: []},
@@ -121,6 +122,10 @@ function App(){
     setCurrentView(ViewType.Item)
   }
 
+  const switchToUserProfile = () => {
+    setCurrentView(ViewType.User)
+  }
+
 
 
   return (
@@ -129,6 +134,7 @@ function App(){
         handleChange={HandleMainCategoryChange}
         currentType={currentMainType}
         currentUser={currentUser}
+        handleSwitchToUser={switchToUserProfile}
       />
       <LeftPanel userPlaylists={plList} 
         handlePlaylistSelection={handlePlaylistSelection}
@@ -162,8 +168,9 @@ function App(){
             playlists={plList}
         /> :
         currentView === ViewType.User ? 
-        // widok usera
-        <></> :
+          <UserProfile 
+            userData={currentUser}
+        /> :
         <></>
         }
 

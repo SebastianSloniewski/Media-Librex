@@ -83,40 +83,19 @@ const ItemView = (props) => {
 
                 result = filmPromise;
 
-                // filmPromise.then((resolve) => {
-                //     console.log("SUCC FILM", resolve)
-
-                //     result = resolve;
-                // }, () => {
-                //     console.log("Error fetching for film");
-                // })
-
+ 
                 break;
             case ElemType.Tv:
                 const seriesPromise = await getMovieById(id);
 
                 result = seriesPromise;
 
-                // seriesPromise.then((resolve) => {
-                //     console.log("SUCC TV", resolve)
-
-                //     result=resolve;
-                // }, () => {
-                //     console.log("Error fetching for series");
-                // })
                 break;
             case ElemType.Music:
                 const musicPromise = await getMusicByID(id);
 
                 result = musicPromise;
 
-                // musicPromise.then((resolve) => {
-                //     console.log("SUCC Music", resolve)
-
-                //     result = resolve;
-                // }, () => {
-                //     console.log("Error fetching for music");
-                // })
                 break;
             case ElemType.Book:
                 const bookPromise = await getBookByID(id);
@@ -124,13 +103,6 @@ const ItemView = (props) => {
 
                 result = bookPromise;
 
-                // bookPromise.then((resolve) => {
-                //     console.log("SUCC Book", resolve)
-
-                //     result = resolve;
-                // }, () => {
-                //     console.log("Error fetching for book");
-                // })
 
                 break;
 
