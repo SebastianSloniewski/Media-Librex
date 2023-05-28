@@ -2,6 +2,7 @@ import {React, useEffect, useState} from "react";
 import { Table } from "react-bootstrap";
 import styled from "styled-components";
 import FriendRow from "./FriendRow/FriendRow";
+import AddFriendPanel from "./AddFriendPanel/AddFriendPanel";
 
 
 const testFirends = [
@@ -11,7 +12,7 @@ const testFirends = [
 ]
 
 const _FriendListDiv = styled.div`
-    background-color: blue;
+    background-color: white;
     width: 300px;
     height: 800px;
 `;
@@ -23,11 +24,14 @@ const FriendsList = (props) => {
 
     return (
         <_FriendListDiv>
-            {/* Tu bedzie panel do wyszukiwania */}
+            <AddFriendPanel/>
             <Table>
-                {friendsList.map((value) => {
-                    return <FriendRow friend={value} key={value.id}/>
-                })}
+                <tbody>
+                    {friendsList.map((value) => {
+                        return <FriendRow friend={value} key={value.id}/>
+                    })}
+                </tbody>
+                
             </Table>
         </_FriendListDiv>
     )
