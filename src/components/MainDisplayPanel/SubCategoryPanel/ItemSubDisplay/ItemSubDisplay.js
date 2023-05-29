@@ -2,6 +2,9 @@ import {React, useState} from "react";
 import styled from "styled-components";
 //import examplePic from "./imgs/Items/Movies/thankskilling.jpg" 
 import {BsXLg} from "react-icons/bs"
+import StarRating from "../../../StarRating/StarRating";
+import { useEffect } from "react";
+import { getReviewScoreAvg } from "../../../../Axios/MLAxiosReview";
 
 const ItemContainer = styled.div`
     //background-color: blue;
@@ -22,8 +25,24 @@ const DeletionContainer = styled.div`
 `;
 
 const ItemSubDisplay = (props) => {
-    //console.log("rendered item")
     const elem = props.elem;
+    const [rating, setRating] = useState(0);
+
+    useEffect(() => {
+        const reviewAVG = getReviewScoreAvg(elem.id)
+        //console.log("EFFECT SUBDISP", reviewAVG)
+
+        reviewAVG.then((resolve) => {
+            setRating(resolve);
+        }, () => {
+            console.log("Failed to get item " + elem.id + " rating")
+        })
+
+        //setRating(reviewAVG)
+    }, [elem.id])
+
+
+    //console.log("rendered item")
     const onClickFunction = () => props.itemSwitch(elem);
 
     return (
@@ -41,7 +60,8 @@ const ItemSubDisplay = (props) => {
                 <h6>{elem.title}</h6>
             </TitleContainer>
             {/* POTRZEBA OBSLUGI PO STRONIE BACKENDU */}
-            {/* <StarRating rating={elem.rating}/> */}
+            <StarRating rating={rating}/>
+            
 
 
         </ItemContainer>
