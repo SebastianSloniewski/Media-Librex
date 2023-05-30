@@ -11,6 +11,7 @@ import { getMusicByID } from "../../Axios/MLAxiosMusic";
 import { getBookByID } from "../../Axios/MLAxiosBooks";
 import AddToPlaylistModal from "./AddToPlaylistModal/AddToPlaylistModal";
 import { updateCollection } from "../../Axios/MLAxiosPlaylists";
+import ItemReviewsPanel from "../Review/ItemReviewsPanel/ItemReviewsPanel";
 
 
 const _ItemView = styled.div`
@@ -194,6 +195,11 @@ const ItemView = (props) => {
 
                 
             </_ItemView>
+
+            <ItemReviewsPanel 
+                userID={props.userID}
+                itemID={props.basicElem.id}
+            />
         </>
     );
 }

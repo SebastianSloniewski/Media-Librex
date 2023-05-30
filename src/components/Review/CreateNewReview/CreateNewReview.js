@@ -2,6 +2,11 @@ import styled from "styled-components";
 import {React, useState} from "react";
 
 
+const CreateRevDiv = styled.div`
+    background-color: red;
+`;
+
+
 const CreateNewReview = (props) => {
     const [currRevText, setCurrRevText] = useState("");
     const [currScore, setCurrScore] = useState(0);
@@ -12,7 +17,7 @@ const CreateNewReview = (props) => {
     //zbieranie oceny i tekstu recenzji
     return (
         <div>
-            
+
             <textarea />
         </div>
     )
