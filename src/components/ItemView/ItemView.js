@@ -197,8 +197,9 @@ const ItemView = (props) => {
             </_ItemView>
 
             <ItemReviewsPanel 
-                userID={props.userID}
+                userData={props.userData}
                 itemID={props.basicElem.id}
+                mediaType={props.basicElem.mediaType}
             />
         </>
     );

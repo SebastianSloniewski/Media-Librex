@@ -186,7 +186,7 @@ function App(){
           <ItemView
             basicElem={selectedItem}
             playlists={plList}
-            userID={currentUser.id}
+            userData={currentUser}
         /> :
         currentView === ViewType.User ? 
           <UserProfile 

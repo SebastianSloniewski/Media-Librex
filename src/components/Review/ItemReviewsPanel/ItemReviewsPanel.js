@@ -6,8 +6,10 @@ import { useState } from "react";
 
 const ReviewMainPanel = styled.div`
     width: 100%;
+    display: flex;
     background-color: blue;
-    
+    justify-content: center;
+    height: 1000px;
 `;
 
 
@@ -18,7 +20,11 @@ const ItemReviewsPanel = (props) => {
 
     return(
         <ReviewMainPanel>
-            <CreateNewReview/>
+            <CreateNewReview
+                itemID={props.itemID}
+                userData={props.userData}
+                mediaType={props.mediaType}
+            />
 
         </ReviewMainPanel>
     )
