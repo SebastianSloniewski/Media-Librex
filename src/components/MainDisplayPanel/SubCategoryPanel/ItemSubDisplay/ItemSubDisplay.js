@@ -26,14 +26,18 @@ const DeletionContainer = styled.div`
 
 const ItemSubDisplay = (props) => {
     const elem = props.elem;
-    const [rating, setRating] = useState(0);
+    const [rating, setRating] = useState(5);
 
     useEffect(() => {
         const reviewAVG = getReviewScoreAvg(elem.id)
         //console.log("EFFECT SUBDISP", reviewAVG)
 
         reviewAVG.then((resolve) => {
-            setRating(resolve);
+            if(resolve !== '' && resolve !== undefined){
+                setRating(resolve);
+                console.log("GOT DATA: ", rating)
+            }
+            
         }, () => {
             console.log("Failed to get item " + elem.id + " rating")
         })
