@@ -7,12 +7,11 @@ import { useEffect } from "react";
 import { getReviewScoreAvg } from "../../../../Axios/MLAxiosReview";
 
 const ItemContainer = styled.div`
-    //background-color: blue;
-    width: 160px;
     align-items: center;
     justify-content: center;
     text-align: center;
     margin: 0 10px 0 10px;
+    padding: 10px;
 `;
 const TitleContainer = styled.div`
     display: flex;
@@ -61,11 +60,11 @@ const ItemSubDisplay = (props) => {
             :
                 <div></div>
             }
-            <img src={elem.url} alt="indyk" style={{height: "150px"}} onClick={onClickFunction}/>
-            <TitleContainer onClick={onClickFunction}>
+            <img src={elem.url} alt="indyk" style={{height: "280px"}} onClick={onClickFunction}/>
+            {/* <TitleContainer onClick={onClickFunction}>
                 <h6>{elem.title}</h6>
 
-            </TitleContainer>
+            </TitleContainer> */}
             {/* POTRZEBA OBSLUGI PO STRONIE BACKENDU */}
             <StarRating rating={rating}/>
             

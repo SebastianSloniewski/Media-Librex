@@ -13,7 +13,7 @@ const testFirends = [
 
 const _FriendListDiv = styled.div`
     background-color: white;
-    width: 300px;
+    min-width: 300px;
     height: 800px;
 `;
 

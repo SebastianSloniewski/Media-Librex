@@ -5,11 +5,14 @@ import ItemSubDisplay from "./ItemSubDisplay/ItemSubDisplay";
 const _subCategorypanel = styled.div`
     background-color: white;
     width: 100%;
-    height: 200px;
-    margin-top: 50px;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    padding: 20px;
 `;
+
+const _subCategoryView = styled.div`
+    
+`
 
 const SubCategoryPanel = (props) => {
     const [displayedItems, setDisplayedItems] = useState(props.category.elements);
@@ -17,9 +20,9 @@ const SubCategoryPanel = (props) => {
     //console.log("RenderingSubCategoryPanel: ", props)
 
     return (
-       <div>
+       <_subCategoryView>
             <h1>{props.category.title}</h1>
-            <_subCategorypanel>
+            <_subCategorypanel >
                 
                 {/* TODO strzaleczki do przelaczania lewo/prawo, 
                 wyswietlanie X elementow listy w poziomie */}
@@ -28,7 +31,7 @@ const SubCategoryPanel = (props) => {
                     return <ItemSubDisplay key={id} elem={displayedItems[id]} itemSwitch={props.itemSwitch}/>
                 })}
             </_subCategorypanel>
-       </div> 
+       </_subCategoryView> 
         
     );
 }

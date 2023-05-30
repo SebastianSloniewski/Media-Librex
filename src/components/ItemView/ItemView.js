@@ -26,25 +26,23 @@ const _ButtonsContainer = styled.div`
 `;
 
 const _DetailsContainer = styled.div`
-    position: relative;
     display: flex;
     min-height: 340px;
 `;
 
 const _wraper = styled.div`
-    position: absolute;
-    justify-content: center;
     transform: scale(1.5);
-    top: 60px;
-    left: 30px;
+    margin-top: 75px;
+    padding: 5px;
+    flex: 1;
 `;
 
 const _DescryptionStyle = styled.div`
-    position: relative;
     width: calc( 100% - 260px);
     left: 220px;
     padding: 5px 10px 0px 10px;
     text-align: justify;
+    flex: 3;
 `;
 
 
@@ -116,6 +114,8 @@ const ItemView = (props) => {
 
         setHasFullData(true);
         setElemData(result);
+        console.log("Dane Itemu");
+        console.log(props.basicElem);
     }
 
     const openATPPanel = () => {
@@ -166,12 +166,12 @@ const ItemView = (props) => {
             
                 <_DetailsContainer className="DetailsContainer">
                     
-                    <_wraper className="ItemWraper">
-                        <ItemSubDisplay key={1}
-                        elem={props.basicElem}
-                        itemSwitch={() => {}}
-                        />
-                    </_wraper>
+                    
+                    <ItemSubDisplay key={1}
+                    elem={props.basicElem}
+                    itemSwitch={() => {}}
+                    />
+                 
                     
                     <_DescryptionStyle className="Descryption">
                         <LoremIpsum p={2} />

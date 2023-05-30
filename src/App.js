@@ -169,6 +169,7 @@ function App(){
         /> :
         currentView === ViewType.User ? 
           <UserProfile 
+            userPlaylists={plList}
             userData={currentUser}
         /> :
         <></>
