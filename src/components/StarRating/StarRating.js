@@ -9,17 +9,11 @@ const RatingPanel = styled.div`
 const StarRating = (props) => {
     let rating = props.rating;
 
-    console.log("STARS: ", rating)
     if(props.rating === undefined)
         rating = 0;
 
     const fullStars = Math.floor(rating/2);
-    console.log("FULL: ", fullStars)
-
-
     const hashalfstar = (Math.floor(rating/2) < rating/2 && (Math.floor(rating/2) + 1) > rating/2)
-    console.log("HAS Half: ", hashalfstar)
-   
 
     return (
         <RatingPanel>

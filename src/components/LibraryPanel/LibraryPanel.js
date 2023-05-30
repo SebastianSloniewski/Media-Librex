@@ -58,16 +58,20 @@ const LibraryPanel = (props) => {
     }
 
     const handleItemDelete = (id) => {
-        // console.log("DELETING ITEM WITH ID: ", id);
-        // console.log("In collection: ", props.currentPlaylist)
+        console.log("DELETING ITEM WITH ID: ", id);
+        console.log("In collection: ", props.currentPlaylist)
 
-        // const newCollectionList = props.currentPlaylist.mediaListItems.filter(elem => elem.mediaItem.id !== id)
+        let playlist = props.currentPlaylist;
 
-        // console.log("LIST after: ", newCollectionList)
+        const newCollectionList = playlist.mediaListItems.filter(elem => elem.mediaItem.id !== id)
+
+        playlist.mediaListItems = newCollectionList;
+
+        console.log("LIST after: ", playlist)
 
         // let newCollect = props.currentPlaylist;
         
-
+        props.handleChange(playlist)
     }
     
 

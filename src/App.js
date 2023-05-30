@@ -7,7 +7,7 @@ import MainDisplayPanel from './components/MainDisplayPanel/MainDisplayPanel'
 import {React, useEffect, useState} from "react";
 import { MainDisplayType, ViewType } from './utils/dataTypes';
 import SearchResultsPanel from './components/SearchResultsPanel.js/SearchResultsPanel';
-import { getUserCollections } from './Axios/MLAxiosPlaylists';
+import { getUserCollections, updateCollection } from './Axios/MLAxiosPlaylists';
 import ItemView from './components/ItemView/ItemView';
 import UserProfile from './components/UserProfile/UserProfile';
 
@@ -115,6 +115,23 @@ function App(){
   const handlePLchange = (newList) => {
     setplList(newList);
   }
+  const handleInCollectionChange = (changedCollection) => {
+    //backend
+    updateCollection(changedCollection.id, changedCollection)
+
+    //front ale tak jeszcze do poprawy
+    const newPlaylists = plList;
+
+    const index = newPlaylists.findIndex(p => p.id === changedCollection.id)
+
+    newPlaylists.splice(index, 1, changedCollection);
+    
+    handlePLchange(newPlaylists);
+
+    console.log("AFTER: ", newPlaylists)
+  }
+
+
 
   const switchToItemView = (elem) => {
     setSelectedItem(elem);
@@ -125,6 +142,8 @@ function App(){
   const switchToUserProfile = () => {
     setCurrentView(ViewType.User)
   }
+
+  
 
 
 
@@ -155,6 +174,7 @@ function App(){
             currentPlaylist={currentPlaylist}
             switchToMainDisplay={SwitchToMainDisplay}
             itemSwitch={switchToItemView}
+            handleChange={handleInCollectionChange}
         /> : 
         currentView === ViewType.Search ? 
           <SearchResultsPanel 

@@ -12,7 +12,8 @@ const CreateNewReview = (props) => {
     //zbieranie oceny i tekstu recenzji
     return (
         <div>
-
+            
+            <textarea />
         </div>
     )
 
