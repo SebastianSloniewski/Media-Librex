@@ -125,8 +125,8 @@ const ItemView = (props) => {
         setIsAddToPlaylistOpen(false);
     }
 
-
-    const handleAddToPlaylist = (id) => {
+    
+    const handleAddToPlaylist = (id, isAddingToWatched = false) => {
         closeATPPanel()
         console.log("ADD to playlist IV, ", id)
 

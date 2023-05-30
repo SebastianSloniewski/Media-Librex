@@ -11,7 +11,7 @@ const AddToPlaylistModal = (props) => {
 
     const handleSelectPlaylist = (id) => {
         //console.log("handling pl select modal: ", id)
-        props.handleAdding(id);
+        props.handleAdding(id, false);
         
     }
 
