@@ -12,6 +12,7 @@ import { getBookByID } from "../../Axios/MLAxiosBooks";
 import AddToPlaylistModal from "./AddToPlaylistModal/AddToPlaylistModal";
 import { updateCollection } from "../../Axios/MLAxiosPlaylists";
 import ItemReviewsPanel from "../Review/ItemReviewsPanel/ItemReviewsPanel";
+import { getItemReviews } from "../../Axios/MLAxiosReview";
 
 
 const _ItemView = styled.div`
@@ -59,11 +60,12 @@ const ItemView = (props) => {
     const [elemData, setElemData] = useState(props.basicElem);
     const [hasFullData, setHasFullData] = useState(false);
     const [isAddToPlaylistOpen, setIsAddToPlaylistOpen] = useState(false);
+    const [itemReviews, setItemReviews] = useState([])
 
     //console.log("Item props: ", props)
     //console.log("ELEM DATA ", elemData)
     
-    //wywolywany przy 1 renderze do zebrania danych pelnych
+    //wywolywany przy 1 renderze do zebrania danych pelnych i recenzju
     useEffect(() => {
         if(!hasFullData){
             //console.log("CALL FOR FULL DATA")
@@ -71,6 +73,15 @@ const ItemView = (props) => {
             //console.log(elemData)
         }
         
+        const reviewResp = getItemReviews(elemData.id);
+
+        reviewResp.then((resolve) => {
+            setItemReviews(resolve);
+        }, () => {
+            console.log("Failed to get reviews");
+        })
+
+
     }, [elemData, hasFullData])
 
     const getFullData = async (type, id) => {
