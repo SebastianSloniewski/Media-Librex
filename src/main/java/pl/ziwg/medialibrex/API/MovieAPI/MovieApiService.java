@@ -33,7 +33,6 @@ public class MovieApiService {
         } catch (JsonProcessingException e){
             throw new RuntimeException("Error parsing JSON response from API", e);
         }
-
         List<MediaItem> listMovies = new ArrayList<>();
         for (int i = 0; i < 9 && i < searchResults.size(); i++){
             JsonNode itemJson = searchResults.get(i);
@@ -57,7 +56,7 @@ public class MovieApiService {
     }
 
     public MediaItem getMovieByIMDb(String id) {
-        String url = String.format("%s&i=%s", API_URL, id);
+        String url = String.format("%s&i=%s&plot=full", API_URL, id);
         String response = restTemplate.getForObject(url, String.class);
         ObjectMapper mapper = new ObjectMapper();
         JsonNode jsonNode;
@@ -84,6 +83,8 @@ public class MovieApiService {
         String imdbId = jsonNode.get("imdbID").asText();
         String type = jsonNode.get("Type").asText();
 
+        String description = jsonNode.get("Plot").asText();
+
         MediaItem movie = new MediaItem();
         movie.setId(imdbId);
         movie.setTitle(title);
@@ -102,6 +103,7 @@ public class MovieApiService {
             movie.addSubject(genre);
         }
         movie.setYear(year);
+        movie.setDescription(description);
         return movie;
     }
 

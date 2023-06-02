@@ -11,6 +11,7 @@ public class MediaItem {
     private String mediaType;
     private List<String> subjects;
     private String year;
+    public String description;
 
     public MediaItem() {
         this.id = null;
@@ -20,6 +21,7 @@ public class MediaItem {
         this.mediaType = null;
         this.subjects = null;
         this.year = null;
+        this.description = null;
     }
 
     public static class Person {
@@ -156,4 +158,8 @@ public class MediaItem {
     public void setYear(String year) {
         this.year = year;
     }
+
+    public String getDescription() { return description; }
+
+    public void setDescription(String description) { this.description = description; }
 }

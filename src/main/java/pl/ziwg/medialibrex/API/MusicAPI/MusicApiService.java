@@ -100,6 +100,7 @@ public class MusicApiService {
                 genresList.add(genresNode.get("name") != null ? genresNode.get("name").asText() : null);
             }
         }
+        String description = jsonNode.get("album").get("wiki").get("summary") != null  ? jsonNode.get("album").get("wiki").get("summary").asText() : null;
         MediaItem album = new MediaItem();
         album.setId(mbid);
         album.setTitle(title);
@@ -111,6 +112,7 @@ public class MusicApiService {
         for (String genre : genresList) {
             album.addSubject(genre);
         }
+        album.setDescription(description);
         return album;
     }
     public List<MediaItem> searchByGenre(String genre) {
