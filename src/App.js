@@ -11,6 +11,7 @@ import { getUserCollections, updateCollection } from './Axios/MLAxiosPlaylists';
 import ItemView from './components/ItemView/ItemView';
 import UserProfile from './components/UserProfile/UserProfile';
 import {useCookies} from "react-cookie";
+import { refresh } from './utils/GeneralUtils';
 
 const testPlaylistsList2 = [
   {title: "obejrzane", size: 8, plID: 123, elems: []},
@@ -65,7 +66,7 @@ function App(){
 
   const [currentMainType, setCurrentMainType] = useState(MainDisplayType.Movies)
 
-  const [currentUser, setCurrentUser] = useState(testUser);
+  const [currentUser, setCurrentUser] = useState(undefined);
   const [currentView, setCurrentView] = useState(ViewType.MainDisplay)
 
   //COOKIES
@@ -74,17 +75,62 @@ function App(){
   //fetching playlists data
   useEffect(() => {
     console.log("COOKIES",cookies)
-
-
-    const userPlaylists = getUserCollections(currentUser.id);
-    userPlaylists.then((resolve) => {
-      setplList(resolve);
-    }, () => {
-      console.log("failed to get playlists")
-    })
-
     
+    if(currentUser === undefined) {
+      //get user from cookies
+      if(cookies.id !== undefined && cookies.email !== undefined){
+        const user = {
+          id: cookies.id,
+          login: "Userus Testerus",
+          email: cookies.email
+        }
+        console.log("PRIER")
+        setCurrentUser(user);
+        getUserPlaylists(user.id)
+      }
+
+    }
+    else{
+      console.log("SEWKU")
+      if(currentUser.id !== undefined){
+        getUserPlaylists(currentUser.id)
+      }
+      
+      // const userPlaylists = getUserCollections(currentUser.id);
+      // userPlaylists.then((resolve) => {
+      //   setplList(resolve);
+      // }, () => {
+      //   console.log("failed to get playlists")
+      // })
+    }
+
   }, [currentUser]);
+
+  const getUserPlaylists = (id) => {
+    console.log("GET COLLEcTIONS FOR ID: ", id)
+    console.log(typeof(id))
+    console.log(id)
+    console.log(id === 1)
+    const userPlaylists = getUserCollections(id);
+      userPlaylists.then((resolve) => {
+        setplList(resolve);
+      }, (e) => {
+        console.log("failed to get playlists: ", e)
+      })
+  }
+
+
+  const logout = () => {
+    console.log("LOG OUT")
+    //ciastka
+    document.cookie = "id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+    document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+
+    //stan
+    setCurrentUser(undefined);
+    refresh();
+  }
+
 
   const handlePlaylistSelection = (id) => {
     
@@ -161,6 +207,7 @@ function App(){
         currentType={currentMainType}
         currentUser={currentUser}
         handleSwitchToUser={switchToUserProfile}
+        handleLogout={logout}
       />
       <LeftPanel userPlaylists={plList} 
         handlePlaylistSelection={handlePlaylistSelection}

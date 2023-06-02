@@ -2,6 +2,7 @@ import logo from '../../imgs/logo.png';
 import { config } from '../../utils/config';
 import { MainDisplayType } from '../../utils/dataTypes';
 import {HiOutlineUserCircle} from "react-icons/hi"
+import {AiOutlineLogout} from "react-icons/ai"
 
 export function Header(props){
 
@@ -14,6 +15,7 @@ export function Header(props){
             <HeaderTop
                 currentUser={props.currentUser}
                 handleSwitchToUser={props.handleSwitchToUser}
+                handleLogout={props.handleLogout}
             />
             <NavBar
                 setCategory={handleCategoryChange}
@@ -39,6 +41,7 @@ function HeaderTop(props){
                         <SignedPanel 
                             userName={props.currentUser.login}
                             handleSwitchToUser={props.handleSwitchToUser}
+                            handleLogout={props.handleLogout}
                         /> 
                         : 
                         <LoginButton />}
@@ -76,6 +79,9 @@ const SignedPanel = (props) => {
             <p>Zalogowano jako {props.userName}</p>
             <HiOutlineUserCircle size={30} style={{marginLeft: "20px"}}
                 onClick={props.handleSwitchToUser}
+            />
+            <AiOutlineLogout size={30} style={{marginLeft: "20px"}}
+                onClick={props.handleLogout}
             />
         </div>
     )
