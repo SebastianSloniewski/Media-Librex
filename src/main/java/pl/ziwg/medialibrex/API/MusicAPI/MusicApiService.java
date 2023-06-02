@@ -100,7 +100,7 @@ public class MusicApiService {
                 genresList.add(genresNode.get("name") != null ? genresNode.get("name").asText() : null);
             }
         }
-        String description = jsonNode.get("album").get("wiki").get("summary") != null  ? jsonNode.get("album").get("wiki").get("summary").asText() : null;
+        String description = jsonNode.get("album").get("wiki") != null ? (jsonNode.get("album").get("wiki").get("summary") != null  ? jsonNode.get("album").get("wiki").get("summary").asText() : null) : null;
         MediaItem album = new MediaItem();
         album.setId(mbid);
         album.setTitle(title);
