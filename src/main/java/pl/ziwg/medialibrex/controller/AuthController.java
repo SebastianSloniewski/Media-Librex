@@ -1,7 +1,10 @@
 package pl.ziwg.medialibrex.controller;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,11 +42,21 @@ public class AuthController {
     }
 
     @GetMapping("/logged")
-    public ModelAndView loggedInfo(Principal principal) {
-
+    public String setCookie(Principal principal, HttpServletResponse response) {
         User user = userService.findByEmail(principal.getName());
-        UserGetDTO userGetDTO = userMapper.toUserGetDTO(user);
-        return new ModelAndView("redirect:http://localhost:3000/","UserDao", userGetDTO);
+
+        Long id = user.getId();
+        String email = user.getEmail();
+
+        // create a cookie
+        Cookie cookie_id = new Cookie("id", id.toString());
+        Cookie cookie_email = new Cookie("email", email);
+
+        //add cookie to response
+        response.addCookie(cookie_id);
+        response.addCookie(cookie_email);
+
+        return "redirect:http://localhost:3000/";
     }
 
     @GetMapping("register")
@@ -66,7 +79,6 @@ public class AuthController {
             return "register";
         }
         userService.saveUser(user);
-
         // Create default collection for user
         MediaListDTO defaultMediaList = new MediaListDTO();
         defaultMediaList.setName("Obejrzane");
