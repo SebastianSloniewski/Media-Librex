@@ -10,6 +10,7 @@ import SearchResultsPanel from './components/SearchResultsPanel.js/SearchResults
 import { getUserCollections, updateCollection } from './Axios/MLAxiosPlaylists';
 import ItemView from './components/ItemView/ItemView';
 import UserProfile from './components/UserProfile/UserProfile';
+import {useCookies} from "react-cookie";
 
 const testPlaylistsList2 = [
   {title: "obejrzane", size: 8, plID: 123, elems: []},
@@ -67,8 +68,14 @@ function App(){
   const [currentUser, setCurrentUser] = useState(testUser);
   const [currentView, setCurrentView] = useState(ViewType.MainDisplay)
 
+  //COOKIES
+  const [cookies, setCookie] = useCookies();
+
   //fetching playlists data
   useEffect(() => {
+    console.log("COOKIES",cookies)
+
+
     const userPlaylists = getUserCollections(currentUser.id);
     userPlaylists.then((resolve) => {
       setplList(resolve);
