@@ -116,7 +116,7 @@ public class BookApiService {
             }
         }
         String year = jsonNode.get("first_publish_date") != null ? jsonNode.get("first_publish_date").asText() : null;
-
+        String description = jsonNode.get("description") != null ? jsonNode.get("description").asText() : null;
         MediaItem book = new MediaItem();
         book.setId(isbn);
         book.setTitle(title);
@@ -128,6 +128,7 @@ public class BookApiService {
         for (String subject : subjectsList) {
             book.addSubject(subject);
         }
+        book.setDescription(description);
         book.setYear(year);
         return book;
     }
