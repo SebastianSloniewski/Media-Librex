@@ -72,7 +72,7 @@ function App(){
   //COOKIES
   const [cookies, setCookie] = useCookies();
 
-  //fetching playlists data
+  //fetching playlists data and user
   useEffect(() => {
     console.log("COOKIES",cookies)
     
@@ -84,33 +84,21 @@ function App(){
           login: "Userus Testerus",
           email: cookies.email
         }
-        console.log("PRIER")
         setCurrentUser(user);
         getUserPlaylists(user.id)
       }
 
     }
     else{
-      console.log("SEWKU")
       if(currentUser.id !== undefined){
         getUserPlaylists(currentUser.id)
       }
-      
-      // const userPlaylists = getUserCollections(currentUser.id);
-      // userPlaylists.then((resolve) => {
-      //   setplList(resolve);
-      // }, () => {
-      //   console.log("failed to get playlists")
-      // })
+
     }
 
   }, [currentUser]);
 
   const getUserPlaylists = (id) => {
-    console.log("GET COLLEcTIONS FOR ID: ", id)
-    console.log(typeof(id))
-    console.log(id)
-    console.log(id === 1)
     const userPlaylists = getUserCollections(id);
       userPlaylists.then((resolve) => {
         setplList(resolve);

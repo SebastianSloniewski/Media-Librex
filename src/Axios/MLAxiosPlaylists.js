@@ -10,10 +10,6 @@ const MLAxiosCollections = axios.create({
 });
 
 export const getUserCollections = async (userId) => {
-    console.log("GET COLLEcTIONS FOR ID: AXIOOOOOS: ", userId)
-    console.log(typeof(userId))
-    console.log(userId)
-    console.log(userId === 1)
     const result = await MLAxiosCollections.get("" +userId+ "/collections");
 
     return result.data;
