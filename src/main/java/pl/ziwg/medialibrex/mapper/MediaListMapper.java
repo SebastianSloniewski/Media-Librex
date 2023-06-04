@@ -9,6 +9,7 @@ import pl.ziwg.medialibrex.API.MusicAPI.MusicApiService;
 import pl.ziwg.medialibrex.dto.MediaListDTO;
 import pl.ziwg.medialibrex.dto.MediaListItemDTO;
 import pl.ziwg.medialibrex.dto.UserGetDTO;
+import pl.ziwg.medialibrex.dto.post.MediaListItemPostDTO;
 import pl.ziwg.medialibrex.entity.MediaList;
 import pl.ziwg.medialibrex.entity.MediaListItem;
 import pl.ziwg.medialibrex.entity.User;
@@ -49,6 +50,10 @@ public abstract class MediaListMapper {
         mediaListItemDTO.setMediaItem(mediaItem);
         return mediaListItemDTO;
     }
+
+    public abstract MediaListItem toMediaListItem(MediaListItemPostDTO mediaListItemPostDTO);
+
+    public abstract List<MediaListItem> toMediaListItemListFromPost(List<MediaListItemPostDTO> mediaListItemPostDTOList);
 
     public abstract List<MediaListItemDTO> toMediaListItemDTOList(List<MediaListItem> mediaListItemList);
 

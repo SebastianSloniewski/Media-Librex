@@ -17,6 +17,10 @@ public class MediaListDTO {
     @NotEmpty
     private String name;
 
+    private Boolean defaultList;
+
+    private Long creatorId;
+
     private Date creationDate;
 
     private Date lastUpdateDate;

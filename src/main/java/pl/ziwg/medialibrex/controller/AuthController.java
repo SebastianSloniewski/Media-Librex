@@ -82,7 +82,7 @@ public class AuthController {
         // Create default collection for user
         MediaListDTO defaultMediaList = new MediaListDTO();
         defaultMediaList.setName("Obejrzane");
-        mediaListService.createMediaList(defaultMediaList, userService.findByEmail(user.getEmail()).getId());
+        mediaListService.createMediaList(defaultMediaList, userService.findByEmail(user.getEmail()).getId(), true);
 
         return "redirect:/register?success";
     }

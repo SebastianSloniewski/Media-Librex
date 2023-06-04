@@ -1,9 +1,13 @@
 package pl.ziwg.medialibrex.service.impl;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import pl.ziwg.medialibrex.dto.MediaListDTO;
+import pl.ziwg.medialibrex.dto.post.MediaListItemPostDTO;
 import pl.ziwg.medialibrex.entity.MediaList;
+import pl.ziwg.medialibrex.entity.MediaListItem;
 import pl.ziwg.medialibrex.entity.User;
 import pl.ziwg.medialibrex.mapper.MediaListMapper;
 import pl.ziwg.medialibrex.repository.MediaListItemRepository;
@@ -26,9 +30,11 @@ public class MediaListServiceImpl implements MediaListService {
     private MediaListMapper mediaListMapper;
 
     @Override
-    public void createMediaList(MediaListDTO mediaListDTO, Long userId){
+    public void createMediaList(MediaListDTO mediaListDTO, Long userId, Boolean defaultList){
         MediaList mediaList = mediaListMapper.toMediaList(mediaListDTO);
+        mediaList.setDefaultList(defaultList);
         User user = userRepository.findById(userId).get();
+        mediaList.setCreatorId(user.getId());
         mediaList.setUsers(Collections.singletonList(user));
         mediaListRepository.save(mediaList);
     }
@@ -60,6 +66,29 @@ public class MediaListServiceImpl implements MediaListService {
             return mediaListMapper.toMediaListDTO(mediaList.get());
         } else {
             return new MediaListDTO();
+        }
+    }
+
+    @Override
+    public MediaListDTO getDefaultListForUser(String userID) {
+        Optional<MediaList> mediaList = mediaListRepository.findByDefaultListAndCreatorId(true,Long.valueOf(userID));
+        if (mediaList.isPresent()) {
+            return mediaListMapper.toMediaListDTO(mediaList.get());
+        } else {
+            return new MediaListDTO();
+        }
+    }
+
+    @Override
+    public ResponseEntity addItemsToDefaultList(String userID, List<MediaListItemPostDTO> mediaListItemPostDTOS) {
+        List<MediaListItem> mediaListItemList = mediaListMapper.toMediaListItemListFromPost(mediaListItemPostDTOS);
+        Optional<MediaList> mediaList = mediaListRepository.findByDefaultListAndCreatorId(true,Long.valueOf(userID));
+        if (mediaList.isPresent()) {
+            mediaList.get().getMediaListItems().addAll(mediaListItemList);
+            mediaListRepository.save(mediaList.get());
+            return new ResponseEntity(null, HttpStatus.OK);
+        } else {
+            return new ResponseEntity("No default collection found for this user", HttpStatus.BAD_REQUEST);
         }
     }
 

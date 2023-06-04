@@ -23,6 +23,12 @@ public class MediaList {
     @Column(nullable=false)
     private String name;
 
+    @Column(nullable=false, updatable = false)
+    private Boolean defaultList;
+
+    @Column(nullable=false, updatable = false)
+    private Long creatorId;
+
     @CreationTimestamp
     @Column(nullable=false, updatable = false)
     private Date creationDate;
