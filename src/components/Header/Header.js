@@ -1,9 +1,10 @@
 import logo from '../../imgs/logo.png'; 
 import { config } from '../../utils/config';
 import { MainDisplayType } from '../../utils/dataTypes';
-import {HiOutlineUserCircle} from "react-icons/hi"
-import {AiOutlineLogout} from "react-icons/ai"
-
+import {HiOutlineUserCircle} from "react-icons/hi";
+import {AiOutlineLogout} from "react-icons/ai";
+import {AiOutlineLogin} from "react-icons/ai";
+import {FaSignInAlt} from "react-icons/fa";
 export function Header(props){
 
     const handleCategoryChange = (type) => {
@@ -54,35 +55,58 @@ function HeaderTop(props){
 }
 
 function LoginButton(){
+    
     return(
         <>
-            <div className="btn btn-light btn-sm">
-                <div className="header__top__right__auth">
-                    <a href={config.backendURL+"login"}>Login</a>
-                </div>
+            <div style={{display: 'flex', justifyContent: "right"}}>
+                <div style={{flex: "5"}}></div>
+                <a href={config.backendURL+"login"}>
+                    <div  className="logButton">
+                        <AiOutlineLogin  
+                            size={30}>
+                        </AiOutlineLogin>
+                        <span style={{display: "block"}}>LogIn</span>
+                    </div>
+                    
+                </a>
+
+                <a href={config.backendURL+"register"}>
+                    <div  className="logButton">
+                        <FaSignInAlt 
+                            size={30}>
+                        </FaSignInAlt>
+                        <span style={{display: "block"}}>SignUp</span>
+                    </div>
+                </a>
             </div>
-            <div className="btn btn-light btn-sm">
-                <div className="header__top__right__auth">
-                    <a href={config.backendURL+"register"}>
-                        Sign in
-                    </a>
-                </div>
-            </div>
+            
+
         </>
     );
 }
 
+
+
+
 const SignedPanel = (props) => {
-    
     return (
         <div style={{display: 'flex', justifyContent: "right"}}>
-            <p>Zalogowano jako {props.userName}</p>
-            <HiOutlineUserCircle size={30} style={{marginLeft: "20px"}}
-                onClick={props.handleSwitchToUser}
-            />
-            <AiOutlineLogout size={30} style={{marginLeft: "20px"}}
-                onClick={props.handleLogout}
-            />
+            <p style = {{marginTop: "20px"}}>Zalogowano jako <b>{props.userName}</b></p>
+            <div  className="logButton">
+                <HiOutlineUserCircle 
+                    size={30}
+                    onClick={props.handleSwitchToUser}
+                />
+                <span style={{display: "block"}}>User</span>
+            </div>
+
+            <div  className="logButton">
+                <AiOutlineLogout 
+                    size={30} 
+                    onClick={props.handleLogout}
+                />
+                <span style={{display: "block"}}>LogOut</span>
+            </div>
         </div>
     )
 

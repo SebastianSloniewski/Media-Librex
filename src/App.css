@@ -7,7 +7,17 @@ body {
 	font-smoothing: antialiased;
 }
 
-a:hover,
+a:link{
+	color: black;
+	background-color: transparent;
+	text-decoration: none;
+}
+a:visited {
+	color: black;
+	background-color: transparent;
+	text-decoration: none;
+  }
+
 a:focus {
 	text-decoration: none;
 	outline: none;
@@ -50,11 +60,17 @@ header .row{
 
 .header__top__left {
   padding: 17px 0 13px;
+  margin-top: 10px;
 }
 
 .header__top__right {
-  text-align: right;
   padding: 10px 0 13px;
+  text-align: right;
+}
+
+.header__top__right a{
+	margin-left: auto;
+	flex: 1;
 }
 
 .header__menu {
@@ -128,6 +144,21 @@ header .row{
 .btn{
   margin-left: 5px
 }
+
+.logButton{
+	text-align: center;
+	border-radius: 15px;
+	padding: 8px;
+	margin-left: 10px;
+	width: 80px;
+}
+
+.logButton:hover{
+	background-color: #7fad39;
+	cursor: pointer;
+}
+
+
 
 /*-------------------------HAMBURGER MENU SETION------------------------*/
 
