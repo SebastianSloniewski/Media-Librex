@@ -63,9 +63,9 @@ function LoginButton(){
                 <a href={config.backendURL+"login"}>
                     <div  className="logButton">
                         <AiOutlineLogin  
-                            size={30}>
+                            size={25}>
                         </AiOutlineLogin>
-                        <span style={{display: "block"}}>LogIn</span>
+                        <span style={{display: "block"}}><b>LogIn</b></span>
                     </div>
                     
                 </a>
@@ -73,9 +73,9 @@ function LoginButton(){
                 <a href={config.backendURL+"register"}>
                     <div  className="logButton">
                         <FaSignInAlt 
-                            size={30}>
+                            size={25}>
                         </FaSignInAlt>
-                        <span style={{display: "block"}}>SignUp</span>
+                        <span style={{display: "block"}}><b>SignUp</b></span>
                     </div>
                 </a>
             </div>
@@ -94,18 +94,18 @@ const SignedPanel = (props) => {
             <p style = {{marginTop: "20px"}}>Zalogowano jako <b>{props.userName}</b></p>
             <div  className="logButton">
                 <HiOutlineUserCircle 
-                    size={30}
+                    size={25}
                     onClick={props.handleSwitchToUser}
                 />
-                <span style={{display: "block"}}>User</span>
+                <span style={{display: "block"}}><b>User</b></span>
             </div>
 
             <div  className="logButton">
                 <AiOutlineLogout 
-                    size={30} 
+                    size={25} 
                     onClick={props.handleLogout}
                 />
-                <span style={{display: "block"}}>LogOut</span>
+                <span style={{display: "block"}}><b>LogOut</b></span>
             </div>
         </div>
     )

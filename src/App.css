@@ -151,6 +151,7 @@ header .row{
 	padding: 8px;
 	margin-left: 10px;
 	width: 80px;
+	font-size: 13px;
 }
 
 .logButton:hover{
