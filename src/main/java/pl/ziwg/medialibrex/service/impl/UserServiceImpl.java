@@ -53,6 +53,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findByName(String name) {
+        return userRepository.findByName(name);
+    }
+
+    @Override
     public List<UserDTO> findAllUsers() {
         List<User> users = userRepository.findAll();
         return users.stream().map((user) -> convertEntityToDTO(user))
