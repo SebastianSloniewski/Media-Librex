@@ -4,6 +4,8 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
@@ -17,6 +19,7 @@ import pl.ziwg.medialibrex.dto.UserDTO;
 import pl.ziwg.medialibrex.dto.UserGetDTO;
 import pl.ziwg.medialibrex.entity.User;
 import pl.ziwg.medialibrex.mapper.UserMapper;
+import pl.ziwg.medialibrex.repository.UserRepository;
 import pl.ziwg.medialibrex.service.MediaListService;
 import pl.ziwg.medialibrex.service.UserService;
 
@@ -47,14 +50,24 @@ public class AuthController {
 
         Long id = user.getId();
         String email = user.getEmail();
+        String name = user.getName();
+
+        String[] output = name.split(" ");
+        String firstname = output[0];
+        String lastname = output[1];
 
         // create a cookie
         Cookie cookie_id = new Cookie("id", id.toString());
         Cookie cookie_email = new Cookie("email", email);
+        Cookie cookie_firstname = new Cookie("firstname", firstname);
+        Cookie cookie_lastname = new Cookie("lastname", lastname);
 
         //add cookie to response
         response.addCookie(cookie_id);
         response.addCookie(cookie_email);
+        response.addCookie(cookie_firstname);
+        response.addCookie(cookie_lastname);
+
 
         return "redirect:http://localhost:3000/";
     }
