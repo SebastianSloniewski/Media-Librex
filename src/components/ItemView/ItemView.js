@@ -73,13 +73,13 @@ const ItemView = (props) => {
             //console.log(elemData)
         }
         
-        const reviewResp = getItemReviews(elemData.id);
+        // const reviewResp = getItemReviews(elemData.id);
 
-        reviewResp.then((resolve) => {
-            setItemReviews(resolve);
-        }, () => {
-            console.log("Failed to get reviews");
-        })
+        // reviewResp.then((resolve) => {
+        //     setItemReviews(resolve);
+        // }, () => {
+        //     console.log("Failed to get reviews");
+        // })
 
 
     }, [elemData, hasFullData])
@@ -229,6 +229,7 @@ const ItemView = (props) => {
                 userData={props.userData}
                 itemID={props.basicElem.id}
                 mediaType={props.basicElem.mediaType}
+                reviews={itemReviews}
             />
         </>
     );

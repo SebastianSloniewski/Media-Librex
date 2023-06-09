@@ -2,21 +2,37 @@ import styled from "styled-components";
 import {React} from "react";
 import CreateNewReview from "../CreateNewReview/CreateNewReview";
 import { useState } from "react";
+import ReviewPanel from "../ReviewPanel/ReviewPanel";
+import { useEffect } from "react";
+import { getItemReviews } from "../../../Axios/MLAxiosReview";
 
 
 const ReviewMainPanel = styled.div`
     width: 100%;
-    display: flex;
+    display: block;
     background-color: blue;
     justify-content: center;
+    align-items: center;
     height: 1000px;
 `;
 
 
 const ItemReviewsPanel = (props) => {
-    const [reviewList, setReviewList] = useState([]);
+    const [reviewList, setReviewList] = useState(props.reviews);
 
-    //console.log("ITEM REV porps", props)
+    console.log("ITEM REV porps", props)
+
+    useEffect(() => {
+        const reviewResp = getItemReviews(props.itemID);
+
+        reviewResp.then((resolve) => {
+            setReviewList(resolve);
+            console.log("FETCHED: ", resolve)
+        }, () => {
+            console.log("Failed to get reviews");
+        })
+    }, [])
+    
 
     return(
         <ReviewMainPanel>
@@ -25,6 +41,13 @@ const ItemReviewsPanel = (props) => {
                 userData={props.userData}
                 mediaType={props.mediaType}
             />
+            {reviewList.map((value) => 
+                <ReviewPanel 
+                    key={value.id}
+                    reviewData={value}
+                />
+            )}
+
 
         </ReviewMainPanel>
     )
