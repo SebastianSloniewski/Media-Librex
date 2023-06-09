@@ -81,7 +81,7 @@ function App(){
       if(cookies.id !== undefined && cookies.email !== undefined){
         const user = {
           id: cookies.id,
-          login: "Userus Testerus",
+          login: cookies.firstname + " " + cookies.lastname,
           email: cookies.email
         }
         setCurrentUser(user);
