@@ -38,11 +38,11 @@ const _userPlaylists=styled.div`
 
 
 
-function FriendsPanel(){
+function FriendsPanel(props){
     return(
         <_friendsPanel className="FriendsPanel">
-            <h1 style={{textAlign: "center"}}>Friends</h1>
-            <FriendsList/>
+            <h1 style={{textAlign: "center"}}>Przyjaciele</h1>
+            <FriendsList userData={props.userData}/>
         </_friendsPanel>
     );
 }
@@ -94,7 +94,7 @@ function UserPlaylists(props){
     }
     return(
         <_userPlaylists>
-            <h1 style={{textAlign: "center"}}>Playlists</h1>
+            <h1 style={{textAlign: "center"}}>Kolekcje</h1>
             
         </_userPlaylists>
     );
@@ -109,7 +109,7 @@ const UserProfile = (props) => {
         <_MainContainer className="UserView">
 
             <_profileInfo>
-                <h1 style={{textAlign: "center"}}>User</h1>
+                <h1 style={{textAlign: "center"}}>Użytkownik</h1>
                 <_profilePicture src="https://m.media-amazon.com/images/M/MV5BMTYwNDMzODI0Ml5BMl5BanBnXkFtZTgwNzMzODQyOTE@._V1_SX300.jpg" alt="profile"/>
                 <_UserDataDiv>
                     <p>Login: {props.userData.login}</p>
@@ -120,7 +120,7 @@ const UserProfile = (props) => {
             <UserPlaylists
                 userPlaylists={props.plList}
             />
-            <FriendsPanel/>
+            <FriendsPanel userData={props.userData}/>
 
         </_MainContainer>
     )

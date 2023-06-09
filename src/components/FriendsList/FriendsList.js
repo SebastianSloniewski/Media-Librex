@@ -20,7 +20,7 @@ const _FriendListDiv = styled.div`
 const FriendsList = (props) => {
     const [friendsList, setFriendsList] = useState(testFirends);
 
-    console.log("FRIEND LIST: ", props)
+    console.log("FRIEND LIST: ", props) //.userData
 
     return (
         <_FriendListDiv>

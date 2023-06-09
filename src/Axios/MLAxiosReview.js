@@ -11,9 +11,7 @@ const MLAxiosReview = axios.create({
 });
 
 export const createReview = async (mediaItemID, reviewDTO, userID) => {
-    console.log("CREATING REVIEW!!!!!!!!!!!!!!!!!!!")
-    console.log(mediaItemID, userID)
-    const result = await MLAxiosReview.post("/"+mediaItemID+"/reviews/create", reviewDTO, userID)
+    const result = await MLAxiosReview.post("/"+mediaItemID+"/reviews/create?userID="+userID, reviewDTO)
     //TODO upewnic sie czy dziala
     
     return result.data;
