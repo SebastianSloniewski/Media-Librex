@@ -11,15 +11,8 @@ const MLAxios = axios.create({
 });
 
 //funckje z zapytaniem tworzymy w postaci:
-export const getAllBooks = async () => {
-    const result =  await MLAxios.get("books/search?title=Avatar");
-    console.log("AXIOS GET");
-    console.log("DATA: ", result.data)
-    return result.data;
-}
-
-export const getBookInfo = async (bookId) => {
-    const result = await MLAxios.get(`books/${bookId}`);
+export const searchUsersName = async (name) => {
+    const result = await MLAxios.get("/users/search?name=" + name);
 
     return result.data;
 }

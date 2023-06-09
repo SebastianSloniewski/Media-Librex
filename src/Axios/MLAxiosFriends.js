@@ -39,3 +39,4 @@ export const getFriendsList = async (userId) => {
 
     return result.data;
 }
+

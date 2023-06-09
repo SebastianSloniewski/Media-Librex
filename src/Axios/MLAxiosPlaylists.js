@@ -52,3 +52,15 @@ export const createCollection = async (userId, mediaListDTO) => {
 
     return result.data;
 }
+
+export const addToDefaultCollection = async (userID, mediaListItems) => {
+    const result = await MLAxiosCollections.post("/" + userID + "/collections/default/add", mediaListItems)
+
+    return result.data;
+}
+
+export const getUserDefaultCollection = async (userID) => {
+    const result = await MLAxiosCollections.get("/" + userID + "/collections/default");
+
+    return result.data;
+}

@@ -10,7 +10,7 @@ import { getMovieById } from "../../Axios/MLAxiosFilms";
 import { getMusicByID } from "../../Axios/MLAxiosMusic";
 import { getBookByID } from "../../Axios/MLAxiosBooks";
 import AddToPlaylistModal from "./AddToPlaylistModal/AddToPlaylistModal";
-import { updateCollection } from "../../Axios/MLAxiosPlaylists";
+import { getUserDefaultCollection, updateCollection } from "../../Axios/MLAxiosPlaylists";
 import ItemReviewsPanel from "../Review/ItemReviewsPanel/ItemReviewsPanel";
 import { getItemReviews } from "../../Axios/MLAxiosReview";
 
@@ -139,9 +139,9 @@ const ItemView = (props) => {
     }
 
     
-    const handleAddToPlaylist = (id, isAddingToWatched = false) => {
+    const handleAddToPlaylist = (id) => {
         closeATPPanel()
-        console.log("ADD to playlist IV, ", id)
+        console.log("ADD to playlist ID, ", id)
 
         const mediaItem = {
             id: elemData.id,
@@ -157,7 +157,7 @@ const ItemView = (props) => {
 
         const mediaItemDTO = {
             id: undefined,
-            listPositionIndex: selectedPlaylist.mediaListItems.length,
+            listPositionIndex: selectedPlaylist.mediaListItems.length !== undefined ? selectedPlaylist.mediaListItems.length : 0,
             dateAdded: undefined,
             mediaItem: mediaItem
         }
@@ -168,6 +168,24 @@ const ItemView = (props) => {
         console.log("SEL PL: ", selectedPlaylist) 
 
         updateCollection(id, selectedPlaylist);
+    }
+
+    const handleAddToDefault = (ItemID, UserID) => {
+        
+        const uID = props.userData.id;
+        console.log("ADDING TO DEFAULT!: ", uID)
+
+
+        const defaultC = getUserDefaultCollection(uID)
+        console.log("DEF: ", defaultC)
+
+        defaultC.then((resolve) => {
+            handleAddToPlaylist(resolve.id)
+
+        }, () => {
+
+        })
+
 
     }
 
@@ -193,7 +211,7 @@ const ItemView = (props) => {
                 
 
                 <_ButtonsContainer>
-                    <Button>Obejrzane</Button>
+                    <Button onClick={handleAddToDefault}>Obejrzane</Button>
                     <Button onClick={openATPPanel}>Dodaj do kolekcji</Button>
                 </_ButtonsContainer>
 

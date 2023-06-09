@@ -7,11 +7,9 @@ import PlayListRow from "../../LeftPanel/PlaylistRow/PlayListRow";
 const AddToPlaylistModal = (props) => {
     const [playLists, setPlayLists] = useState(props.playlists);
 
-    console.log("MODAL PROPS: ", props)
-
     const handleSelectPlaylist = (id) => {
         //console.log("handling pl select modal: ", id)
-        props.handleAdding(id, false);
+        props.handleAdding(id);
         
     }
 

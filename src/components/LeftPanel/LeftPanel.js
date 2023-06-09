@@ -34,7 +34,7 @@ const LeftPanel = (props) => {
     useEffect(() => {
         //console.log("effects playlists")
         setPlayLists(props.userPlaylists);
-        console.log(playlists)
+        console.log("KOLEKCJE", playlists)
 
     }, [props.userPlaylists])
 

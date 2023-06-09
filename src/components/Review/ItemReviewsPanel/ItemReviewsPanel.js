@@ -16,7 +16,7 @@ const ReviewMainPanel = styled.div`
 const ItemReviewsPanel = (props) => {
     const [reviewList, setReviewList] = useState([]);
 
-    console.log("ITEM REV porps", props)
+    //console.log("ITEM REV porps", props)
 
     return(
         <ReviewMainPanel>
