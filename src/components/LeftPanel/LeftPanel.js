@@ -12,17 +12,14 @@ const _MainPanelContainer = styled.div`
 	height:100%;
 	width: 280px;
 	margin-top: 180px;
-	background-color: white;
+	background-color: #f2f2f2;
     border-right-style: outset;
     padding-top: 10px;
+    padding-left: 30px;
     z-index: 1000;
 
 `;
 
-const _Title = styled.div`
-    justify-content: center;
-    text-align: center;
-`;
 
 
 const LeftPanel = (props) => {
@@ -74,9 +71,9 @@ const LeftPanel = (props) => {
 
     return (
         <_MainPanelContainer className="col-lg-2 container sideBar">
-            <_Title>
-                <h1>Kolekcje</h1>
-            </_Title>
+
+            <h1>Kolekcje</h1>
+            
             <div>
                 <Table bordered={false}>
                     <tbody>
