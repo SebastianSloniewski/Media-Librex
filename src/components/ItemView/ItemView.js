@@ -16,10 +16,12 @@ import { getItemReviews } from "../../Axios/MLAxiosReview";
 
 
 const _ItemView = styled.div`
-    height: 100%;
+    background-color: red;
+    height: 60%;
     width: 100%;
     //background: #8fd625;
     background-color: white;
+    
 `;
 
 const _ButtonsContainer = styled.div`

@@ -6,18 +6,29 @@ import Select from "react-select";
 
 
 const CreateRevDiv = styled.div`
-    background-color: red;
-    width: 80%;
-    height: 300px;
-    //margin-top: 30px;
+    height: 320px;
+    margin: auto;
+    padding: 25px;
     padding-top: 50px;
 `;
 
 const _textAreaDiv = styled.div`
     display:flex;
-    justify-content: center;
-    width: 80%;
+    width:100%;
+    height: 160px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
 `;
+
+const selectStyle = {
+    width: "20px",
+    margin: "10px",
+};
+
+const buttonStyle = {
+    
+};
 
 const scoreOptions = [
     {value: 1, label: "1"},
@@ -32,6 +43,13 @@ const scoreOptions = [
     {value: 10, label: "10"}
 
 ]
+
+
+const SelectWraper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 10px 0;
+`;
 
 const CreateNewReview = (props) => {
     const [currRevText, setCurrRevText] = useState("");
@@ -67,7 +85,7 @@ const CreateNewReview = (props) => {
     //zbieranie oceny i tekstu recenzji
     return (
         <CreateRevDiv>
-            <h3>Napisz Recenzje</h3>
+            <h3 style={{marginLeft: "5px"}}>Napisz Recenzje</h3>
 
             <_textAreaDiv>
                 <Form.Control 
@@ -76,14 +94,21 @@ const CreateNewReview = (props) => {
                     onChange={handleTextChange}
                 />
             </_textAreaDiv>
-            <Select 
-                options={scoreOptions}
-                placeholder={"Ocen Item"}
-                value={currScore}
-                onChange={handleScoreChange}
-            />
+            <SelectWraper>
+                <Select
+                        options={scoreOptions}
+                        placeholder={"Ocen Item"}
+                        value={currScore}
+                        onChange={handleScoreChange}
+                    />
+                     <Button 
+                        style={buttonStyle}
+                        onClick={publishReview}
+                    >Opublikuj Recenzje</Button>
+            </SelectWraper>
+           
 
-            <Button onClick={publishReview}>Opublikuj Recenzje</Button>
+           
             
             
         </CreateRevDiv>

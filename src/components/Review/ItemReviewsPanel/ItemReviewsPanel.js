@@ -9,11 +9,9 @@ import { getItemReviews } from "../../../Axios/MLAxiosReview";
 
 const ReviewMainPanel = styled.div`
     width: 100%;
-    display: block;
-    background-color: blue;
     justify-content: center;
     align-items: center;
-    height: 1000px;
+    height: 400px;
 `;
 
 
@@ -35,7 +33,7 @@ const ItemReviewsPanel = (props) => {
     
 
     return(
-        <ReviewMainPanel>
+        <ReviewMainPanel className="ReviewMainPanel">
             <CreateNewReview
                 itemID={props.itemID}
                 userData={props.userData}

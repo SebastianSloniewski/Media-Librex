@@ -5,7 +5,7 @@ import StarRating from '../../StarRating/StarRating';
 
 const _reviewDiv = styled.div`
     background-color: green;
-    height: 200px;
+    max-height: 200px;
     width: 80%;
     margin-top: 30px;
     margin-bottom: 30px;

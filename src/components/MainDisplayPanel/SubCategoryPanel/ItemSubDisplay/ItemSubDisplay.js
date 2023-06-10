@@ -16,9 +16,12 @@ const ItemContainer = styled.div`
 `;
 const TitleContainer = styled.div`
     margin-top: 20px;
-    margin-left: auto;
+    margin: auto;
+    width: 50%;
     max-width: ${({mediaType}) =>
-        mediaType === 'music' && '280px' || '180px'
+        mediaType === '' && '280px' || 
+        mediaType === 'book' && '280px' ||
+        '1services80px'
     };
 `;
 
