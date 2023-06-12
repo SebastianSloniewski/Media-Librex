@@ -21,7 +21,7 @@ const TitleContainer = styled.div`
     max-width: ${({mediaType}) =>
         mediaType === '' && '280px' || 
         mediaType === 'book' && '280px' ||
-        '1services80px'
+        '180px'
     };
 `;
 
@@ -76,8 +76,6 @@ const ItemSubDisplay = (props) => {
             </TitleContainer>}
             {/* POTRZEBA OBSLUGI PO STRONIE BACKENDU */}
             <StarRating rating={rating}/>
-            
-
 
         </ItemContainer>
     )
