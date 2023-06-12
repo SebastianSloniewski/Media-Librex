@@ -12,7 +12,6 @@ const _MainPanelContainer = styled.div`
 	height:100%;
 	width: 280px;
 	margin-top: 180px;
-	background-color: #f2f2f2;
     border-right-style: outset;
     padding-top: 10px;
     padding-left: 30px;

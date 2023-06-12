@@ -4,13 +4,14 @@ import styled from "styled-components";
 import StarRating from '../../StarRating/StarRating';
 
 const _reviewDiv = styled.div`
-    background-color: green;
+    width: 100%;
+    border: solid;
+    border-color: #DBDBDB;
+    border-radius: 10px;
     max-height: 200px;
-    width: 80%;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    padding: 10px;
+    margin: 8px 0 8px 0;
 `
-
 
 const ReviewPanel = (props) => {
     const [reviewData, setReviewData] = useState(props.reviewData)
@@ -18,10 +19,13 @@ const ReviewPanel = (props) => {
 
 
     return (
-        <_reviewDiv>
+        <_reviewDiv className="Reviews">
             <StarRating rating={reviewData.reviewScore}/>
             <div>{reviewData.reviewText}</div>
-            <div>Napisane przez: {reviewData.user.name}</div>
+            <div 
+                style={{fontSize:"15px", 
+                        color:"#8D8D8D"}}>
+                        Napisane przez: {reviewData.user.name}</div>
             
         </_reviewDiv>
 

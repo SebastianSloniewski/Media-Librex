@@ -14,7 +14,12 @@ const ReviewMainPanel = styled.div`
     height: 400px;
 `;
 
-
+const ReviewsContainer = styled.div`
+    justify-content: center;
+    align-items: center;
+    height: 110%;
+    padding: 20px;
+`;
 const ItemReviewsPanel = (props) => {
     const [reviewList, setReviewList] = useState(props.reviews);
 
@@ -39,12 +44,15 @@ const ItemReviewsPanel = (props) => {
                 userData={props.userData}
                 mediaType={props.mediaType}
             />
-            {reviewList.map((value) => 
-                <ReviewPanel 
-                    key={value.id}
-                    reviewData={value}
-                />
-            )}
+            <ReviewsContainer>
+                {reviewList.map((value) => 
+                    <ReviewPanel 
+                        key={value.id}
+                        reviewData={value}
+                    />
+                )}
+            </ReviewsContainer>
+           
 
 
         </ReviewMainPanel>
