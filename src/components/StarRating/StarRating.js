@@ -20,7 +20,7 @@ const StarRating = (props) => {
             {Array(fullStars).fill(<BsStarFill />)}
             {/* {Array(fullStars).map((o, id) => <BsStarFill key={id}/>)} */}
             {hashalfstar ? <BsStarHalf/> : null}
-            {hashalfstar ? 5 - 1 - fullStars > 0 ? Array(5 - 1 - fullStars).fill(<BsStar/>): 2 : Array(5 - fullStars).fill(<BsStar/>)}
+            {hashalfstar ? 5 - 1 - fullStars > 0 ? Array(5 - 1 - fullStars).fill(<BsStar/>): null : Array(5 - fullStars).fill(<BsStar/>)}
         </RatingPanel>
 
     )

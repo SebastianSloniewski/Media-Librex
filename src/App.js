@@ -13,18 +13,15 @@ import UserProfile from './components/UserProfile/UserProfile';
 import {useCookies} from "react-cookie";
 import { refresh } from './utils/GeneralUtils';
 
-const testPlaylistsList2 = [
-  {title: "obejrzane", size: 8, plID: 123, elems: []},
-  {title: "do obejrzenia", size: 39, plID: 1,elems: []},
-  {title: "coś", size: 50, plID: 2, elems: []},
-  {title: "horrory", size: 37, plID: 50, elems: []}
-]
+
 
 const ListHorror = [
   {id: "tt1129441", title: "ThanksKilling", rating: 4.5, url: "https://m.media-amazon.com/images/M/MV5BMTYwNDMzODI0Ml5BMl5BanBnXkFtZTgwNzMzODQyOTE@._V1_SX300.jpg"},
   {id: "tt2106675", title: "ThanksKilling 3", rating: 10, url: "https://m.media-amazon.com/images/M/MV5BMTU0NjEwNDQ5NF5BMl5BanBnXkFtZTgwMDYyODQyOTE@._V1_SX300.jpg"},
   {id: "tt0103874", title: "Dracula", rating: 2.5, url: "https://m.media-amazon.com/images/M/MV5BNjcyMDZlMTktYTIxOC00ZWFhLWJkYzgtNWNiYjAwYTFkNjIyXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SX300.jpg"},
-  {id: "tt0884328", title: "The Mist", rating: 2.5, url: "https://m.media-amazon.com/images/M/MV5BMTU2NjQyNDY1Ml5BMl5BanBnXkFtZTcwMTk1MDU1MQ@@._V1_SX300.jpg"}
+  {id: "tt0884328", title: "The Mist", rating: 2.5, url: "https://m.media-amazon.com/images/M/MV5BMTU2NjQyNDY1Ml5BMl5BanBnXkFtZTcwMTk1MDU1MQ@@._V1_SX300.jpg"},
+  {id: "tt0068746", title: "Invasion of the Blood Farmers", rating: 5, url: "https://m.media-amazon.com/images/M/MV5BN2UyMjI1ZTUtNTFjOC00Y2YyLWFhZjQtNjIwMjFhNWU4ZjI1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"},
+  {id: "tt0113376", title: "Ice Cream Man", rating: 3, url: "https://m.media-amazon.com/images/M/MV5BNzAxN2Q0MTUtNWI4Yi00YjRiLWI2NjAtMTg3NTdiYjQ2NGVkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"}
 ]
 
 const ListComedy = [
@@ -37,14 +34,17 @@ const ListAction = [
   {id: "tt0499549", title: "Avatar", rating: 6, url: "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg"},
   {id: "tt1630029", title: "Avatar 2: TWoW", rating: 6, url: "https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg"},
   {id: "tt0088247", title: "The Terminator", rating: 6, url: "https://m.media-amazon.com/images/M/MV5BYTViNzMxZjEtZGEwNy00MDNiLWIzNGQtZDY2MjQ1OWViZjFmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"},
-  {id: "tt0103064", title: "Terminator 2: Judgment Day", rating: 6, url: "https://m.media-amazon.com/images/M/MV5BMGU2NzRmZjUtOGUxYS00ZjdjLWEwZWItY2NlM2JhNjkxNTFmXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"}
+  {id: "tt0103064", title: "Terminator 2: Judgment Day", rating: 6, url: "https://m.media-amazon.com/images/M/MV5BMGU2NzRmZjUtOGUxYS00ZjdjLWEwZWItY2NlM2JhNjkxNTFmXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"},
+  {id: "tt1843303", title: "The VelociPastor", rating: 2, url: "https://m.media-amazon.com/images/M/MV5BZTJiZjFkNmYtNmU3My00MmE1LWI4YWEtNWFkZDJiOTgwMTNkXkEyXkFqcGdeQXVyMTg0MTI3Mg@@._V1_SX300.jpg"},
+  {id: "tt1619880", title: "Sharktopus", rating: 1, url: "https://m.media-amazon.com/images/M/MV5BNTNlZTJhMWQtNDkwZS00MjhjLTk1M2UtMzNmNzgyMTg0YTVlXkEyXkFqcGdeQXVyODUzMjQxMTA@._V1_SX300.jpg"}
+
 
 ]
 
 const testCategories = [
   {title: "Horror", elements: ListHorror, size: 2},
-  {title: "Akcja", elements: ListAction, size: 15},
-  {title: "Komedia", elements: ListComedy, size: 15},
+  {title: "Action", elements: ListAction, size: 15},
+  {title: "Comedy", elements: ListComedy, size: 15},
   
 ]
 

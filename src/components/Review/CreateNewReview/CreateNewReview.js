@@ -61,7 +61,7 @@ const CreateNewReview = (props) => {
     }
 
     const handleScoreChange = (score) => {
-        console.log("Changing score to ", score)
+        //console.log("Changing score to ", score)
         setCurrScore(score.value);
     }
 
@@ -76,7 +76,7 @@ const CreateNewReview = (props) => {
             mediaItemId: props.itemID,
             mediaItemType: props.mediaType,
         }
-        console.log("SENDING DATA:", ReviewDTO)
+        //console.log("SENDING DATA:", ReviewDTO)
         createReview(props.itemID, ReviewDTO, props.userData.id)
 
     }
@@ -85,7 +85,7 @@ const CreateNewReview = (props) => {
     //zbieranie oceny i tekstu recenzji
     return (
         <CreateRevDiv>
-            <h3 style={{marginLeft: "5px"}}>Napisz Recenzje</h3>
+            <h3 style={{marginLeft: "5px"}}>Create Review</h3>
 
             <_textAreaDiv>
                 <Form.Control 
@@ -97,14 +97,14 @@ const CreateNewReview = (props) => {
             <SelectWraper>
                 <Select
                         options={scoreOptions}
-                        placeholder={"Ocen Item"}
+                        placeholder={"Rate Item"}
                         value={currScore}
                         onChange={handleScoreChange}
                     />
                      <Button 
                         style={buttonStyle}
                         onClick={publishReview}
-                    >Opublikuj Recenzje</Button>
+                    >Publish Review</Button>
             </SelectWraper>
            
 

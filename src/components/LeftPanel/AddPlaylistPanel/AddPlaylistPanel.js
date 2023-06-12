@@ -25,7 +25,7 @@ const AddPlaylistPanel = (props) => {
 
     return (
         <tr>
-            <td><_PanelText>Dodaj Nową Kolekcje</_PanelText></td>
+            <td><_PanelText>Add new Collection</_PanelText></td>
             <td>
                 <_IconContainer>
                     <AiOutlinePlusCircle onClick={openPanel}/>

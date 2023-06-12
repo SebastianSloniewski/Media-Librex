@@ -15,12 +15,9 @@ const SearchBar = (props) => {
 
 
   const ExecuteSearch = () => {
-    console.log("SEARCHING: " + props.searchType)
     
     switch (props.searchType) {
       case MainDisplayType.Books : 
-        console.log("ksiazki");
-
         const searchResultBooks = getBooksByName(currQuery);
         console.log(searchResultBooks)
 
@@ -37,7 +34,6 @@ const SearchBar = (props) => {
 
             i++;
           }
-          //console.log("BOOKS CONV", convertedBooks);
 
           props.handleSearch(currQuery, convertedBooks);
         }, () => {
@@ -50,12 +46,8 @@ const SearchBar = (props) => {
         break;
       case MainDisplayType.Movies :
         const searchResultsMovies = getMoviesByName(currQuery);
-        //###############################################
-        //TODO obsluga bledow
 
         searchResultsMovies.then((response) => {
-          console.log("FILMY: ", response);
-
           const convertedMovies = [];
 
           let i = 0;
@@ -83,9 +75,6 @@ const SearchBar = (props) => {
         const searchResultMusic = getMusicByName(currQuery);
 
         searchResultMusic.then((response) => {
-          console.log("muzyka")
-          console.log(searchResultMusic)
-
           const convertedMusic = [];
 
           let i = 0;
@@ -107,8 +96,6 @@ const SearchBar = (props) => {
         const searchResultsSeries = getMoviesByName(currQuery);
 
         searchResultsSeries.then((response) => {
-          console.log("FILMY: ", response);
-
           const convertedSeries = [];
 
           let i = 0;
@@ -145,7 +132,7 @@ const SearchBar = (props) => {
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Search"
+              placeholder={"Search in " + props.searchType}
               className="me-2 rounded-pill"
               aria-label="Search"
               onChange={handleChange}

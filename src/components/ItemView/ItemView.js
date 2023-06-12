@@ -74,16 +74,11 @@ const ItemView = (props) => {
             getFullData(elemData.mediaType, elemData.id);
             //console.log(elemData)
         }
+
+        if(hasFullData){
+            console.log(elemData)
+        }
         
-        // const reviewResp = getItemReviews(elemData.id);
-
-        // reviewResp.then((resolve) => {
-        //     setItemReviews(resolve);
-        // }, () => {
-        //     console.log("Failed to get reviews");
-        // })
-
-
     }, [elemData, hasFullData])
 
     const getFullData = async (type, id) => {
@@ -125,6 +120,9 @@ const ItemView = (props) => {
         }
 
         //console.log("RESULT: ", result);
+
+
+        console.log("ITEM FULL DATA: ", result)
 
         setHasFullData(true);
         setElemData(result);
@@ -203,18 +201,20 @@ const ItemView = (props) => {
                     elem={props.basicElem}
                     itemSwitch={() => {}}
                     />
-                 
+                    <p style={{paddingTop:"3px"}}>
+                        {hasFullData ? "Author: " + elemData.people[0].name : ""}
+                    </p>
                     
                     <_DescryptionStyle className="Descryption">
-                        <LoremIpsum p={2} />
+                        {hasFullData ? elemData.description : <LoremIpsum p={2} />}
                     </_DescryptionStyle>
 
                 </_DetailsContainer>
                 
 
                 <_ButtonsContainer>
-                    <Button onClick={handleAddToDefault}>Obejrzane</Button>
-                    <Button onClick={openATPPanel}>Dodaj do kolekcji</Button>
+                    <Button onClick={handleAddToDefault}>Watched</Button>
+                    <Button onClick={openATPPanel}>Add to Collection</Button>
                 </_ButtonsContainer>
 
                 <AddToPlaylistModal

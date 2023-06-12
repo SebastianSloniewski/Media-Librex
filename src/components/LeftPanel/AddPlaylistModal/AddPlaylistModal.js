@@ -35,10 +35,10 @@ const AddPlaylistModal = (props) => {
     return (
         <Modal show={props.show} onHide={props.closeHandler}>
             <Modal.Header closeButton>
-                <Modal.Title>Dodaj Nową Kolekcje</Modal.Title>
+                <Modal.Title>Add new Collection</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <p>Jak chcesz nazwać swoją nową kolekcję?</p>
+                <p>Choose name for your new collection</p>
                 <Form.Control type="text" 
                     placeholder="Nazwa kolekcji" 
                     style={{width: "80%"}}
@@ -48,10 +48,10 @@ const AddPlaylistModal = (props) => {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="neutral" onClick={props.closeHandler}>
-                    Anuluj
+                    Cancel
                 </Button>
                 <Button variant="success" onClick={addNewPlaylist}>
-                    Dodaj
+                    Add
                 </Button>
             </Modal.Footer>
         </Modal>

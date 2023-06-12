@@ -15,7 +15,7 @@ const _reviewDiv = styled.div`
 
 const ReviewPanel = (props) => {
     const [reviewData, setReviewData] = useState(props.reviewData)
-    console.log("RECENZJA", props)
+    //console.log("RECENZJA", props)
 
 
     return (
@@ -25,7 +25,7 @@ const ReviewPanel = (props) => {
             <div 
                 style={{fontSize:"15px", 
                         color:"#8D8D8D"}}>
-                        Napisane przez: {reviewData.user.name}</div>
+                        Written by: {reviewData.user.name}</div>
             
         </_reviewDiv>
 

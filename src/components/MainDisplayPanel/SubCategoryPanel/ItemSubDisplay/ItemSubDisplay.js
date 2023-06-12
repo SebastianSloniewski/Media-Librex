@@ -74,7 +74,6 @@ const ItemSubDisplay = (props) => {
                 <h6>{elem.title}</h6>
 
             </TitleContainer>}
-            {/* POTRZEBA OBSLUGI PO STRONIE BACKENDU */}
             <StarRating rating={rating}/>
 
         </ItemContainer>

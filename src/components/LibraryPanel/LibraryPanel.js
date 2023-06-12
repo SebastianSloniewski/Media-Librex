@@ -18,20 +18,8 @@ const _MainContainer = styled.div`
 
 const LibraryPanel = (props) => {
     const [Items, setItems] = useState([])
-
-    // useEffect(() => {
-    //     console.log("EFFECTS LIBPAN")
-
-    //     const conv = convertList(props.currentPlaylist.mediaListItems)
-
-    // }, [])
-
-    // console.log("LIBPANEL PROPS: ", props)
-    // console.log("CURRENT PL: ", props.currentPlaylist)
-    // console.log("CONVERTED LIST: ", props.currentPlaylist.mediaListItems.map(item => MediaItemToSubItem(item)))
     
     const handleDelete = () => {
-        console.log("Deleting collection: ", props.currentPlaylist.id)
 
         deleteCollection(props.currentPlaylist.id)
 
@@ -41,36 +29,24 @@ const LibraryPanel = (props) => {
     const convertList = (list) => {
         const newList = []
 
-        console.log("START LIST: ", props.currentPlaylist.mediaListItems)
 
         let i =1;
         while(i < props.currentPlaylist.mediaListItems.lenght){
             const newItem = MediaItemToSubItem(props.currentPlaylist.mediaListItems[i].mediaItem)
 
-            console.log("NEW ITEM: ", newItem);
-
             newList.push(newItem);
             i++;
         }
-
-        console.log("Converted: ", newList);
         return newList;
 
     }
 
     const handleItemDelete = (id) => {
-        console.log("DELETING ITEM WITH ID: ", id);
-        console.log("In collection: ", props.currentPlaylist)
-
         let playlist = props.currentPlaylist;
 
         const newCollectionList = playlist.mediaListItems.filter(elem => elem.mediaItem.id !== id)
 
         playlist.mediaListItems = newCollectionList;
-
-        console.log("LIST after: ", playlist)
-
-        // let newCollect = props.currentPlaylist;
         
         props.handleChange(playlist)
     }

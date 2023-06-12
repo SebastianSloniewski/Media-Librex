@@ -22,13 +22,12 @@ const LibPanelControl = (props) => {
 
     return (
         <LPCpanel>
-            {/* <h1>REEEEEEEEEEEEEEEEE</h1> */}
             <h2>{props.name}</h2>
             <DeleteButton >
                 <Button variant="danger" 
                     onClick={() => props.handleDelete()}
                 >
-                    Usun Kolekcje 
+                    Delete Collection 
                 </Button>
             </DeleteButton>
             

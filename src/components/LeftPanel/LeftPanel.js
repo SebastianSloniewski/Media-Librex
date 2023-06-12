@@ -71,7 +71,7 @@ const LeftPanel = (props) => {
     return (
         <_MainPanelContainer className="col-lg-2 container sideBar">
 
-            <h1>Kolekcje</h1>
+            <h1>Collections</h1>
             
             <div>
                 <Table bordered={false}>

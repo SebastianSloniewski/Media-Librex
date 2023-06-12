@@ -91,7 +91,7 @@ function LoginButton(){
 const SignedPanel = (props) => {
     return (
         <div style={{display: 'flex', justifyContent: "right"}}>
-            <p style = {{marginTop: "20px"}}>Zalogowano jako <b>{props.userName}</b></p>
+            <p style = {{marginTop: "20px"}}>Signed in as <b>{props.userName}</b></p>
             <div  className="logButton">
                 <HiOutlineUserCircle 
                     size={25}

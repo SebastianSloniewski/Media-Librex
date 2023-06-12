@@ -16,7 +16,7 @@ const AddToPlaylistModal = (props) => {
     return (
         <Modal show={props.show} onHide={props.closeHandler}>
             <Modal.Header >
-                <Modal.Title>Wybierz Playliste</Modal.Title>
+                <Modal.Title>Choose Collection</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Table bordered={false}>
@@ -34,7 +34,7 @@ const AddToPlaylistModal = (props) => {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="neutral" onClick={props.closeHandler}>
-                    Cofnij
+                    Cancel
                 </Button>
             </Modal.Footer>
         </Modal>

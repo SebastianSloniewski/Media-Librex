@@ -23,16 +23,16 @@ const ReviewsContainer = styled.div`
 const ItemReviewsPanel = (props) => {
     const [reviewList, setReviewList] = useState(props.reviews);
 
-    console.log("ITEM REV porps", props)
+    //console.log("ITEM REV porps", props)
 
     useEffect(() => {
         const reviewResp = getItemReviews(props.itemID);
 
         reviewResp.then((resolve) => {
             setReviewList(resolve);
-            console.log("FETCHED: ", resolve)
+            //console.log("FETCHED: ", resolve)
         }, () => {
-            console.log("Failed to get reviews");
+            //console.log("Failed to get reviews");
         })
     }, [])
     
