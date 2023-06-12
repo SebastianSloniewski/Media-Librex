@@ -117,10 +117,10 @@ const UserProfile = (props) => {
                 </_UserDataDiv>
             </_profileInfo>
 
-            <UserPlaylists
+            {/* <UserPlaylists
                 userPlaylists={props.plList}
-            />
-            <FriendsPanel userData={props.userData}/>
+            /> */}
+            {/* <FriendsPanel userData={props.userData}/> */}
 
         </_MainContainer>
     )
