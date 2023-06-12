@@ -13,6 +13,7 @@ const _MainContainer = styled.div`
     text-align: top;
     justify-content: center;
     margin-top: 30px;
+    padding: 0 20px 0 20px;
 `;
 
 const LibraryPanel = (props) => {
